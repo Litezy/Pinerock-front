@@ -24,8 +24,8 @@ export let URL;
 export let profileImg;
 
 if(window.location.origin.includes('localhost')) {
-    URL = 'http://localhost:5002'
-    profileImg = 'http://localhost:5002'
+    URL = 'http://localhost:5003'
+    profileImg = 'http://localhost:5003'
 }
 
 if(window.location.origin.includes('greenfordbank.com')) {

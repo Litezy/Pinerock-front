@@ -121,7 +121,7 @@ export default function VerifyEmailAccount() {
     }
 
     return (
-        <div className='bg-gradient-to-tr from-primary to-purple-700 h-screen overflow-x-hidden flex items-center justify-center'>
+        <div className='bg-primary h-screen overflow-x-hidden flex items-center justify-center'>
             <div className="w-[97%] mx-auto max-w-xl bg-white relative backdrop-blur-sm p-5 rounded-lg mt-10 lg:mt-20">
 
                 {loading &&
@@ -130,7 +130,7 @@ export default function VerifyEmailAccount() {
                     </div>
                 }
                 <div className="text-3xl lg:text-4xl font-bold text-primary">Verify your Email Address</div>
-                <div className="">Lets assist you recover your account</div>
+                <div className="">Enter the code sent to your email below.</div>
                 <form onSubmit={HandleSubmission} className='mt-5'>
                     <div className="mb-10">
                         <OtpForm
@@ -142,8 +142,8 @@ export default function VerifyEmailAccount() {
                     <Formbutton label="Verify my email" loading={false} />
                     <div className="flex items-center justify-between mt-5">
                         <div className="">
-                            <div className="text-zinc-500 mt-5 text-center">Don't have an account? <Link to="/signup" className='text-blue-600'>Create Account</Link> </div>
-                            <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-blue-600'>Go back home</Link> </div>
+                            <div className="text-zinc-500 mt-5 text-center">Don't have an account? <Link to="/signup" className='text-black font-semibold'>Create Account</Link> </div>
+                            <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-black font-semibold'>Go back home</Link> </div>
                         </div>
                         <div className="flex items-center flex-col gap-2">
                             <div className="">didn't receive email?</div>

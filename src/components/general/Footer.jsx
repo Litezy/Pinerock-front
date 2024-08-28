@@ -64,21 +64,11 @@ export default function Footer() {
       }
   }
   return (
-    <div className="bg-gradient-to-tr from-primary to-purple-700 py-10">
+    <div className="bg-primary py-10">
       <div className="w-11/12 mx-auto lg:w-10/12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <div className="">
             <div className="text-white text-xl"> <div className="bg-white py-1 w-fit rounded-lg px-3"><img src={logo} alt="" className="h-10 w-auto" /> </div> {SiteName}</div>
-            <div className="flex flex-row items-center gap-8 text-2xl text-white mt-8">
-              {SocialMediaLinks.map((item, index) => (
-                <div
-                  className="cursor-pointer hover:text-orange-300 hover:scale-110 transition-all"
-                  key={index}
-                >
-                  <item.Icon />
-                </div>
-              ))}
-            </div>
             <div className="text-white mt-8 border-t pt-5 flex flex-col gap-3">
               <div className="flex items-center gap-2"> <SlClock /> Working hours: 24/7</div>
               <div className="flex items-center gap-2"> <SlEnvolope /> {SiteEmail}</div>
@@ -131,7 +121,7 @@ export default function Footer() {
                 value={email.email}
                 onChange={(e) => setEmail({...email,[e.target.name]:e.target.value})}
               />
-              <button onClick={subscribe} className="w-full px-5 py-3 rounded-lg text-white bg-red-600">
+              <button onClick={subscribe} className="w-full px-5 font-bold py-3 rounded-lg text-primary bg-sec">
                 Subscribe
               </button>
             </div>

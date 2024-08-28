@@ -20,41 +20,7 @@ import axios from 'axios'
 import ModalLayout from 'utils/ModalLayout'
 import VerifyEmailAccount from 'forms/VerifyEmail'
 
-const TransData = [
-    {
-        title: 'Today',
-        data: [
-            {
-                title: 'Withdrawal',
-                amount: '1200',
-                content: `you have successfully transferred ${Currency}1,000 to keneth williams`,
-                status: 'Success',
-                date: '12:00 PM'
-            },
-            {
-                title: 'Deposit',
-                amount: '1,000',
-                status: 'Failed',
-                content: `you have successfully transferred ${Currency}1,000 to keneth williams`,
-                date: '11:00 PM'
-            },
-            {
-                title: 'Transfer',
-                amount: '500',
-                content: `you have successfully transferred ${Currency}1,000 to keneth williams`,
-                status: 'Success',
-                date: '10:00 PM'
-            },
-            {
-                title: 'Transfer',
-                amount: '700',
-                content: `you have successfully transferred ${Currency}1,000 to keneth williams`,
-                status: 'Failed',
-                date: '9:00 PM'
-            }
-        ]
-    },
-]
+
 
 
 const DashboardOptions = [
@@ -231,14 +197,14 @@ export default function Dashboard() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mt-7 items-center">
-                    <div className="bg-gradient-to-tr from-primary to-purple-700 px-6 py-10 rounded-lg">
+                    <div className="bg-primary px-6 py-10 rounded-lg">
                         <div className="flex items-center gap-2 text-white text-sm font-extralight">
                             <GoShieldLock className='text-green-400 text-base' />
                             <div className="">Available Balance</div>
                             <IoEyeOutline />
                         </div>
                         <div className="flex mt-5 items-start">
-                            <div className="text-slate-200 lg:text-4xl text-2xl self-end font-bold">{currency}</div>
+                            <div className="text-slate-200 lg:text-4xl text-2xl self-end font-bold">{profile?.currency}</div>
                             <div className="font-bold text-4xl text-white">{profile?.balance?.toLocaleString()}</div>
                         </div>
                     </div>
@@ -264,7 +230,7 @@ export default function Dashboard() {
                     <div className="flex items-center justify-between my-6">
                         <div className="font-semibold text-2xl lg:text-3xl">Latest Savings Goal</div>
                         <div className="">
-                            <Link to="/user/savings" className='text-blue-600'>View all</Link>
+                            <Link to="/user/savings" className='text-primary'>View all</Link>
                         </div>
                     </div>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-10">
@@ -293,7 +259,7 @@ export default function Dashboard() {
                                         <div className="font-bold text-right text-primary">{item.lastsaved} </div>
                                     </div>
                                     <div onClick={() => setViewMore(true)} onMouseOver={() => selectOne(item)} className="py-1 flex justify-end cursor-pointer">
-                                        <div className='flex text-blue-600 items-center justify-end gap-2'>More <FaArrowRight /> </div>
+                                        <div className='flex text-primary items-center justify-end gap-2'>More <FaArrowRight /> </div>
                                     </div>
                                 </div>
                             </div>
@@ -306,7 +272,7 @@ export default function Dashboard() {
                 <div className="flex items-center justify-between my-6">
                     <div className="font-semibold text-2xl lg:text-3xl">Latest Transactions</div>
                     <div className="">
-                        <Link to="/user/transactions" className='text-blue-600'>View all</Link>
+                        <Link to="/user/transactions" className='text-primary'>View all</Link>
                     </div>
                 </div>
 

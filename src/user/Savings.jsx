@@ -415,6 +415,8 @@ const Savings = () => {
                                         <FormComponent name={`amount`} value={proofForm.amount} onchange={(e) => setProofForm({ ...proofForm, [e.target.name]: e.target.value })} formtype='phone' />
                                     </div>
                                 </div>
+                                <div className="text-sm"><span className=' font-bold'>NB:</span> If you don't find any bank account above, reach out to us on live support</div>
+
                                 <div className="mt-3 relative w-fit mx-auto">
                                     <label className={`${proofimg.img ? '' : 'border-2 border-black'} mt-5 w-full  h-full border-dashed flex cursor-pointer items-center justify-center `}>
                                         {proofimg.img ? <div className="">
@@ -531,10 +533,10 @@ const Savings = () => {
                         </ul>
                     ))}
                 </div>
-                <div onClick={() => setSupport(true)} className="w-fit cursor-pointer self-center text-white px-5 py-2 rounded-lg bg-gradient-to-tr from-primary to-purple-700 ">Contact Support</div>
+                <div onClick={() => setSupport(true)} className="w-fit cursor-pointer self-center text-white px-5 py-2 rounded-lg bg-primary  ">Deposit</div>
             </div>
 
-            <div onClick={() => setCreateSave(true)} className=" mb-3 cursor-pointer w-fit ml-auto text-white bg-gradient-to-tr from-primary to-purple-700   px-5 py-2 rounded-md">Add New Savings</div>
+            <div onClick={() => setCreateSave(true)} className=" mb-3 cursor-pointer w-fit ml-auto text-white bg-primary   px-5 py-2 rounded-md">Add New Savings</div>
             <div className={`grid grid-cols-1 ${savings.length === 0 ? 'lg:grid-cols-1' : 'lg:grid-cols-2'} gap-5 lg:gap-10`}>
 
                 {savings.length > 0 ? savings.map((item, index) => (

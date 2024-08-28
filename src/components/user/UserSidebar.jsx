@@ -69,6 +69,7 @@ export default function UserSidebar() {
             if (response.status === 200) {
                 setProfile(response.data);
                 dispatch(dispatchProfile(response.data));
+                dispatch(dispatchCurrency(response.data?.currency))
             } else {
                 errorMessage(response.msg);
             }
@@ -126,14 +127,14 @@ export default function UserSidebar() {
                     </ModalLayout>
                 }
                 <div className="bg-slate-100/20 rounded-lg p-3 flex flex-col items-center justify-center gap-3 mt-6 mb-5">
-                    <div className="py-3 px-3.5 rounded-full text-white bg-gradient-to-tr from-primary to-purple-700 w-fit h-fit uppercase">{firstChar}{lastChar}</div>
+                    <div className="py-3 px-3.5 rounded-full text-white bg-primary w-fit h-fit uppercase">{firstChar}{lastChar}</div>
                     <div className="text-white text-center capitalize text-sm">{profile?.firstname} {profile?.lastname}</div>
                     <div className="text-white items-center gap-2 font-bold text-xl flex justify-center">
                        <div onClick={fetchUserProfile} className="">
                        <FiRefreshCcw className={`text-sm cursor-pointer ${isRotating ?'rotating':''}`} />
                        </div>
                         <div className="flex items-center ">
-                            <span>{currency}</span>
+                            <span>{profile?.currency}</span>
                             <span>{hide ? '***':profile?.balance?.toLocaleString()}</span>
                         </div>
                         <IoEyeOutline onClick={()=> setHide(prev => !prev)} className='text-sm self-center ml-2 cursor-pointer' />

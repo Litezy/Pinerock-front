@@ -85,7 +85,7 @@ export default function ContactForm() {
           <textarea name='message' value={forms.message} onChange={handleChange} className='w-full resize-none h-40 lg:h-52 p-3 border ' placeholder='message'></textarea>
         </div>
         <div className="mt-3">
-          <ButtonComponent title={`Send Message`} bg={`text-white bg-gradient-to-tr from-primary to-purple-700 h-12`} />
+          <ButtonComponent title={`Send Message`} bg={`text-white bg-primary  h-12`} />
         </div>
       </form>
     </div>

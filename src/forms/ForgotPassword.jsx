@@ -9,6 +9,7 @@ import { errorMessage, successMessage } from 'utils/functions'
 import Loader from 'utils/Loader'
 import OtpForm from 'utils/OtpForm'
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import { SystemSecurityUpdateWarningSharp } from '@mui/icons-material'
 
 export default function ForgotPassword() {
 
@@ -155,7 +156,7 @@ export default function ForgotPassword() {
     }
 
     return (
-        <div className='bg-gradient-to-tr from-primary to-purple-700 h-fit py-20 overflow-x-hidden flex items-center justify-center'>
+        <div className='bg-primary h-fit py-20 overflow-x-hidden flex items-center justify-center'>
             <div className="w-[97%] mx-auto max-w-xl bg-white relative backdrop-blur-sm p-5 rounded-lg mt-10 lg:mt-20">
 
                 {loading &&
@@ -183,7 +184,7 @@ export default function ForgotPassword() {
 
                 {screen === 2 &&
                     <form onSubmit={handleCode} className='mt-5'>
-                        <div className="text-center font-semibold">Enter OTP code Sent to your email</div>
+                        <div className="text-center font-semibold">Enter OTP code sent to your email</div>
 
                         <div className="mb-10">
                             <OtpForm
@@ -235,8 +236,8 @@ export default function ForgotPassword() {
                         </form>
                     </>
                 }
-                <div className="text-zinc-500 mt-5 text-center">Don't have an account? <Link to="/signup" className='text-blue-600'>Create Account</Link> </div>
-                <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-blue-600'>Go back home</Link> </div>
+                <div className="text-zinc-500 mt-5 text-center">Don't have an account? <Link to="/signup" className='text-black font-semibold'>Create Account</Link> </div>
+                <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-black font-semibold'>Go back home</Link> </div>
             </div>
         </div>
     )

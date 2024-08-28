@@ -16,6 +16,7 @@ import { MdSupportAgent } from "react-icons/md";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { GiPodiumWinner } from "react-icons/gi";
 import { SiteName } from './functions'
+import { TfiStar } from "react-icons/tfi";
 
 
 export const HomeServices = [
@@ -356,3 +357,4 @@ export const termsOfUse = [
         ]
     },
 ]
+

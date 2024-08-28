@@ -30,7 +30,7 @@ export default function UserLayout({ children }) {
 
     useEffect(()=>{
         fetchUserProfile()
-    },[fetchUserProfile])
+    },[])
 
     React.useEffect(() => {
         setTimeout(() => {
@@ -72,7 +72,7 @@ export default function UserLayout({ children }) {
                 <VerifyEmailAccount />
             }
            {profile?.verified === 'true'  && <div className="flex items-center h-screen overflow-hidden bg-white">
-                <div className="h-screen hidden lg:block w-[20%] bg-gradient-to-tr from-primary to-purple-700 text-white">
+                <div className="h-screen hidden lg:block w-[20%] bg-primary text-white">
                     <UserSidebar />
                 </div>
                 <div className="bg-slate-50 h-screen w-full overflow-y-auto overflow-x-hidden">

@@ -88,7 +88,7 @@ export default function Signup() {
         }
     }
     return (
-        <div className='bg-gradient-to-tr from-primary to-purple-700 h-screen overflow-x-hidden'>
+        <div className='bg-primary  h-screen overflow-x-hidden'>
             <div className="w-[97%] mx-auto max-w-xl bg-white backdrop-blur-sm p-5 rounded-lg my-10 lg:my-20">
                 <div className="text-3xl lg:text-4xl font-bold text-primary">Create Account</div>
                 <form onSubmit={handleSubmission} className="mt-5">
@@ -182,8 +182,8 @@ export default function Signup() {
 
 
                     <Formbutton label="Create Account" loading={loading ? true :false}/>
-                    <div className="text-zinc-500 mt-5 text-center">Already have an account? <Link to="/login" className='text-blue-600'>Login Account</Link> </div>
-                    <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-blue-600'>Go back home</Link> </div>
+                    <div className="text-zinc-500 mt-5 text-center">Already have an account? <Link to="/login" className='text-primary'>Login Account</Link> </div>
+                    <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-primary'>Go back home</Link> </div>
                 </form>
             </div>
         </div>
