@@ -5,7 +5,10 @@ const initialState = {
     notifications: [], 
     forms:{},
     currency:null,
-    usersavings:[]
+    usersavings:[],
+    messages:[],
+    active_chats:[],
+    closed_chats:[],
   };
   
   export const globalStates = createSlice({
@@ -31,10 +34,18 @@ const initialState = {
       dispatchUserSavings: (state, action) => {
         state.usersavings = action.payload;
       },
+      dispatchMessages: (state, action) => {
+        state.messages = action.payload;
+      },
+      dispatchActiveChats: (state, action) => {
+        state.active_chats = action.payload;
+      },
+      dispatchClosedChats: (state, action) => {
+        state.closed_chats = action.payload;
+      },
     },
   });
 
-
-export const { dispatchForms,dispatchNotifications,dispatchProfile,dispatchCurrency,dispatchUserSavings } = globalStates.actions
+export const { dispatchForms,dispatchNotifications,dispatchProfile,dispatchCurrency,dispatchUserSavings,dispatchMessages,dispatchActiveChats,dispatchClosedChats  } = globalStates.actions
 
 export default globalStates.reducer

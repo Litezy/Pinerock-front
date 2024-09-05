@@ -5,7 +5,6 @@ import { FiPhoneIncoming, FiPrinter } from 'react-icons/fi'
 import { FaAsterisk } from "react-icons/fa";
 import { errorMessage, SiteAddress, SiteContact, SiteEmail, successMessage } from 'utils/functions';
 import { Apis, ClientPostApi } from 'services/Api';
-import image from 'assets/contactimg.jpg'
 
 const ContactUs = () => {
 
@@ -99,19 +98,31 @@ const ContactUs = () => {
     }
   }
   return (
-    <div className='mb-10 mt-32'>
-         <div className="w-full h-full border-t-2  pt-5 lg:pt-0 lg:border-none ">
+    <div className='my-10'>
+         <div className="w-full h-full border-t-2 border-primary pt-5 lg:pt-0 lg:border-none ">
                 <div className="w-11/12 mx-auto">
                     <div className="flex items-start flex-col lg:flex-row lg:gap-10 w-full">
                         <div className="lg:w-1/2 text-dark flex items-start flex-col gap-6 h-fit pb-10">
                             <div className="font-bold  text-4xl">Get in touch</div>
                             <div className="font-semibold">We're here for you every step of the way. Wether you have questions, need help , or want to share feedback, our friendly customer support team is ready to assist. Our team is here to reach out! Reach out to us via</div>
                             <div className="w-full">
-                               <img src={image} alt="contact-img"  className='w-fit h-fit'/>
+                                {links.map((item, i) => {
+                                    return (
+                                        <div className="flex items-center gap-2 mb-10" key={i}>
+                                            <div className={`${item.title === 'Mail' ? 'bg-[#fff0e6] text-[#ff6b0c]' : item.title === 'Phone' ? 'bg-[#ebeeff] text-[#294bff]' : item.title === 'Fax' ? 'bg-[#f4eefa] text-[#a674d9]' : 'bg-[#e7f7ef] text-[#65cd98]'}
+                                 w-fit px-3 py-2 rounded-xl text-4xl`}>
+                                                {item.img}</div>
+                                            <div className="flex items-start flex-col">
+                                                <div className="text-sm font-semibold">{item.title}</div>
+                                                <div className="font-bold">{item.desc}</div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
                             </div>
 
                         </div>
-                        <div className="lg:w-1/2 w-full bg-black h-fit rounded-2xl text-white">
+                        <div className="lg:w-1/2 w-full bg-gradient-to-tr from-primary to-purple-700 h-fit rounded-2xl text-white">
                             <div className="h-full py-10 px-2">
                                 <div className="w-full flex items-center justify-center flex-col">
                                     <div className="w-full text-center text-3xl lg:text-4xl font-bold ">Send us a message</div>

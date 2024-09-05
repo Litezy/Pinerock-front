@@ -1,42 +1,86 @@
 import { Box, LinearProgress } from '@mui/material';
-import { dispatchProfile } from 'app/reducer';
+import { dispatchCurrency, dispatchProfile } from 'app/reducer';
 import UserSidebar from 'components/user/UserSidebar';
 import Userfooter from 'components/user/Userfooter';
 import VerifyEmailAccount from 'forms/VerifyEmail';
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { BsBell } from 'react-icons/bs';
+import { FaUser } from 'react-icons/fa6';
+import { FaUserAlt } from "react-icons/fa";
+import { FaHistory } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
-import { Apis, GetApi } from 'services/Api';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Apis, GetApi, profileImg } from 'services/Api';
 import { errorMessage } from 'utils/functions';
+import { HiOutlineBars3BottomRight } from "react-icons/hi2";
+import {motion} from 'framer-motion'
+
 
 export default function UserLayout({ children }) {
     const [loading, setLoading] = useState(true)
-    const [profile,setProfile] = useState({})
+    const [chats, setChats] = useState(false)
+    const [openside, setOpenSide] = useState(false)
+    const [profile, setProfile] = useState({})
     const dispatch = useDispatch()
-
+    const [notice, setNotice] = useState([])
+    const location = useLocation()
+    const navigate = useNavigate()
+    const refdiv = useRef(null)
     const fetchUserProfile = useCallback(async () => {
         try {
             const response = await GetApi(Apis.auth.profile);
-            if (response.status === 200) {
-                setProfile(response.data);
-                dispatch(dispatchProfile(response.data));
-            } else {
-                errorMessage(response.msg);
-            }
+            if (response.status !== 200) return navigate('/login')
+            setProfile(response.data);
+            dispatch(dispatchProfile(response.data));
+            dispatch(dispatchCurrency(response.data?.currency));
+
         } catch (error) {
+            navigate('/login')
             errorMessage(error.message);
         }
-    }, [dispatch]);
+    }, [dispatch, navigate]);
 
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchUserProfile()
-    },[])
+    }, [fetchUserProfile])
+
+    const fetchUserNotifications = useCallback(async () => {
+        try {
+            const response = await GetApi(Apis.auth.user_notifications)
+            if (response.status !== 200) return;
+            const filter = response.data.filter((item) => item.status === 'unread')
+            setNotice(filter)
+        } catch (error) {
+            console.error('Error fetching currency:', error);
+        }
+    }, [])
+
+    useEffect(() => {
+        fetchUserNotifications()
+    }, [fetchUserNotifications])
 
     React.useEffect(() => {
         setTimeout(() => {
             setLoading(false)
         }, 2000);
     }, [])
+
+    useEffect(() => {
+        if (refdiv) {
+            window.addEventListener('click', (e) => {
+                if (refdiv.current !== null && !refdiv.current.contains(e.target)) return setOpenSide(false)
+            }, true)
+        }
+    }, [])
+
+    useEffect(()=>{
+        if(location.pathname.includes(`active_chats/` || `closed_chats/`)){
+            setChats(true)
+        } else {
+            setChats(false)
+        }
+    }, [location.pathname])
 
     if (loading) return (
         <div>
@@ -71,18 +115,59 @@ export default function UserLayout({ children }) {
             {profile?.verified === 'false' &&
                 <VerifyEmailAccount />
             }
-           {profile?.verified === 'true'  && <div className="flex items-center h-screen overflow-hidden bg-white">
-                <div className="h-screen hidden lg:block w-[20%] bg-primary text-white">
-                    <UserSidebar />
-                </div>
-                <div className="bg-slate-50 h-screen w-full overflow-y-auto overflow-x-hidden">
-                    <div className="h-[97dvh] overflow-y-auto overflow-x-hidden pb-20">
-                        {children}
+            {profile?.verified === 'true' &&
+                <div className="flex items-center h-screen  bg-white">
+                    <div className="h-screen hidden lg:block lg:w-[20%] bg-gradient-to-tr from-primary to-purple-700 text-white">
+                        <UserSidebar setOpenSide={setOpenSide} />
                     </div>
-                    <Userfooter />
+                    <div className="bg-slate-50 lg:w-[80%] h-screen overflow-y-auto w-full relative">
+                       {!chats && <div className="lg:w-[78.8%] md:w-[98.25%]  w-[100%] bg-white flex z-50 items-center overflow-y-hidden overflow-x-hidden justify-between fixed  h-fit px-5 py-2">
+                            <div className="flex items-center gap-2 w-2/3">
+                                <div onClick={() => navigate(`/user/profile`)} className="cursor-pointer">
+                                    {profile?.image ? <img src={`${profileImg}/profiles/${profile?.image}`} className='lg:w-14 lg:h-14 w-12 h-12 rounded-full object-cover' alt="" /> :
+                                        <div className="flex items-center justify-center rounded-full h-14 w-14 border">
+                                            <FaUser className='text-3xl' />
+                                        </div>
+                                    }
+                                </div>
+                                <div className="font-semibold text-base ">Hi, Welcome back</div>
+                            </div>
+                            <div className="w-1/2 ">
+                                <div className="text-2xl hidden  lg:flex items-center justify-end gap-5">
+                                    <Link to={`/user/profile`}>
+                                        <FaUserAlt />
+                                    </Link>
+                                    <Link to="/user/transactions">
+                                        <FaHistory />
+                                    </Link>
+                                    <Link to="/user/notifications" className='relative'>
+                                        {notice && notice.length > 0 && <div className="w-3 h-3 bg-red-600 rounded-full border-2 border-white absolute top-0 right-0 shadow-lg"></div>}
+                                        <BsBell />
+                                    </Link>
+                                </div>
+                                <div className="lg:hidden w-fit ml-auto">
+                                    <HiOutlineBars3BottomRight onClick={() => setOpenSide(prev => !prev)} className='text-4xl cursor-pointer font-bold' />
+                                </div>
+                            </div>
 
-                </div>
-            </div>}
+
+                        </div>}
+                        {openside &&
+                            <motion.div 
+                            initial={{x:'100vw', opacity:0}}
+                            animate={{x:0, opacity:1}}
+                            transition={{type:'tween',mass:0.4, damping:10,duration:0.5}}
+                            ref={refdiv} className="w-[65%] md:w-[35%] rounded-s-lg z-50 top-0  right-0 bg-gradient-to-tr from-primary to-purple-700 h-screen fixed">
+                                <UserSidebar smallView={true} setOpenSide={setOpenSide} />
+
+                            </motion.div>
+                        }
+                        <div className={`h-fit ${chats ? '':'mt-10 pb-10 pt-5'} overflow-x-hidden `}>
+                            {children}
+                        </div>
+
+                    </div>
+                </div>}
         </div>
     )
 }

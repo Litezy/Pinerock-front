@@ -24,14 +24,14 @@ export let URL;
 export let profileImg;
 
 if(window.location.origin.includes('localhost')) {
-    URL = 'http://localhost:5003'
-    profileImg = 'http://localhost:5003'
+    URL = 'http://localhost:5002'
+    profileImg = 'http://localhost:5002'
 }
 
-if(window.location.origin.includes('greenfordbank.com')) {
+ if(window.location.origin.includes('greenfordbank.com')) {
     URL = 'https://api.greenfordbank.com'
     profileImg = 'https://api.greenfordbank.com'
-}
+ }
 
 
 
@@ -79,13 +79,24 @@ export const auth_urls = {
     all_savings : user + '/all-savings',
     verify_otp: user + '/verify-otp',
     withdraw_savings : user + '/withdraw-savings',
-    save_history: user + '/save-history'
+    save_history: user + '/save-history',
+    fetch_p2p:user +'/find-p2p',
+    internal_transfer: user + '/credit-p2p',
+    submit_kyc: user + '/submit-kyc',
+    
+    //tickets
+    create_ticket: user + '/create-ticket',
+    one_ticket_msgs: user + '/one-ticket-msgs',
+    active_tickets: user + '/active-tickets',
+    closed_tickets: user + '/closed-tickets',
+    send_msg: user + '/send-msg',
+    find_admin: user + '/find-admin'
 }
 
 export const admin_urls = {
     all_users: admin + '/all-users',
     all_depo: admin + '/all-depo',
-    all_kyc: admin + '/all-kyc',
+    all_kycs: admin + '/all-kycs',
     all_proofs: admin + '/all-proofs',
     all_plans: admin + '/all-plans',
     all_trans: admin + '/all-trans',
@@ -107,10 +118,29 @@ export const admin_urls = {
     remove_bank: admin + '/remove-bank',
     contacts:admin + '/contacts',
     subs:admin + '/subs',
-    all_transfers: admin + '/all-transfers',
+    completed_transfers: admin + '/completed-transfers',
     confirm_trans: admin + '/confirm-trans',
     otp: admin + '/otp',
-    single_trans: admin + '/single-trans'
+    single_trans: admin + '/single-trans',
+    pending_transfers : admin + '/all-pending-transfers',
+    terminated_savings : admin + '/all-terminated-savings',
+    completed_savings : admin + '/all-completed-savings',
+    all_contacts : admin + '/all-contacts',
+    all_deposits: admin + '/all-deposits',
+    verified_kycs: admin + '/verified-kycs',
+
+    //tickets and kycs
+    all_active_tickets: admin + '/all-active-tickets',
+    all_closed_tickets: admin + '/all-closed-tickets',
+    admin_response: admin + '/admin-response',
+    get_one_msg: admin + '/one-ticket-msgs',
+    pending_kycs: admin + '/pending-kycs',
+    one_kyc: admin + '/one-kyc',
+    verified_kycs: admin + '/verified-kycs',
+    close_ticket: admin +'/close-ticket',
+    approve_kyc: admin + '/approve-kyc',
+    overturn_kyc: admin + '/overturn-kyc',
+    all_tickets: admin + '/all-tickets'
 }
 export const Apis = {
     non_auth: non_auth_urls,

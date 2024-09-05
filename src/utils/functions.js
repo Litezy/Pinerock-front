@@ -1,7 +1,7 @@
 import toast from "react-hot-toast"
 
-export const SiteName = 'SageStone Credit Union'
-export const SiteEmail = 'support@sagestonecredit.com'
+export const SiteName = 'Greenford Bank'
+export const SiteEmail = 'support@greenfordbank.com'
 export const SiteContact = '+ Coming soon'
 export const SiteAddress = ''
 export const Currency = '£'
@@ -30,3 +30,18 @@ export const UserRole = [
         url: '/admin/overview'
     }
 ]
+export const MoveToBottom = ()=>{
+    const div = document.querySelector('.downdiv')
+    if(div){
+        div.scrollTo({
+            top:div.scrollHeight,
+            behavior:'smooth'
+        })
+    }
+}
+export const MoveToTop= () =>{
+    const div = document.querySelector('.updiv')
+    if(div){
+        div.scrollTop =0
+    }
+}

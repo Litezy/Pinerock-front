@@ -62,8 +62,9 @@ export default function Login() {
         }
     }
     return (
-        <div className='bg-primary overflow-x-hidden h-screen flex items-center justify-center'>
-            <div className="w-[90%] lg:w-[95%] mx-auto max-w-xl bg-white backdrop-blur-sm p-5 relative rounded-lg mt-10 lg:mt-20">
+        <div className='bg-gradient-to-tr from-primary to-purple-700 h-screen overflow-x-hidden flex items-center justify-center'>
+            <div className="w-[90%] mx-auto max-w-xl bg-white backdrop-blur-sm p-5 relative rounded-lg mt-10 lg:mt-20">
+
                 {loading && 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
                     <Loader/>
@@ -74,14 +75,14 @@ export default function Login() {
                     <FormComponent formtype="email" name={`email`} value={forms.email} onchange={handleChange} placeholder="Email Address" />
                     <FormComponent formtype="password" name={`password`} value={forms.password} onchange={handleChange} placeholder="Password" />
                     <div className="grid grid-cols-2 gap-4 items-center mb-3">
-                        <Forminput formtype="checkbox" placeholder="Remember me" />
+                       
                         <div className="text-right">
-                            <Link to="/forgot-password" className='text-black font-semibold'>Forgot Password?</Link>
+                            <Link to="/forgot-password" className='text-blue-600'>Forgot Password?</Link>
                         </div>
                     </div>
                     <ButtonComponent bg={`bg-primary text-white h-12`} title="Login Account" />
-                    <div className="text-zinc-500 mt-5 text-center">Don't have an account? <Link to="/signup" className='text-black font-semibold'>Create Account</Link> </div>
-                    <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-black font-semibold'>Go back home</Link> </div>
+                    <div className="text-zinc-500 mt-5 text-center">Don't have an account? <Link to="/signup" className='text-blue-600'>Create Account</Link> </div>
+                    <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-blue-600'>Go back home</Link> </div>
                 </form>
             </div>
         </div>

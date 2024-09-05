@@ -1,19 +1,22 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import mastercardimg from '../../assets/dashboard/mastercard.png'
 import visacardimg from '../../assets/dashboard/visa.png'
-import Forminput from 'utils/Forminput'
-import { MenuItem } from '@mui/material'
-import { IoChevronDown } from "react-icons/io5";
 import FormComponent from 'utils/FormComponent'
 import { errorMessage, successMessage } from 'utils/functions'
+import { FaAsterisk } from "react-icons/fa";
 import Loader from 'utils/Loader'
 import ModalLayout from 'utils/ModalLayout'
 import { Apis, GetApi, PostApi } from 'services/Api'
+import Formbutton from 'utils/Formbutton'
+import chip from 'assets/chip-sm.png'
+import ButtonComponent from 'utils/ButtonComponent'
 
-const CardComponent = ({ setAdd, add }) => {
+const CardComponent = () => {
 
     const refdiv = useRef(null)
     const [loading, setLoading] = useState(false)
+    const [add, setAdd] = useState(false)
+
     const [cards, setCards] = useState(
         {
             type: '',
@@ -27,14 +30,12 @@ const CardComponent = ({ setAdd, add }) => {
 
 
     const [allcards, setAllcards] = useState([])
-    const [selectcard, setSelectcard] = useState({})
 
     const fetchUserCards = useCallback(async () => {
         try {
             const response = await GetApi(Apis.auth.all_cards)
-            if (response.status === 200) {
-                setAllcards(response?.user?.usercards)
-            }
+            if (response.status !== 200) return;
+            setAllcards(response?.user?.usercards)
         } catch (error) {
             errorMessage(error.message)
         }
@@ -42,7 +43,7 @@ const CardComponent = ({ setAdd, add }) => {
 
     useEffect(() => {
         fetchUserCards()
-    }, [])
+    }, [fetchUserCards])
 
     const handleChange = (e) => {
         setCards({
@@ -94,8 +95,8 @@ const CardComponent = ({ setAdd, add }) => {
                 setCards({ card_name: '', card_no: '', cvv: '', exp: '', type: '' })
                 successMessage(response.msg)
                 fetchUserCards()
-                setAdd(false)   
-            }else{
+                setAdd(false)
+            } else {
                 errorMessage(response.msg)
             }
         } catch (error) {
@@ -112,7 +113,7 @@ const CardComponent = ({ setAdd, add }) => {
         <div className='w-full'>
             {add &&
                 <>
-                    <ModalLayout setModal={setAdd} clas={`lg:w-[60%] w-full mx-auto`}>
+                    <ModalLayout setModal={setAdd} clas={`lg:w-[60%] w-11/12 mx-auto`}>
                         <div ref={refdiv} className={`w-full relative mx-auto rounded-lg bg-white  py-6 px-5 `}>
                             {loading &&
                                 <div className=" absolute h-full items-center flex justify-center z-50 w-full">
@@ -150,7 +151,7 @@ const CardComponent = ({ setAdd, add }) => {
                                     <div className="text-lg ">Card CVV:</div>
 
                                     <div className="w-1/4">
-                                        <FormComponent  formtype={'cvv'} name={`cvv`} value={cards.cvv} onchange={handleChange} />
+                                        <FormComponent formtype={'cvv'} name={`cvv`} value={cards.cvv} onchange={handleChange} />
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-between w-full">
@@ -160,45 +161,49 @@ const CardComponent = ({ setAdd, add }) => {
                                     </div>
                                 </div>
                             </div>
-                            <button disabled={loading ? true :false} onClick={addCardsArr} className=' h-12 w-full bg-gradient-to-tr from-primary to-purple-700  text-white rounded-lg'>Add Card</button>
+                            <button disabled={loading ? true : false} onClick={addCardsArr} className=' h-12 w-full bg-gradient-to-tr from-primary to-purple-700  text-white rounded-lg'>Add Card</button>
                         </div>
                     </ModalLayout>
                 </>
             }
 
-            <div className="flex w-full items-center justify-between">
-                <div className="mb-2 text-xl font-semibold">My Cards</div>
+            <div className="flex mb-2 w-full items-center justify-between">
+                <div className=" text-xl font-semibold">My Cards</div>
                 {allcards.length < 2 &&
-                    <button onClick={() => setAdd(true)} className='w-fit px-5 py-2 rounded-lg bg-primary text-white'>Add New Card</button>
+                   <div className="w-fit ">
+                     <ButtonComponent  onclick={() => setAdd(true)} title="Add New Card" bg={`text-white bg-gradient-to-tr px-3 from-primary text-sm to-purple-700 h-12`} />
+                   </div>
                 }
             </div>
             {Array.isArray(allcards) && allcards.length > 0 ? <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
                 {allcards.map((item, i) => {
                     return (
-                        <div key={i} className={`h-[17rem] w-full bg-gradient-to-tr from-[#1d253f] via-[#152878] to-[#0b2cc9]  rounded-lg py-6 px-5`}>
+                        <div key={i} className={`lg:h-[17rem] h-fit w-full bg-gradient-to-tr from-primary to-purple-700  rounded-lg py-4 px-5`}>
                             <div className="flex flex-col text-white h-full justify-between">
                                 <div className="flex items-center  justify-between">
-                                    <div className="font-semibold text-xl">Credit</div>
-                                    <img src={item.type === 'visa' ? visacardimg : mastercardimg} className={`w-24 ${item.type === 'visa' ? 'h-24' : 'h-fit'} `} alt="" />
+                                    <div className={`w-fit  ${item.type === 'visa' ? 'h-16' : 'h-fit'} bg-white rounded-md flex items-center justify-center`}>
+                                        <img src={item.type === 'visa' ? visacardimg : mastercardimg} className={`w-24 `} alt="" />
+                                    </div>
+                                    <img src={chip} className={`w-fit h-14 `} alt="" />
                                 </div>
-                                <div className="mb-2 flex  items-center justify-between  text-white text-base">
+                                <div className="mb-2 mt-2 flex  items-center justify-between  text-white text-base">
                                     <div className="flex-col flex items-start">
                                         <div className="text-sm">Card No.</div>
-                                        <div className="text-xl font-semibold">{item.card_no}</div>
+                                        <div className="text-lg font-semibold">{item.card_no}</div>
                                     </div>
                                     <div className="flex items-center mr-3 flex-col">
                                         <div className="">cvv</div>
-                                        <div className="text-xl font-bold">{item.cvv}</div>
+                                        <div className="text-lg font-bold">{item.cvv}</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-start flex-col">
                                         <div className="text-sm">Card holder</div>
-                                        <div className="font-bold text-2xl">{item.name}</div>
+                                        <div className="font-bold text-xl">{item.name}</div>
                                     </div>
                                     <div className="flex items-center flex-col">
                                         <div className="text-sm">exp</div>
-                                        <div className="font-bold text-xl">{item.exp}</div>
+                                        <div className="font-bold text-lg">{item.exp}</div>
                                     </div>
                                 </div>
                             </div>
@@ -206,9 +211,30 @@ const CardComponent = ({ setAdd, add }) => {
                     )
                 })}
             </div> :
-                <div className="">No cards added by you</div>
+                <div className="flex items-center flex-col lg:flex-row justify-between gap-5 lg:gap-10">
+                    {new Array(2).fill(0).map((item, i) => {
+                        return (
+                            <div key={i} className={`h-60 w-full  bg-gradient-to-tr from-primary to-purple-700 rounded-lg py-6 px-5`}>
+                                <div className="flex gap-4 flex-col text-white h-full justify-between">
+                                    <div className="w-16 p-3 bg-white h-12 rounded-md ml-auto mr-2">
+                                    </div>
+                                    <div className="flex w-full  items-center justify-between  text-white text-base">
+                                        <div className=" w-3/4 flex-col flex items-start">
+                                            <div className="flex items-center gap-1 text-lg">
+                                                0000 - 0000 - 0000 - 0000 - 0000
+                                            </div>
+                                        </div>
+                                        <div className="w-1/4 bg-white rounded-md h-3"></div>
+                                    </div>
+                                    <div className="w-full bg-white rounded-md h-3"> </div>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
 
             }
+            <div className="font-light mt-1">* max of two credit/debit cards</div>
         </div>
     )
 }
