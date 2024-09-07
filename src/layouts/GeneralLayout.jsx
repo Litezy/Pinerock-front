@@ -46,7 +46,7 @@ export default function GeneralLayout({ children }) {
           >
             <div className="w-11/12 lg:w-3/4 p-10 mx-auto bg-white rounded-lg flex items-center flex-col gap-3 text-center">
               <div className="capitalize text-2xl font-bold">Pinerock credit union</div>
-              <div className="font-semibold  text-primary text-xl">Install Pinerock credit union on your Phone</div>
+              <div className="font-semibold  text-primary text-xl">Install Pinerock credit union on your phone</div>
               <div className="text-base lg:w-2/4 w-11/12 mx-auto">
                 Install Pinerock credit union on your phone, and access it just like a regular native app. Open your Browser menu and tap "Add to Home Screen".
               </div>

@@ -3,6 +3,7 @@ import { PiX } from "react-icons/pi";
 import { SlMenu } from "react-icons/sl";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from 'framer-motion'
+import logo from 'assets/icon.png'
 
 
 
@@ -44,7 +45,7 @@ export default function Header({show}) {
         className="flex items-center bg-sec justify-around px-2 py-5 md:py-6  nunito">
         <div className="">
           <Link to="/" className="text-xl md:text-3xl font-bold text-white">
-            Pinerock
+           Pinerock
           </Link>
         </div>
         <div className="hidden lg:flex items-center justify-end">

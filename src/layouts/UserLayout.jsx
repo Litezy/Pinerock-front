@@ -11,7 +11,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Apis, GetApi, profileImg } from 'services/Api';
 import { errorMessage } from 'utils/functions';
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
-import {motion} from 'framer-motion'
+import {AnimatePresence, motion} from 'framer-motion'
 
 
 export default function UserLayout({ children }) {
@@ -100,7 +100,7 @@ export default function UserLayout({ children }) {
                         </div>
                     </div>
                     <div className="h-[91.1dvh] flex items-center w-4/5 max-w-xl mx-auto justify-center pb-10 overflow-y-auto">
-                        <Box sx={{ width: '100%' }}>
+                        <Box sx={{ width: '100%', }} className="bg-[#021526]">
                             <LinearProgress />
                         </Box>
                     </div>
@@ -151,14 +151,17 @@ export default function UserLayout({ children }) {
 
                         </div>}
                         {openside &&
-                            <motion.div 
+                            <AnimatePresence onExitComplete={()=>setOpenSide(false)}>
+                                <motion.div 
                             initial={{x:'100vw', opacity:0}}
                             animate={{x:0, opacity:1}}
-                            transition={{type:'tween',mass:0.4, damping:10,duration:0.5}}
+                            transition={{type:'tween',mass:0.4, damping:10,delay: 0.5, duration: 1}}
+                            exit={{x:'100vw', opacity:0}}
                             ref={refdiv} className="w-[65%] md:w-[35%] rounded-s-lg z-50 top-0  right-0 bg-gradient-to-tr from-primary to-sec h-screen fixed">
                                 <UserSidebar smallView={true} setOpenSide={setOpenSide} />
 
                             </motion.div>
+                            </AnimatePresence>
                         }
                         <div className={`h-fit ${chats ? '':'mt-10 pb-10 pt-5'} overflow-x-hidden `}>
                             {children}

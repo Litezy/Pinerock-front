@@ -24,6 +24,8 @@ export default function Home() {
   // Scaling the component and setting opacity based on scroll position
   const scale = useTransform(scrollYProgress, [0, 1], [.9, 1.01]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [-100, 0])
+  const x = useTransform(scrollYProgress, [0, 1], [-50, 0])
 
 
   return (
@@ -33,17 +35,14 @@ export default function Home() {
       animate={{opacity:1}}
       transition={{delay:0.5 , duration:0.5}}
       >
-        <div className="lg:pt-32 pt-24 h-fit py-3  w-11/12 mx-auto ">
+        <div className="mt-32 h-fit py-3  w-11/12 mx-auto ">
           <HeroSection />
         </div>
       </motion.div>
 
       <motion.div className="bans h-[80dvh]"
        ref={ref}
-       style={{
-         scale, 
-         opacity, 
-       }}
+       style={{scale, opacity,}}
       >
         <div className="bg-gradient-to-b from-primary to-black/30 w-full h-full">
           <div className="flex justify-center w-11/12 mx-auto h-full flex-col items-center text-white backdrop-blur-sm">
@@ -84,12 +83,9 @@ export default function Home() {
         </div>
       </motion.div>
       <motion.div 
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-5 -mt-6 relative w-11/12 mx-auto lg:w-10/12 mb-20"
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-5 relative w-11/12 mx-auto lg:w-10/12 mb-20"
       ref={ref}
-      style={{
-        scale, 
-        opacity, 
-      }}
+      style={{scale,opacity}}
       >
         {HomeServices.map((item, index) => (
           <div

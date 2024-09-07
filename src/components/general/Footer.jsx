@@ -128,11 +128,15 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-3 w-full border-t flex items-center">
+        <div className="mt-3 w-full border-t flex flex-col items-start gap-1">
           <div className="text-center pt-3 text-base text-slate-300 h-full ">
             Pinerock credit union Insurance Services Company Limited and Pinerock credit union Investment Solutions Limited are each
             authorised and regulated by the Financial Conduct Authority.
           </div>
+          <footer>
+            <p>&copy; 2024 Pinerock Credit Union. All rights reserved.</p>
+          </footer>
+
         </div>
       </div>
 

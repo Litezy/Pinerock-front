@@ -74,6 +74,24 @@ const CardComponent = () => {
         });
     };
 
+    const handleCvv = (e) =>{
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.substring(0,3)
+        setCards({
+            ...cards,
+            cvv: value
+        }) 
+    }
+    const handleCardDate = (e) =>{
+        let value = e.target.value.replace(/\D/g, '');
+        value = value.substring(0,4)
+        const formattedValue = value.match(/.{1,2}/g)?.join('/') || value;
+        setCards({
+            ...cards,
+            exp: formattedValue
+        }) 
+    }
+
     const addCardsArr = async (e) => {
         e.preventDefault()
         if (!cards.type) return errorMessage('Card type is required')
@@ -151,13 +169,13 @@ const CardComponent = () => {
                                     <div className="text-lg ">Card CVV:</div>
 
                                     <div className="w-1/4">
-                                        <FormComponent formtype={'cvv'} name={`cvv`} value={cards.cvv} onchange={handleChange} />
+                                        <FormComponent formtype={'cvv'} name={`cvv`} value={cards.cvv} onchange={handleCvv} />
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-between w-full">
                                     <div className="text-lg ">Card Exp:</div>
                                     <div className="w-1/4">
-                                        <FormComponent formtype={'text'} name={`exp`} value={cards.exp} onchange={handleChange} />
+                                        <FormComponent formtype={'text'} name={`exp`} value={cards.exp} onchange={handleCardDate} />
                                     </div>
                                 </div>
                             </div>

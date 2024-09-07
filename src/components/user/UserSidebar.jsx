@@ -128,7 +128,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
     }
     return (
         <div>
-            <div className="flex flex-col px-3 h-[90dvh]">
+            <div className="flex flex-col  px-3 h-[90dvh]">
                 {logout &&
                     <ModalLayout setModal={setLogout} clas={`lg:w-[35%] w-11/12 mx-auto`}>
                         <div className="bg-white py-5 px-3 h-fit flex-col text-black rounded-md flex items-center justify-center">

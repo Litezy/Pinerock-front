@@ -31,7 +31,7 @@ const Services = () => {
                 <motion.div
                     ref={ref}
                     style={{ scale, opacity, }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-10  relative mt-10 w-11/12 mx-auto lg:w-10/12 mb-20">
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -mt-40 md:-mt-32 gap-10 lg:gap-10  relative lg:mt-10 w-11/12 mx-auto lg:w-10/12 mb-20">
                     {services.map((item, index) => {
                         const isEven = index % 2 === 0
                         return (

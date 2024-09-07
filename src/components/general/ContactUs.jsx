@@ -102,7 +102,7 @@ const ContactUs = () => {
   }
   return (
     <div className='mb-10 mt-32'>
-    <div className="w-full h-full border-t-2  pt-5 lg:pt-0 lg:border-none ">
+    <div className="w-full h-full   pt-5 lg:pt-0 lg:border-none ">
            <div className="w-11/12 mx-auto">
                <div className="flex items-start flex-col lg:flex-row lg:gap-10 w-full">
                    <div className="lg:w-1/2 text-dark flex items-start flex-col gap-6 h-fit pb-10">
@@ -113,7 +113,7 @@ const ContactUs = () => {
                        </div>
 
                    </div>
-                   <div className="lg:w-1/2 w-full bg-black h-fit rounded-2xl text-white">
+                   <div className="lg:w-1/2 w-full bg-gradient-to-tr from-primary to-orange-500 h-fit rounded-2xl text-white">
                        <div className="h-full py-10 px-2">
                            <div className="w-full flex items-center justify-center flex-col">
                                <div className="w-full text-center text-3xl lg:text-4xl font-bold ">Send us a message</div>

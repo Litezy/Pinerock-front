@@ -62,7 +62,7 @@ export default function Login() {
         }
     }
     return (
-        <div className='bg-gradient-to-tr from-primary to-sec h-screen overflow-x-hidden flex items-center justify-center'>
+        <div className='bg-gradient-to-tr from-sec  to-primary h-screen overflow-x-hidden flex items-center justify-center'>
             <div className="w-[90%] mx-auto max-w-xl bg-white backdrop-blur-sm p-5 relative rounded-lg mt-10 lg:mt-20">
 
                 {loading && 
@@ -70,19 +70,19 @@ export default function Login() {
                     <Loader/>
                 </div>
                 }
-                <div className="text-3xl lg:text-4xl font-bold text-primary">Login Account</div>
+                <div className="text-3xl lg:text-4xl font-bold text-sec">Login Account</div>
                 <form onSubmit={LoginAcc} className='mt-5 flex items-start gap-4 flex-col'>
                     <FormComponent formtype="email" name={`email`} value={forms.email} onchange={handleChange} placeholder="Email Address" />
                     <FormComponent formtype="password" name={`password`} value={forms.password} onchange={handleChange} placeholder="Password" />
                     <div className="grid grid-cols-2 gap-4 items-center mb-3">
                        
                         <div className="text-right">
-                            <Link to="/forgot-password" className='text-blue-600'>Forgot Password?</Link>
+                            <Link to="/forgot-password" className='text-primary font-semibold'>Forgot Password?</Link>
                         </div>
                     </div>
-                    <ButtonComponent bg={`bg-primary text-white h-12`} title="Login Account" />
-                    <div className="text-zinc-500 mt-5 text-center">Don't have an account? <Link to="/signup" className='text-blue-600'>Create Account</Link> </div>
-                    <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-blue-600'>Go back home</Link> </div>
+                    <ButtonComponent bg={`bg-sec text-white h-12`} title={loading ? "...Logging in" : "Login Account"} />
+                    <div className="text-zinc-500 mt-5 text-center ">Don't have an account? <Link to="/signup" className='text-sec font-semibold'>Create Account</Link> </div>
+                    <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-sec font-semibold'>Go back home</Link> </div>
                 </form>
             </div>
         </div>
