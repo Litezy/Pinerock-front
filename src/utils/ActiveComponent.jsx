@@ -45,7 +45,7 @@ const ActiveComponent = () => {
                 <div className="my-5">You have {actives && actives.length > 0 ? `${actives.length} active ticket(s), see them below.` : '0 active tickets.'}</div>
                 <div className="relative overflow-x-auto rounded-md ">
                     <table className="w-full text-sm text-left rtl:text-right relative">
-                        <thead className=" bg-gradient-to-tr from-primary to-purple-700 text-xl text-white">
+                        <thead className=" bg-gradient-to-tr from-primary to-sec text-xl text-white">
                             <tr>
                                 {TableHeaders.map((item, index) => (
                                     <th scope="col" key={index} className="px-3 py-3 text-sm truncate">
@@ -71,7 +71,7 @@ const ActiveComponent = () => {
                                     </td>
                                     <td className="px-3  py-3 truncate">
                                         <Link to={`/user/tickets/status/active_chats/${item.id}`}
-                                            className='trucate w-fit px-3 py-1 rounded-md bg-gradient-to-tr from-primary to-purple-700 text-white'>open message</Link>
+                                            className='trucate w-fit px-3 py-1 rounded-md bg-gradient-to-tr from-primary to-sec text-white'>open message</Link>
                                     </td>
                                 </tr>
                             )) :

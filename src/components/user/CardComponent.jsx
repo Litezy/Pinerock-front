@@ -161,7 +161,7 @@ const CardComponent = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button disabled={loading ? true : false} onClick={addCardsArr} className=' h-12 w-full bg-gradient-to-tr from-primary to-purple-700  text-white rounded-lg'>Add Card</button>
+                            <button disabled={loading ? true : false} onClick={addCardsArr} className=' h-12 w-full bg-gradient-to-tr from-primary to-sec  text-white rounded-lg'>Add Card</button>
                         </div>
                     </ModalLayout>
                 </>
@@ -171,14 +171,14 @@ const CardComponent = () => {
                 <div className=" text-xl font-semibold">My Cards</div>
                 {allcards.length < 2 &&
                    <div className="w-fit ">
-                     <ButtonComponent  onclick={() => setAdd(true)} title="Add New Card" bg={`text-white bg-gradient-to-tr px-3 from-primary text-sm to-purple-700 h-12`} />
+                     <ButtonComponent  onclick={() => setAdd(true)} title="Add New Card" bg={`text-white bg-gradient-to-tr px-3 from-primary text-sm to-sec h-12`} />
                    </div>
                 }
             </div>
             {Array.isArray(allcards) && allcards.length > 0 ? <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
                 {allcards.map((item, i) => {
                     return (
-                        <div key={i} className={`lg:h-[17rem] h-fit w-full bg-gradient-to-tr from-primary to-purple-700  rounded-lg py-4 px-5`}>
+                        <div key={i} className={`lg:h-[17rem] h-fit w-full bg-gradient-to-tr from-primary to-sec  rounded-lg py-4 px-5`}>
                             <div className="flex flex-col text-white h-full justify-between">
                                 <div className="flex items-center  justify-between">
                                     <div className={`w-fit  ${item.type === 'visa' ? 'h-16' : 'h-fit'} bg-white rounded-md flex items-center justify-center`}>
@@ -214,7 +214,7 @@ const CardComponent = () => {
                 <div className="flex items-center flex-col lg:flex-row justify-between gap-5 lg:gap-10">
                     {new Array(2).fill(0).map((item, i) => {
                         return (
-                            <div key={i} className={`h-60 w-full  bg-gradient-to-tr from-primary to-purple-700 rounded-lg py-6 px-5`}>
+                            <div key={i} className={`h-60 w-full  bg-gradient-to-tr from-primary to-sec rounded-lg py-6 px-5`}>
                                 <div className="flex gap-4 flex-col text-white h-full justify-between">
                                     <div className="w-16 p-3 bg-white h-12 rounded-md ml-auto mr-2">
                                     </div>

@@ -81,7 +81,7 @@ const ChatForm = ({ ticketid, admin_res = false, fetchMsgs,fetchActives,setJoine
                 </textarea>
                 <button
                     onClick={SubmitContent}
-                    className={`text-2xl  w-fit px-3 py-2 rounded-md bg-gradient-to-tr from-primary to-purple-700 text-white`}>
+                    className={`text-2xl  w-fit px-3 py-2 rounded-md bg-gradient-to-tr from-primary to-sec text-white`}>
                     <IoSend />
                 </button>
             </div>

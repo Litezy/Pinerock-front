@@ -132,19 +132,19 @@ export default function AdminLayout({ children,show=true }) {
         <div>
             <div className={`flex items-center h-screen overflow-hidden `}>
 
-                <div className="h-screen hidden lg:block lg:w-[30%] w-[35%] bg-gradient-to-tr from-primary to-purple-700 text-white">
+                <div className="h-screen hidden lg:block lg:w-[30%] w-[35%] bg-gradient-to-tr from-primary to-sec text-white">
                     <AdminSideBar />
                 </div>
-                {show === true &&<div className="p-4 lg:hidden bg-gradient-to-tr from-primary to-purple-700 text-white fixed z-50 w-full top-0 flex items-center justify-between">
+                {show === true &&<div className="p-4 lg:hidden bg-gradient-to-tr from-primary to-sec text-white fixed z-50 w-full top-0 flex items-center justify-between">
                     <div onClick={() => setSide(prev => !prev)} className="">
                         <Icon className='text-3xl cursor-pointer' />
                     </div>
                     <div className="">Admin</div>
                 </div>}
                 {side &&
-                    <div className="w-[55%] md:w-[35%] rounded-s-lg z-50 top-0   left-0 bg-gradient-to-tr from-primary to-purple-700 h-screen fixed p-4">
+                    <div className="w-[55%] md:w-[35%] rounded-s-lg z-50 top-0   left-0 bg-gradient-to-tr from-primary to-sec h-screen fixed p-4">
                         <div className="bg-slate-100/20 rounded-lg p-3 flex flex-col items-center justify-center gap-3 mb-5">
-                            <div className="py-3 px-3.5 rounded-full text-white bg-gradient-to-tr from-primary to-purple-700 w-fit h-fit uppercase">{firstChar}{lastChar}</div>
+                            <div className="py-3 px-3.5 rounded-full text-white bg-gradient-to-tr from-primary to-sec w-fit h-fit uppercase">{firstChar}{lastChar}</div>
                             <div className="text-white text-center capitalize text-sm">{profile?.firstname} {profile?.lastname}</div>
 
                         </div>

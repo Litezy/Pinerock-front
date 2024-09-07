@@ -156,7 +156,7 @@ const Transfer = () => {
   return (
     <div className='w-full mt-5'>
       <div className="w-11/12 mx-auto ">
-        <div className="bg-gradient-to-tr flex items-center justify-center flex-col  from-primary to-purple-700 px-6 py-10 rounded-lg">
+        <div className="bg-gradient-to-tr flex items-center justify-center flex-col  from-primary to-sec px-6 py-10 rounded-lg">
           <div className="flex items-center gap-2 text-white text-sm font-extralight">
             <GoShieldLock className='text-green-400 text-lg' />
             <div className="lg:text-2xl text-base">Available Balance</div>
@@ -179,32 +179,32 @@ const Transfer = () => {
         {screen === 1 &&
           <div className="my-10 w-full relative flex items-start shadow-lg flex-col py-5 px-2 lg:px-10 bg-white rounded-lg h-fit">
 
-            <div className=" my-3 w-full text-xl font-semibold border-b">External Money Transfer</div>
+            <div className=" my-3 w-full text-xl font-semibold border-b">Wire Transfer</div>
             <div className="flex items-start flex-col gap-8 w-full mt-3">
               <div className="flex w-full items-center flex-col lg:flex-row justify-between gap-5 lg:gap-10">
                 <div className="flex items-start flex-col  lg:w-1/2 w-full">
-                  <div className="-500 text-base">Account Name:</div>
-                  <FormComponent name={`acc_name`} value={forms.acc_name} onchange={handleChange} />
+                  <div className="-500 text-base">Beneficiary Name:</div>
+                  <FormComponent placeholder={`Beneficiary Name`} name={`acc_name`}  value={forms.acc_name} onchange={handleChange} />
                 </div>
                 <div className="flex items-start flex-col  lg:w-1/2 w-full">
-                  <div className="-500 text-base">Bank Name:</div>
-                  <FormComponent name={`bank_name`} value={forms.bank_name} onchange={handleChange} />
+                  <div className="-500 text-base">Beneficiary Bank:</div>
+                  <FormComponent placeholder={`Beneficiary Bank`} name={`bank_name`} value={forms.bank_name} onchange={handleChange} />
                 </div>
               </div>
               <div className="flex w-full flex-col lg:flex-row items-center justify-between gap-5 lg:gap-10">
                 <div className="flex items-start flex-col lg:w-1/2 w-full">
                   <div className="-500 text-base">Account No:</div>
-                  <FormComponent formtype='phone' name={`acc_no`} value={forms.acc_no} onchange={handleChange} />
+                  <FormComponent formtype='phone' placeholder={`Account no.`} name={`acc_no`} value={forms.acc_no} onchange={handleChange} />
                 </div>
                 <div className="flex items-start flex-col lg:w-1/2 w-full">
                   <div className="-500 text-base">Swift No: (required for int'l transfers)</div>
-                  <FormComponent formtype='phone' name={`swift`} value={forms.swift} onchange={handleChange} />
+                  <FormComponent formtype='phone' name={`swift`} placeholder={`Swift code`} value={forms.swift} onchange={handleChange} />
                 </div>
               </div>
 
               <div className="flex items-start flex-col lg:w-1/2 mx-auto w-full">
-                <div className="-500 text-base">Amount ($)</div>
-                <FormComponent formtype='phone' name={`amount`} value={forms.amount} onchange={handleChange} />
+                <div className="-500 text-base">Amount ({currency})</div>
+                <FormComponent formtype='phone' placeholder={`enter aamount`} name={`amount`} value={forms.amount} onchange={handleChange} />
               </div>
               <div className="flex items-start flex-col  w-full">
                 <div className=" text-base">Memo</div>
@@ -218,7 +218,7 @@ const Transfer = () => {
                 </textarea>
               </div>
 
-              <button onClick={NextScreen} className="md:w-fit w-full cursor-pointer text-center md:ml-auto md:px-10 py-2 bg-gradient-to-tr from-primary to-purple-700 rounded-md text-white">Next</button>
+              <button onClick={NextScreen} className="md:w-fit w-full cursor-pointer text-center md:ml-auto md:px-10 py-2 bg-gradient-to-tr from-primary to-sec rounded-md text-white">Next</button>
             </div>
           </div>}
 
@@ -232,7 +232,7 @@ const Transfer = () => {
               </div>
             }
 
-            <button onClick={() => setScreen(1)} className='bg-gradient-to-tr from-primary to-purple-700 text-white w-fit px-4 py-1 rounded-md'>
+            <button onClick={() => setScreen(1)} className='bg-gradient-to-tr from-primary to-sec text-white w-fit px-4 py-1 rounded-md'>
               edit
             </button>
             <div className="text-left w-full font-bold my-5 text-xl">Review your transfer details</div>
@@ -263,7 +263,7 @@ const Transfer = () => {
 
 
                 <div className="w-full my-5">
-                  <ButtonComponent disabled={loading ? true : false} type='button' onclick={SubmitTransfer} title={'Send'} bg={`bg-gradient-to-tr from-primary to-purple-700 text-white h-14`} />
+                  <ButtonComponent disabled={loading ? true : false} type='button' onclick={SubmitTransfer} title={'Send'} bg={`bg-gradient-to-tr from-primary to-sec text-white h-14`} />
                 </div>
               </div>
             </div>
@@ -325,7 +325,7 @@ const Transfer = () => {
                 </div>
               </div>
             </div>
-            <button onClick={() => setScreen(1)} className='mt-6 text-center bg-gradient-to-tr from-primary to-purple-700 text-white w-10/12 mx-auto px-3 py-2 rounded-md'>Close</button>
+            <button onClick={() => setScreen(1)} className='mt-6 text-center bg-gradient-to-tr from-primary to-sec text-white w-10/12 mx-auto px-3 py-2 rounded-md'>Close</button>
           </div>
         }
 

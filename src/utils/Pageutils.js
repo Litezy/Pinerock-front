@@ -260,7 +260,7 @@ export const termsOfUse = [
         number: '3',
         desc: [
             {
-                info: "Greenford Bank offers a range of financial services, including savings accounts, money transfers, transaction processing, and goal-based savings features. The specific services available to you may vary based on your location and account type."
+                info: "Pinerock Credit Union offers a range of financial services, including savings accounts, money transfers, transaction processing, and goal-based savings features. The specific services available to you may vary based on your location and account type."
             }
         ]
     },
@@ -269,7 +269,7 @@ export const termsOfUse = [
         number: '4',
         desc: [
             {
-                info: "Greenford Bank offers a range of financial services, including savings accounts, money transfers, transaction processing, and goal-based savings features. The specific services available to you may vary based on your location and account type."
+                info: "Pinerock Credit Union offers a range of financial services, including savings accounts, money transfers, transaction processing, and goal-based savings features. The specific services available to you may vary based on your location and account type."
             }
         ]
     },
@@ -324,7 +324,7 @@ export const termsOfUse = [
         number: '9',
         desc: [
             {
-                info: "All content, trademarks, and intellectual property on our website and within our services are the property of Greenford Bank or its licensors. You may not use, copy, or distribute any of our intellectual property without our prior written consent."
+                info: "All content, trademarks, and intellectual property on our website and within our services are the property of Pinerock Credit Union or its licensors. You may not use, copy, or distribute any of our intellectual property without our prior written consent."
             }
         ]
     },

@@ -65,8 +65,8 @@ export const GeneralRoutes = [
 export const UserRoutes = [
     { path: '', component: Dashboard },
     { path: 'savings', component: Savings },
-    { path: 'external-transfers', component: Transfer },
-    { path: 'internal-transfers', component: InternalTransfer },
+    { path: 'wire-transfers', component: Transfer },
+    { path: 'local-transfers', component: InternalTransfer },
     { path: 'transactions', component: Transactions },
     { path: 'notifications', component: Notifications },
     { path: 'settings', component: Settings },

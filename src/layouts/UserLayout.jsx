@@ -1,13 +1,11 @@
 import { Box, LinearProgress } from '@mui/material';
 import { dispatchCurrency, dispatchProfile } from 'app/reducer';
 import UserSidebar from 'components/user/UserSidebar';
-import Userfooter from 'components/user/Userfooter';
+import { BiUser } from "react-icons/bi";
 import VerifyEmailAccount from 'forms/VerifyEmail';
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { BsBell } from 'react-icons/bs';
-import { FaUser } from 'react-icons/fa6';
-import { FaUserAlt } from "react-icons/fa";
-import { FaHistory } from "react-icons/fa";
+import { MdHistory } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Apis, GetApi, profileImg } from 'services/Api';
@@ -117,7 +115,7 @@ export default function UserLayout({ children }) {
             }
             {profile?.verified === 'true' &&
                 <div className="flex items-center h-screen  bg-white">
-                    <div className="h-screen hidden lg:block lg:w-[20%] bg-gradient-to-tr from-primary to-purple-700 text-white">
+                    <div className="h-screen hidden lg:block lg:w-[20%] bg-gradient-to-tr from-primary to-sec text-white">
                         <UserSidebar setOpenSide={setOpenSide} />
                     </div>
                     <div className="bg-slate-50 lg:w-[80%] h-screen overflow-y-auto w-full relative">
@@ -126,7 +124,7 @@ export default function UserLayout({ children }) {
                                 <div onClick={() => navigate(`/user/profile`)} className="cursor-pointer">
                                     {profile?.image ? <img src={`${profileImg}/profiles/${profile?.image}`} className='lg:w-14 lg:h-14 w-12 h-12 rounded-full object-cover' alt="" /> :
                                         <div className="flex items-center justify-center rounded-full h-14 w-14 border">
-                                            <FaUser className='text-3xl' />
+                                            <BiUser  className='text-3xl' />
                                         </div>
                                     }
                                 </div>
@@ -135,10 +133,10 @@ export default function UserLayout({ children }) {
                             <div className="w-1/2 ">
                                 <div className="text-2xl hidden  lg:flex items-center justify-end gap-5">
                                     <Link to={`/user/profile`}>
-                                        <FaUserAlt />
-                                    </Link>
+                                        <BiUser  />
+                                    </Link> 
                                     <Link to="/user/transactions">
-                                        <FaHistory />
+                                        <MdHistory />
                                     </Link>
                                     <Link to="/user/notifications" className='relative'>
                                         {notice && notice.length > 0 && <div className="w-3 h-3 bg-red-600 rounded-full border-2 border-white absolute top-0 right-0 shadow-lg"></div>}
@@ -157,7 +155,7 @@ export default function UserLayout({ children }) {
                             initial={{x:'100vw', opacity:0}}
                             animate={{x:0, opacity:1}}
                             transition={{type:'tween',mass:0.4, damping:10,duration:0.5}}
-                            ref={refdiv} className="w-[65%] md:w-[35%] rounded-s-lg z-50 top-0  right-0 bg-gradient-to-tr from-primary to-purple-700 h-screen fixed">
+                            ref={refdiv} className="w-[65%] md:w-[35%] rounded-s-lg z-50 top-0  right-0 bg-gradient-to-tr from-primary to-sec h-screen fixed">
                                 <UserSidebar smallView={true} setOpenSide={setOpenSide} />
 
                             </motion.div>

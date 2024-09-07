@@ -210,6 +210,12 @@ input[type=number] {
   background-position: center;
   background-attachment: fixed;
 }
+.services {
+  background: url(./assets/services.jpg);
+  filter: brightness(50%);
+  background-size: cover;
+  background-position: center;
+}
 .faq {
   background: url(./assets/faq3.jpg);
   background-size: cover;
@@ -331,7 +337,7 @@ input[type=number] {
 .scroll::-webkit-scrollbar-thumb{
   width: 5px;
   border-radius: 50px;
-  background-color: #352aa5;
+  background-color: #021526;
 
 }
 .scroll{

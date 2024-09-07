@@ -145,7 +145,7 @@ const TicketsStatus = () => {
                         </div>
                         <ButtonComponent disabled={loading ? true : false}
                             title={loading ? '... Submitting' : 'Submit ticket'}
-                            bg={`bg-gradient-to-tr mt-5 from-primary to-purple-700 text-white h-12`} />
+                            bg={`bg-gradient-to-tr mt-5 from-primary to-sec text-white h-12`} />
                     </form>
                 </div>
             </div>

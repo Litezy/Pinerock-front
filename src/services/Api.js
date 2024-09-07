@@ -6,16 +6,16 @@ import { CookieName } from 'utils/functions'
 /*
 
 Database 
-password = greenfordbank.com 
+password = pinerockcreditunion.com 
 username & database = greenfor_banking
 
 Email 
-email = support@greenfordbank.com 
-password = greenfordbank.com
+email = support@pinerockcreditunion.com 
+password = pinerockcreditunion.com
 
 JIVO 
-password = greenfordBank.com
-email = support@greenfordbank.com
+password = pinerockcreditunion.com
+email = support@pinerockcreditunion.com
 
 
 */
@@ -24,13 +24,13 @@ export let URL;
 export let profileImg;
 
 if(window.location.origin.includes('localhost')) {
-    URL = 'http://localhost:5002'
-    profileImg = 'http://localhost:5002'
+    URL = 'http://localhost:5003'
+    profileImg = 'http://localhost:5003'
 }
 
- if(window.location.origin.includes('greenfordbank.com')) {
-    URL = 'https://api.greenfordbank.com'
-    profileImg = 'https://api.greenfordbank.com'
+ if(window.location.origin.includes('pinerockcreditunion.com')) {
+    URL = 'https://api.pinerockcreditunion.com'
+    profileImg = 'https://api.pinerockcreditunion.com'
  }
 
 

@@ -141,13 +141,13 @@ const UserKYC = ({ }) => {
         <div className=' h-fit px-4 mt-3 py-5 '>
            
             <div className="w-11/12 mx-auto ">
-            <Link to={'/user/settings'} className="w-fit  rounded-md px-5 py-1 bg-gradient-to-tr from-primary to-purple-700 text-white mr-auto cursor-pointer ">
+            <Link to={'/user/settings'} className="w-fit  rounded-md px-5 py-1 bg-gradient-to-tr from-primary to-sec text-white mr-auto cursor-pointer ">
                 back
             </Link>
                 <h1 className='mb-2 mt-5 text-2xl font-bold'>{profile?.kyc === 'unverified' ? 'Complete Kyc Information below' : profile?.kyc === 'submitted' ? 'Track your kyc review progress' : 'Kyc Approved'}</h1>
                 <div className={`w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 
                 ${profile?.kyc !== 'verified' ? ' animate-pulse' : ''}`}>
-                    <div className={`${profile?.kyc === 'verified' ? 'bg-green-500' : "bg-gradient-to-tr from-primary to-purple-700"}  h-2.5 rounded-full`} style={{ width }}></div>
+                    <div className={`${profile?.kyc === 'verified' ? 'bg-green-500' : "bg-gradient-to-tr from-primary to-sec"}  h-2.5 rounded-full`} style={{ width }}></div>
                 </div>
                 <div className="flex w-full items-center justify-between mt-2 text-sm">
                     <p className={`${profile?.kyc === 'unverified' && 'text-primary font-bold' }`}>
@@ -257,7 +257,7 @@ const UserKYC = ({ }) => {
 
                         </div>
                         <div className="mt-5 w-8/12  mx-auto">
-                            <button disabled={loading ? true :false} className='px-5 py-3  w-full bg-gradient-to-tr from-primary to-purple-700 text-white rounded-full text-base lg:text-xl'>Submit details</button></div>
+                            <button disabled={loading ? true :false} className='px-5 py-3  w-full bg-gradient-to-tr from-primary to-sec text-white rounded-full text-base lg:text-xl'>Submit details</button></div>
                     </form>
         </>}
 {

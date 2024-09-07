@@ -128,7 +128,7 @@ const InternalTransfer = () => {
     return (
         <div>
             <div className="w-11/12 mx-auto mt-5 ">
-                <div className="bg-gradient-to-tr flex items-center justify-center flex-col  from-primary to-purple-700 px-6 py-10 rounded-lg">
+                <div className="bg-gradient-to-tr flex items-center justify-center flex-col  from-primary to-sec px-6 py-10 rounded-lg">
                     <div className="flex items-center gap-2 text-white text-sm font-extralight">
                         <GoShieldLock className='text-green-400 text-lg' />
                         <div className="lg:text-2xl text-base">Available Balance</div>
@@ -158,8 +158,8 @@ const InternalTransfer = () => {
                     }
 
                     <div className=" my-3 w-full  border-b py-3">
-                        <div className="text-xl font-semibold">Internal Money Transfer</div>
-                        <div className="text-sm ">This process is usually fast, secure, and free  of charge</div>
+                        <div className="text-xl font-semibold">Local Money Transfer</div>
+                        <div className="text-sm ">Sending to another Pinerock credit union user is usually fast, secure, and free  of charge</div>
                     </div>
 
                     {screen === 1 &&
@@ -193,7 +193,7 @@ const InternalTransfer = () => {
                                         <Loader />
                                     </div>
                                 }
-                                <div onClick={()=> setScreen(1)} className="px-3 w-fit rounded-md mb-2 py-1 bg-gradient-to-tr from-primary to-purple-700 text-white text-sm">back</div>
+                                <div onClick={()=> setScreen(1)} className="px-3 w-fit rounded-md mb-2 py-1 bg-gradient-to-tr from-primary to-sec text-white text-sm">back</div>
                                 <div className=" font-bold text-lg">User Details</div>
                                 <div className="flex items-center gap-3 mb-2">
                                     <div className="">Full Name:</div>

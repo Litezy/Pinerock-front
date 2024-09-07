@@ -70,7 +70,7 @@ const PendingKycs = () => {
                                     </td>
                                     <td className="px-3 py-3">
                                         <Link to={`/admin/kycs/pending/${item.id}`}
-                                        className="bg-gradient-to-tr from-primary to-purple-700 text-white px-5 rounded-lg py-2">view details</Link>
+                                        className="bg-gradient-to-tr from-primary to-sec text-white px-5 rounded-lg py-2">view details</Link>
                                     </td>
                                 </tr>
                             )) :

@@ -62,7 +62,7 @@ export default function Login() {
         }
     }
     return (
-        <div className='bg-gradient-to-tr from-primary to-purple-700 h-screen overflow-x-hidden flex items-center justify-center'>
+        <div className='bg-gradient-to-tr from-primary to-sec h-screen overflow-x-hidden flex items-center justify-center'>
             <div className="w-[90%] mx-auto max-w-xl bg-white backdrop-blur-sm p-5 relative rounded-lg mt-10 lg:mt-20">
 
                 {loading && 

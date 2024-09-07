@@ -88,7 +88,7 @@ export default function Signup() {
         }
     }
     return (
-        <div className='bg-gradient-to-tr from-primary to-purple-700 h-screen overflow-x-hidden'>
+        <div className='bg-gradient-to-tr from-primary to-sec h-screen overflow-x-hidden'>
             <div className="w-[90%] lg:w-[95%] mx-auto max-w-xl bg-white backdrop-blur-sm p-3 lg:p-5 rounded-lg my-10 ">
                 <div className="text-3xl lg:text-4xl font-bold text-primary">Create Account</div>
                 <form onSubmit={handleSubmission} className="mt-5">

@@ -96,7 +96,7 @@ const Notifications = () => {
       <div className="w-11/12 mx-auto lg:px-5 py-5 ">
         <div className="flex w-full items-center justify-between">
           <div className="lg:text-2xl text-lg font-bold">Notifications</div>
-          {records.length > 0 && <button onClick={MarkAll} className='w-fit px-2 py-2 rounded-md bg-gradient-to-tr from-primary to-purple-700  text-sm md:text-base text-white'>Mark all</button>}
+          {records.length > 0 && <button onClick={MarkAll} className='w-fit px-2 py-2 rounded-md bg-gradient-to-tr from-primary to-sec  text-sm md:text-base text-white'>Mark all</button>}
         </div>
         <div className="mt-5 w-full relative">
 
@@ -143,12 +143,12 @@ const Notifications = () => {
             </span>
 
             <div className=" flex items-center gap-4 mt-2 xs:mt-0">
-              <button onClick={prevPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-purple-700 rounded-md
+              <button onClick={prevPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-sec rounded-md
                       ">
                 Prev
               </button>
               <button onClick={nextPage} className="flex items-center justify-center px-4 h-10 text-base font-medium
-                     text-white bg-gradient-to-tr from-primary to-purple-700  rounded-md  rounded-e   ">
+                     text-white bg-gradient-to-tr from-primary to-sec  rounded-md  rounded-e   ">
                 Next
               </button>
             </div>

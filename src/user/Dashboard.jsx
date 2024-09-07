@@ -133,7 +133,7 @@ export default function Dashboard() {
 
 
                 <div className="flex flex-col lg:flex-row w-full gap-10 mt-8 items-center">
-                    <div className="bg-gradient-to-tr lg:w-[65%] px-3 w-full from-primary to-purple-700  lg:py-10 py-5  rounded-lg flex items-center justify-center flex-col">
+                    <div className="bg-gradient-to-tr lg:w-[65%] px-3 w-full from-primary to-sec  lg:py-10 py-5  rounded-lg flex items-center justify-center flex-col">
                         <div className="flex items-center flex-col gap-2 ">
                             <div className="flex items-center gap-3 text-white text-sm font-extralight">
                                 <GoShieldLock className='text-green-400 text-xl ' />

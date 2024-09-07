@@ -87,7 +87,7 @@ const Messages = () => {
         <div className="h-[80dvh] overflow-y-auto w-full py-1 scroll  downdiv ">
           <div className="text-sm text-primary font-semibold text-right mr-3">Ticket Details</div>
           <div
-            className={`${tickets?.message?.length || tickets?.subject?.length <= 90 ? 'w-fit' : 'w-[55%]'} relative text-sm  border px-4 mt-1  ml-auto bg-gradient-to-tr from-primary to-purple-700 text-white  py-2 flex items-start flex-col gap-2  rounded-md mr-2`}>
+            className={`${tickets?.message?.length || tickets?.subject?.length <= 90 ? 'w-fit' : 'w-[55%]'} relative text-sm  border px-4 mt-1  ml-auto bg-gradient-to-tr from-primary to-sec text-white  py-2 flex items-start flex-col gap-2  rounded-md mr-2`}>
             <div className="flex items-start gap-1">
               <div className="">Subject:</div>
               <div className="">{tickets.subject}</div>

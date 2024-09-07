@@ -155,7 +155,7 @@ export default function ForgotPassword() {
     }
 
     return (
-        <div className='bg-gradient-to-tr from-primary to-purple-700 h-screen py-20 overflow-x-hidden flex items-center justify-center'>
+        <div className='bg-gradient-to-tr from-primary to-sec h-screen py-20 overflow-x-hidden flex items-center justify-center'>
             <div className="w-[90%] mx-auto max-w-xl bg-white relative backdrop-blur-sm p-5 rounded-lg mt-10 lg:mt-20">
 
                 {loading &&
@@ -184,7 +184,7 @@ export default function ForgotPassword() {
 
                 {screen === 2 &&
                     <form onSubmit={handleCode} className=''>
-                        <div onClick={() => setScreen(1)} className="w-fit mr-auto px-5  py-1 cursor-pointer rounded-full bg-gradient-to-tr from-primary to-purple-700 text-white mb-2">
+                        <div onClick={() => setScreen(1)} className="w-fit mr-auto px-5  py-1 cursor-pointer rounded-full bg-gradient-to-tr from-primary to-sec text-white mb-2">
                             <FaLongArrowAltLeft className='text-white text-xl' />
                         </div>
                         <div className="text-center font-semibold">Enter OTP code sent to your email</div>

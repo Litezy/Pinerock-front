@@ -14,8 +14,8 @@ import { FiRefreshCcw } from "react-icons/fi";
 const SideLinks = [
     { path: 'dashboard', url: '/user' },
     { path: 'savings', url: '/user/savings' },
-    { path: 'external transfers', url: '/user/external-transfers' },
-    { path: 'internal transfers', url: '/user/internal-transfers' },
+    { path: 'wire transfers', url: '/user/wire-transfers' },
+    { path: 'local transfers', url: '/user/local-transfers' },
     { path: 'transactions', url: '/user/transactions' },
     { path: 'notifications', url: '/user/notifications' },
     { path: 'profile', url: '/user/profile' },
@@ -141,7 +141,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                     </ModalLayout>
                 }
                 <div className="bg-slate-100/20 rounded-lg p-3 flex flex-col items-center justify-center gap-3 mt-6 mb-5">
-                    <div className="py-3 px-3.5 rounded-full text-white bg-gradient-to-tr from-primary to-purple-700 w-fit h-fit uppercase">{firstChar}{lastChar}</div>
+                    <div className="py-3 px-3.5 rounded-full text-white bg-gradient-to-tr from-primary to-sec w-fit h-fit uppercase">{firstChar}{lastChar}</div>
                     <div className="text-white text-center capitalize text-sm">{profile?.firstname} {profile?.lastname}</div>
                     <div className="text-white items-center gap-2 font-bold text-xl flex justify-center">
                         <div onClick={fetchUserProfile} className="">

@@ -91,11 +91,11 @@ const Transactions = () => {
       <div className=" relative mx-auto mt-1 lg:mt-3 ">
         <div className="lg:w-[78.8%] md:w-[98.25%]  mb-5 pt-5 w-[100%] bg-white  overflow-y-hidden overflow-x-hidden fixed  h-fit px-5 py-2">
           <div className="border-b pb-2 text-xl lg:text-2xl font-semibold">Transaction History</div>
-          <div className="flex items-center justify-center mt-2 flex-col w-11/12 mx-auto">
+          {records.length > 0 && <div className="flex items-center justify-center mt-2 flex-col w-11/12 mx-auto">
             <input onKeyUp={(e) => filterData(e.target.value.toLowerCase())} type="text" className='w-10/12 lg:w-1/2 pl-2 bg-slate-100 h-12 border rounded-md outline-none'
               placeholder='Filter by transaction ID, Type , Status '
             />
-          </div>
+          </div>}
         </div>
 
         {loading && 
@@ -162,10 +162,10 @@ const Transactions = () => {
                 Transactions
               </span>
               <div className="flex items-center gap-3 mt-2">
-                <button onClick={prevPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-purple-700 rounded-md">
+                <button onClick={prevPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-sec rounded-md">
                   Prev
                 </button>
-                <button onClick={nextPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-purple-700 rounded-md">
+                <button onClick={nextPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-sec rounded-md">
                   Next
                 </button>
               </div>

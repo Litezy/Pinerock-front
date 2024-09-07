@@ -19,7 +19,7 @@ const Lists = [
 export default function Userfooter() {
     const pathname = useLocation().pathname
   return (
-    <div className='fixed bottom-6 left-0 lg:hidden rounded-lg border right-0 bg-gradient-to-tr from-primary to-purple-700 h-12 w-11/12 mx-auto'>
+    <div className='fixed bottom-6 left-0 lg:hidden rounded-lg border right-0 bg-gradient-to-tr from-primary to-sec h-12 w-11/12 mx-auto'>
         <div className={`flex items-center justify-evenly `}>
             {Lists.map((item, index) => ( 
                 <Link to={`${item.url}`} key={index} className={

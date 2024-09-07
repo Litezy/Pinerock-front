@@ -13,6 +13,7 @@ import { IoIosMailUnread } from 'react-icons/io'
 import CardComponent from 'components/user/CardComponent'
 import { Apis, GetApi, PostApi } from 'services/Api'
 import { useDispatch, useSelector } from 'react-redux'
+import { MdPayment } from "react-icons/md";
 import ModalLayout from 'utils/ModalLayout'
 import FormComponent from 'utils/FormComponent'
 import ButtonComponent from 'utils/ButtonComponent'
@@ -90,15 +91,19 @@ const Savings = () => {
 
     const steps = [
         {
-            step: 'Contact customer support',
+            step: 'Follow the deposit button to make a transfer.',
+            img: <MdPayment />
+        },
+        {
+            step: 'Contact customer support if there are no banks available.',
             img: <BiSupport />
         },
         {
-            step: 'Upload a Photo of your transaction',
+            step: 'Upload a Photo of your transaction.',
             img: <MdAddAPhoto />
         },
         {
-            step: 'Wait for admin to credit your account',
+            step: 'Wait for confirmation, once confirmed your account will be credited.',
             img: <MdOutlineAvTimer />
         },
     ]
@@ -357,7 +362,7 @@ const Savings = () => {
                             </div>
                         </div>
                         <div className="lg:w-1/2 mx-auto mt-8">
-                            <ButtonComponent disabled={load3 ? true : false} title={`Create Savings`} bg={`text-white bg-gradient-to-tr from-primary to-purple-700 h-14 `} />
+                            <ButtonComponent disabled={load3 ? true : false} title={`Create Savings`} bg={`text-white bg-gradient-to-tr from-primary to-sec h-14 `} />
                         </div>
                     </form>
                 </ModalLayout>
@@ -496,7 +501,7 @@ const Savings = () => {
                                     <div className="">Available Balance <span>{currency}{profile?.balance?.toLocaleString()}</span></div>
                                     <FormComponent name={`amount`} value={forms.amount} onchange={(e) => setForms({ ...forms, [e.target.name]: e.target.value })} formtype='phone' />
                                 </div>
-                                <ButtonComponent disabled={load2 ? true : false} title={`Top Up`} bg={`bg-gradient-to-tr from-primary to-purple-700  mt-2 text-white text-white h-10`} />
+                                <ButtonComponent disabled={load2 ? true : false} title={`Top Up`} bg={`bg-gradient-to-tr from-primary to-sec  mt-2 text-white text-white h-10`} />
                             </div>}
                         </form>
                         {!topup && <div className="mt-3 w-11/12 mx-auto">
@@ -511,21 +516,21 @@ const Savings = () => {
                 </ModalLayout>
             }
 
-            <div className="flex flex-col lg:flex-row items-start h-fit py-5 mb-10 gap-10 ">
-                <div className="md:w-1/2 w-full h-full py-2 flex items-center justify-center flex-col px-3 rounded-lg bg-white cursor-pointer">
-                    <div className="text-lg font-semibold">Three important steps to take in order to complete your deposit</div>
+            <div className="flex flex-col shadow-md md:mt-5 items-start bg-sec text-white justify-center h-fit py-5 mb-10 gap-10 ">
+                <div className="md:w-3/4 w-full mx-auto h-full py-2 flex items-center justify-center flex-col px-3 rounded-lg  cursor-pointer">
+                    <div className="text-lg font-semibold text-center lg:mb-3">Four (4) important steps to take in order to complete your deposit</div>
                     {steps.map((ele, i) => (
-                        <ul className='w-full self-center flex items-center  gap-2 py-2 ' key={i}>
+                        <ul className='w-full  flex items-center  gap-2 py-2 ' key={i}>
                             <li className='text-2xl'>{ele.img}</li>
                             <li>{ele.step}</li>
 
                         </ul>
                     ))}
                 </div>
-                <div onClick={() => setSupport(true)} className="w-fit cursor-pointer self-center text-white px-5 py-2 rounded-lg bg-gradient-to-tr from-primary to-purple-700 ">Contact Support</div>
+                <div onClick={() => setSupport(true)} className="w-fit cursor-pointer self-center  px-5 py-2 rounded-lg bg-white text-primary ">Deposit</div>
             </div>
 
-            <div onClick={() => setCreateSave(true)} className=" mb-3 cursor-pointer w-fit ml-auto text-white bg-gradient-to-tr from-primary to-purple-700   px-3 py-2 rounded-md">Add New Savings</div>
+            <div onClick={() => setCreateSave(true)} className=" mb-3 cursor-pointer w-fit ml-auto text-white bg-gradient-to-tr from-primary to-sec   px-3 py-2 rounded-md">Add New Savings</div>
             <div className={`grid grid-cols-1 ${savings.length === 0 ? 'lg:grid-cols-1' : 'lg:grid-cols-2'} gap-5 lg:gap-10`}>
 
                 {savings.length > 0 ? savings.map((item, index) => (
@@ -635,7 +640,7 @@ const Savings = () => {
                 )) :
                     <div className="text-lg font-semibold text-center">No savings records found</div>
                 }
-                {records.length > 3 && <div onClick={() => setViewAll(true)} className="w-fit cursor-pointer ml-auto text-white px-4 py-1 my-5 rounded-md bg-gradient-to-tr from-primary to-purple-700 mr-3">view all</div>}
+                {records.length > 3 && <div onClick={() => setViewAll(true)} className="w-fit cursor-pointer ml-auto text-white px-4 py-1 my-5 rounded-md bg-gradient-to-tr from-primary to-sec mr-3">view all</div>}
             </div>
 
 

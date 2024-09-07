@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { FaPlus } from 'react-icons/fa6';
+import { IoChevronDownSharp, IoChevronUpSharp } from 'react-icons/io5';
 
-const FAQ = () => {
+const FAQ = ({styles,ans,iconcol=true}) => {
 
     const FAQS = [
         {
@@ -16,7 +17,7 @@ const FAQ = () => {
             ques: 'Is my money safe on your platform?',
             ans: "Absolutely. We prioritize your security and have implemented advanced encryption technologies to protect your funds and personal information. Additionally, our platform is fully compliant with international banking regulations, ensuring that your money is safe and secure at all times."
         },
-      
+
         {
             ques: 'How do I track my savings progress?',
             ans: "You can easily track your savings progress in the 'Savings' section of your account. Here, you’ll see a visual representation of how close you are to reaching your goal, along with details of your contributions and any interest earned."
@@ -32,36 +33,42 @@ const FAQ = () => {
     ];
 
     const [active, setActive] = useState(null);
-    const [icon, setIcon] = useState(false);
 
     const selectAns = (i) => {
         setActive(active === i ? null : i);
     };
-  return (
-    <div>
+    return (
+        <div>
 
-<div className="py-20 w-full">
-                
+            <div className={`py-10 px-4 w-full ${styles}  text-white shadow-md mb-10 rounded-lg`}>
+                <div className="w-full flex items-center gap-5 flex-col ">
+                    <div className="text-2xl text-center lg:text-4xl font-bold capitalize">Save when you send worldwide</div>
+                    <div className="text-base lg:text-center font-semibold lg:w-3/5">At Pinerock Credit Union, our foremost goal is to empower our members to achieve financial growth. We provide tailored financial solutions and expert guidance, helping you build wealth and secure your financial future.</div>
 
-                <div className="mt-10 w-full">
-                    {FAQS.map((item, i) => {
-
-                        return (
-                            <div onClick={() => selectAns(i)} className={`nunito cursor-pointer ${active === i ? 'h-fit py-2 bg-green  transition-all duration-300' : 'transition-all duration-300 h-fit py-2 bg-gray'} w-full lg:px-5 px-2 mb-3 rounded-xl gap-5  lg:py-5`} key={i}>
-                                <div className="flex items-center w-full justify-between">
-                                    <div className="font-bold text-lg lg:text-xl">{item.ques}</div>
-                                    <div className="">
-                                         <FaPlus className={` ${active === i &&'rotate-45 transition-all delay-100 '} lg:text-2xl text-lg font-bold cursor-pointer`} />
+                    <div className="w-full  lg:w-10/12 mx-auto">
+                        {FAQS.map((item, i) => {
+                            const isActive = active === i;
+                            const Icon = isActive ? IoChevronUpSharp : IoChevronDownSharp;
+                            return (
+                                <div onClick={() => selectAns(i)} className={`nunito cursor-pointer overflow-hidden ${active === i ? 'max-h-[500px] py-2   transition-all duration-500 ease-in-out' : 'max-h-32 transition-all duration-500 ease-in-out py-2 '}  w-full px-2 mb-3 rounded-xl gap-5 lg:py-5`} key={i}>
+                                    <div className="flex items-center w-full justify-between">
+                                        <div className={`${active === i ? '':''} font-extrabold text-xl  lg:text-2xl`}>{item.ques}</div>
+                                        <div className="">
+                                            <Icon className={` ${active === i ? '' : iconcol ? 'text-white':'text-white/70'} lg:text-2xl text-lg font-bold cursor-pointer`} />
+                                        </div>
                                     </div>
+                                    {active === i && <div className={`p1-2 text-base lg:text-lg mt-2 ${ans}`}>{item.ans}</div>}
+                                    {active === i && <hr className={`w-full border-white my-2 transition-all delay-200 `} />}
                                 </div>
-                                {active === i && <div className="p1-2 mt-2">{item.ans}</div>}
-                            </div>
-                        );
-                    })}
+
+                            );
+                        })}
+                    </div>
+
                 </div>
             </div>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default FAQ
