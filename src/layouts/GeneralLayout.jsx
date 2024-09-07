@@ -1,6 +1,6 @@
 import Footer from 'components/general/Footer'
 import Header from 'components/general/Header'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 export default function GeneralLayout({ children }) {
@@ -21,12 +21,23 @@ export default function GeneralLayout({ children }) {
   const handleClose = () => {
     setShow(false)
   }
+  const ref = useRef(null)
+
+  useEffect(()=>{
+   if(ref){
+    window.addEventListener('click', (e)=>{
+      if(ref.current !== null && !ref.current.contains(e.target)) return setShow(false)
+    },true)
+   }
+  },[])
+
 
   return (
     <div className="overflow-hidden w-full">
       <AnimatePresence onExitComplete={()=>setShow(false)}>
         {show && (
           <motion.div
+            ref={ref}
             initial={{ opacity: 0, y: -500 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 1.5 }}
