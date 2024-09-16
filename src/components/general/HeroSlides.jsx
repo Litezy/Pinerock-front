@@ -103,7 +103,7 @@ export default function HeroSlideShow(props) {
                             initial={{opacity:0, y:-200}}
                             animate={{opacity:1, y:0}}
                             transition={{delay:0.7, duration:1}}
-                            className="lg:w-1/2 w-full relative ">
+                            className="lg:w-1/2 w-full relative lg:mr-10 ">
                                 <div className="absolute lg:top-20 top-16 right-8 lg:right-20 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full after:absolute after:top-0 after:left-0 conte"></div>
                                 <img src={item.img} className="w-fit mx-auto h-[20rem] lg:h-[35rem] rounded-md object-cover" alt={`hero image ${index}`} loading='lazy'/>
                                 <div className="absolute bottom-2 left-20 lg:bottom-8 lg:left-32 w-16 h-16 md:w-24 md:h-24 bg-white rounded-full"></div>

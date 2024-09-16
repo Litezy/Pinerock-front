@@ -151,7 +151,7 @@ export default function Home() {
         opacity, 
       }}
       className="w-11/12 mx-auto lg:w-10/12 ">
-        <div className="w-fit mx-auto  font-bold text-3xl lg:text-4xl">
+        <div className="w-fit mx-auto  font-bold text-4xl lg:text-5xl">
           <div className="bg-primary h-1 w-3/5 mt-3 ml-auto"></div>
           <div className="">
             <div className="text-center text-primary">Why Choose Us?</div>
