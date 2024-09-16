@@ -71,7 +71,7 @@ const Transactions = () => {
   const filterData = (val) => {
     if (val) {
       const lowerVal = val.toLowerCase()
-      const filterID = transdata.filter((item) => item.transaction_id?.toLowerCase().startsWith(lowerVal))
+      const filterID = transdata.filter((item) => item.transaction_id?.toLowerCase().includes(lowerVal))
       if (filterID.length > 0) return setFilteredData(filterID)
 
       const filterType = transdata.filter((item) => item.type?.toLowerCase().includes(lowerVal))
@@ -86,6 +86,7 @@ const Transactions = () => {
     }
   }
 
+  const terminated = 'Goal Savings Terminated'
   return (
     <div className='w-full'>
       <div className=" relative mx-auto mt-1 lg:mt-3 ">
@@ -124,11 +125,11 @@ const Transactions = () => {
                       <div className={`text-base font-bold text-right 
                         ${item.type === 'Deposit' && item.status === 'pending' ? 'text-yellow-500' :
                           item.type === 'Deposit' && item.status === 'success' ? 'text-green-600' :
-                            item.type === 'Internal Transfer In' && item.status === 'success' ? 'text-green-600' : "text-red-600"
+                            item.type === terminated && item.status === 'success' ? 'text-green-600' : "text-red-600"
                         }`}>
                         {item.type === 'Deposit' && item.status === 'success' ? '+' :
                           item.type === 'Deposit' && item.status === 'pending' ? '' :
-                            item.type === 'Internal Transfer In' && item.status === 'success' ? '+' : '-'}{currency}{parseInt(item.amount).toLocaleString()}
+                            item.type === terminated && item.status === 'success' ? '+' : '-'}{currency}{parseInt(item.amount).toLocaleString()}
                       </div>
                       <div className="text-xs text-right">{item.date}</div>
                     </div>
@@ -162,10 +163,10 @@ const Transactions = () => {
                 Transactions
               </span>
               <div className="flex items-center gap-3 mt-2">
-                <button onClick={prevPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-sec rounded-md">
+                <button onClick={prevPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-col rounded-md">
                   Prev
                 </button>
-                <button onClick={nextPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-sec rounded-md">
+                <button onClick={nextPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-col rounded-md">
                   Next
                 </button>
               </div>

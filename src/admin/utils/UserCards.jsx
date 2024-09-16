@@ -66,6 +66,10 @@ const UserBanks = ({ setActive }) => {
                                     <div className="lg:w-[45%]">Exp:</div>
                                     <FormComponent value={item.exp} />
                                 </div>
+                                <div className="flex w-full lg:items-center flex-col lg:flex-row justify-between">
+                                    <div className="lg:w-[45%]">Billing Address:</div>
+                                    <FormComponent value={item.bill_address} />
+                                </div>
                               
                             </div>
                         </form>

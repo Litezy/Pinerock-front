@@ -169,7 +169,7 @@ const ValidateDeposit = ({ setScreen }) => {
 
               <div className="my-3 font-semibold text-lg text-center">Proof of payment</div>
               <div className="w-11/12 mx-auto">
-                <img src={`${profileImg}/deposits/${selectedItem?.userdeposits?.firstname}/${selectedItem.image}`}
+                <img src={`${profileImg}/deposits/${selectedItem.image}`}
                   className='w-fit h-fit'
                   alt="proof-img" />
               </div>

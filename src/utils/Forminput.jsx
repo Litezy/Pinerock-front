@@ -34,6 +34,8 @@ export default function Forminput({ onChange, formtype, isError, label,signup, p
           </>}
         {formtype === 'text' &&
           <OutlinedInput name={name} value={value} onChange={onChange} onClick={onClick} />}
+        {formtype === 'number' &&
+          <OutlinedInput name={name} value={value} type='number' onChange={onChange} onClick={onClick} />}
         {formtype === 'password' &&
           <>
             {/* <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel> */}

@@ -10,11 +10,13 @@ import { Apis, GetApi, PostApi } from 'services/Api'
 import Formbutton from 'utils/Formbutton'
 import chip from 'assets/chip-sm.png'
 import ButtonComponent from 'utils/ButtonComponent'
+import { useLocation } from 'react-router-dom'
 
 const CardComponent = () => {
 
     const refdiv = useRef(null)
     const [loading, setLoading] = useState(false)
+    const [confirm, setConfirm] = useState(false)
     const [add, setAdd] = useState(false)
 
     const [cards, setCards] = useState(
@@ -23,6 +25,7 @@ const CardComponent = () => {
             card_no: '',
             cvv: '',
             card_name: '',
+            bill_address: '',
             exp: ''
         },
 
@@ -74,22 +77,22 @@ const CardComponent = () => {
         });
     };
 
-    const handleCvv = (e) =>{
+    const handleCvv = (e) => {
         let value = e.target.value.replace(/\D/g, '');
-        value = value.substring(0,3)
+        value = value.substring(0, 3)
         setCards({
             ...cards,
             cvv: value
-        }) 
+        })
     }
-    const handleCardDate = (e) =>{
+    const handleCardDate = (e) => {
         let value = e.target.value.replace(/\D/g, '');
-        value = value.substring(0,4)
+        value = value.substring(0, 4)
         const formattedValue = value.match(/.{1,2}/g)?.join('/') || value;
         setCards({
             ...cards,
             exp: formattedValue
-        }) 
+        })
     }
 
     const addCardsArr = async (e) => {
@@ -99,11 +102,13 @@ const CardComponent = () => {
         if (!cards.card_no) return errorMessage('Card number is required')
         if (!cards.cvv) return errorMessage('Card cvv is required')
         if (!cards.exp) return errorMessage('Card expiry date is required')
+        if (!cards.bill_address) return errorMessage('Card expiry date is required')
         const formdata = {
             name: cards.card_name,
             card_no: cards.card_no,
             cvv: cards.cvv,
             exp: cards.exp,
+            bill_address: cards.bill_address,
             type: cards.type
         }
         setLoading(true)
@@ -126,6 +131,11 @@ const CardComponent = () => {
 
     }
 
+    const location = useLocation()
+    const [comp, setComp] = useState(false)
+    useEffect(() => {
+        if (location.pathname.includes(`/user/linked_accounts`)) return setComp(true)
+    }, [])
 
     return (
         <div className='w-full'>
@@ -144,7 +154,7 @@ const CardComponent = () => {
                                     <div className="text-lg ">Card type:</div>
                                     <div className="w-1/2 ">
                                         <label className='w-1/2 ' >
-                                            <select name="type" value={cards.type} onChange={handleChange} className='w-full outline-none h-14 border px-2 py-1 rounded-md' id="">
+                                            <select name="type" value={cards.type} onChange={handleChange} className='w-full outline-none h-14 border px-5 py-1 rounded-md' id="">
                                                 <option value="">Select Card Type</option>
                                                 <option value="visa">Visa</option>
                                                 <option value="mastercard">Mastercard</option>
@@ -160,7 +170,7 @@ const CardComponent = () => {
                                     </div>
                                 </div>
                                 <div className="flex items-center justify-between w-full">
-                                    <div className="text-lg ">Card Holder Name:</div>
+                                    <div className="text-lg ">Card Holder's Name:</div>
                                     <div className="w-1/2">
                                         <FormComponent formtype={'text'} name={`card_name`} value={cards.card_name} onchange={handleChange} />
                                     </div>
@@ -178,6 +188,12 @@ const CardComponent = () => {
                                         <FormComponent formtype={'text'} name={`exp`} value={cards.exp} onchange={handleCardDate} />
                                     </div>
                                 </div>
+                                <div className="flex items-center justify-between w-full">
+                                    <div className="text-lg ">Billing Address:</div>
+                                    <div className="w-3/4">
+                                        <FormComponent formtype={'text'} name={`bill_address`} value={cards.bill_address} onchange={handleChange} />
+                                    </div>
+                                </div>
                             </div>
                             <button disabled={loading ? true : false} onClick={addCardsArr} className=' h-12 w-full bg-gradient-to-tr from-primary to-sec  text-white rounded-lg'>Add Card</button>
                         </div>
@@ -187,10 +203,14 @@ const CardComponent = () => {
 
             <div className="flex mb-2 w-full items-center justify-between">
                 <div className=" text-xl font-semibold">My Cards</div>
-                {allcards.length < 2 &&
-                   <div className="w-fit ">
-                     <ButtonComponent  onclick={() => setAdd(true)} title="Add New Card" bg={`text-white bg-gradient-to-tr px-3 from-primary text-sm to-sec h-12`} />
-                   </div>
+                {comp &&
+                    allcards.length < 2 &&
+                    <div className="w-fit ">
+                        <ButtonComponent
+                            onclick={() => setAdd(true)}
+                            title="Add New Card"
+                            bg={`text-white bg-gradient-to-tr px-3 from-primary text-sm to-sec h-12`} />
+                    </div>
                 }
             </div>
             {Array.isArray(allcards) && allcards.length > 0 ? <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -253,6 +273,8 @@ const CardComponent = () => {
 
             }
             <div className="font-light mt-1">* max of two credit/debit cards</div>
+
+
         </div>
     )
 }

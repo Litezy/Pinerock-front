@@ -10,12 +10,13 @@ import { BsChevronDoubleDown } from "react-icons/bs";
 import { dispatchCurrency, dispatchNotifications, dispatchProfile } from 'app/reducer'
 import axios from 'axios'
 import { FiRefreshCcw } from "react-icons/fi";
+import { MdVerified } from "react-icons/md";
 
 const SideLinks = [
     { path: 'dashboard', url: '/user' },
-    { path: 'savings', url: '/user/savings' },
-    { path: 'wire transfers', url: '/user/wire-transfers' },
-    { path: 'local transfers', url: '/user/local-transfers' },
+    { path: 'deposit / save funds', url: '/user/deposits' },
+    { path: ' withdrawal', url: '/user/withdrawals' },
+    { path: ' linked accounts', url: '/user/linked_accounts' },
     { path: 'transactions', url: '/user/transactions' },
     { path: 'notifications', url: '/user/notifications' },
     { path: 'profile', url: '/user/profile' },
@@ -140,9 +141,12 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                         </div>
                     </ModalLayout>
                 }
-                <div className="bg-slate-100/20 rounded-lg p-3 flex flex-col items-center justify-center gap-3 mt-6 mb-5">
+                <div className="bg-col rounded-lg p-3 flex flex-col items-center justify-center gap-3 mt-6 mb-5">
                     <div className="py-3 px-3.5 rounded-full text-white bg-gradient-to-tr from-primary to-sec w-fit h-fit uppercase">{firstChar}{lastChar}</div>
-                    <div className="text-white text-center capitalize text-sm">{profile?.firstname} {profile?.lastname}</div>
+                   <div className="flex items-center gap-2">
+                   <div className="text-white text-center capitalize text-sm">{profile?.firstname} {profile?.lastname}</div>
+                  {profile?.kyc === 'verified' && <div className=""> <MdVerified className='text-primary text-lg'/></div>}
+                   </div>
                     <div className="text-white items-center gap-2 font-bold text-xl flex justify-center">
                         <div onClick={fetchUserProfile} className="">
                             <FiRefreshCcw className={`text-sm cursor-pointer ${isRotating ? 'rotating' : ''}`} />
@@ -159,7 +163,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                         <Link to={item.url}
                             key={index}
                             onClick={closeDiv}
-                            className={`text-sm rounded-lg w-full hover:scale-10 text-slate-200 hover:text-orange-200 ${item.url === location.pathname ? 'bg-slate-100/40' : ''} hover:translate-x-2 px-3 mb-3 py-2 font-semibold capitalize transition-all`}>
+                            className={`text-sm rounded-lg w-full hover:scale-10 text-slate-200 hover:text-orange-200 ${item.url === location.pathname ? 'bg-col' : ''} hover:translate-x-2 px-3 mb-3 py-2 font-semibold capitalize transition-all`}>
                             {item.path}
                         </Link>
                     ))}
@@ -167,7 +171,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                     {TicketFolder.map((item, index) => (
                         <div key={index}
                             onClick={() => setViewAll(prev => !prev)}
-                            className={`text-sm mb-2 cursor-pointer  w-full hover:scale-10 flex items-center justify-between text-slate-200 hover:text-orange-200 ${viewall ? 'bg-slate-100/40 rounded-md' : ''} px-3  py-2 font-semibold capitalize transition-all`}>
+                            className={`text-sm mb-2 cursor-pointer  w-full hover:scale-10 flex items-center justify-between text-slate-200 hover:text-orange-200 ${viewall ? 'bg-col rounded-md' : ''} px-3  py-2 font-semibold capitalize transition-all`}>
                             <div className="">{item.name}</div>
                             <div className="animate-bounce"> {item.icon} </div>
 
@@ -178,7 +182,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                             to={`/user/tickets/status/${item.url}`}
                             onClick={closeUp}
                             key={index}
-                            className={`text-sm rounded-lg  first:mt-2 w-full hover:scale-10 text-slate-200 hover:text-orange-200 ${`/user/tickets/status/${item.url}` === location.pathname ? 'bg-slate-100/40' : ''} hover:translate-x-2 px-3 mb-3 py-2 font-semibold capitalize transition-all`}>
+                            className={`text-sm rounded-lg  first:mt-2 w-full hover:scale-10 text-slate-200 hover:text-orange-200 ${`/user/tickets/status/${item.url}` === location.pathname ? 'bg-col' : ''} hover:translate-x-2 px-3 mb-3 py-2 font-semibold capitalize transition-all`}>
                             {item.path}
                         </Link>
                     ))}
@@ -186,7 +190,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                     <div className="flex flex-col w-full mt- mb-3">
                         {SideLinks2.map((item, index) => (
                             <Link to={item.url} onClick={() => logOut(item)} key={index}
-                                className={`text-sm rounded-lg flex items-center justify-between  hover:scale-10 text-slate-200 ${item.url === location.pathname ? 'bg-slate-100/40' : ''} hover:text-orange-200 px-3 mb-2 py-2 hover:translate-x-2 font-semibold capitalize transition-all`}>
+                                className={`text-sm rounded-lg flex items-center justify-between  hover:scale-10 text-slate-200 ${item.url === location.pathname ? 'bg-col' : ''} hover:text-orange-200 px-3 mb-2 py-2 hover:translate-x-2 font-semibold capitalize transition-all`}>
                                 <div className="">{item.path}</div>
                                 <div className=""></div>
                             </Link>

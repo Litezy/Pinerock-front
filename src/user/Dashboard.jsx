@@ -27,7 +27,7 @@ export default function Dashboard() {
     const dispatch = useDispatch();
     const [profile, setProfile] = useState(null);
     const currency = useSelector((state) => state.profile.currency)
-    const [userSavings, ] = useState([])
+    const [userSavings,] = useState([])
     const [records, setRecords] = useState([])
     const [selectSaving, setSelectSaving] = useState({})
     const [viewMore, setViewMore] = useState(false)
@@ -80,6 +80,7 @@ export default function Dashboard() {
         setSelectSaving(item)
     }
 
+    const terminated = 'Goal Savings Terminated'
     const copyToClip = async () => {
         try {
             await navigator.clipboard.writeText(profile?.account_number);
@@ -285,14 +286,15 @@ export default function Dashboard() {
                                         </div>
                                         <div className="">
                                             <div className={`text-base font-bold text-right 
-                        ${item.type === deposit && item.status === 'pending' ? 'text-yellow-500' :
+                        ${item.type === deposit &&
+                                                    item.status === 'pending' ? 'text-yellow-500' :
                                                     item.type === deposit && item.status === 'success' ? 'text-green-600' :
-                                                        item.type === transferin && item.status === 'success' ? 'text-green-600' : "text-red-600"
+                                                        item.type === terminated && item.status === 'success' ? 'text-green-600' : "text-red-600"
                                                 }`}>
 
                                                 {item.type === deposit && item.status === 'success' ? '+' :
                                                     item.type === deposit && item.status === 'pending' ? '' :
-                                                        item.type === transferin && item.status === 'success' ? '+' : '-'}{currency}{parseInt(item.amount).toLocaleString()}
+                                                        item.type === terminated && item.status === 'success' ? '+' : '-'}{currency}{parseInt(item.amount).toLocaleString()}
                                             </div>
                                             <div className="text-xs text-right">{item.date}</div>
                                         </div>

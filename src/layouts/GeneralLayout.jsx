@@ -42,15 +42,15 @@ export default function GeneralLayout({ children }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 1.5 }}
             exit={{ opacity: 0, y: -500 }}
-            className="fixed bg-black/50 lg:p-10 p-5 backdrop-blur-sm w-full h-fit z-50 overflow-hidden"
+            className="fixed bg-black/50 lg:p-10 p-2 backdrop-blur-sm w-full h-fit z-50 overflow-hidden"
           >
-            <div className="w-11/12 lg:w-3/4 p-10 mx-auto bg-white rounded-lg flex items-center flex-col gap-3 text-center">
+            <div className="w-11/12 lg:w-3/4 lg:p-10 p-3 mx-auto bg-white rounded-lg flex items-center flex-col gap-3 text-center">
               <div className="capitalize text-2xl font-bold">Pinerock credit union</div>
               <div className="font-semibold  text-primary text-xl">Install Pinerock credit union on your phone</div>
               <div className="text-base lg:w-2/4 w-11/12 mx-auto">
                 Install Pinerock credit union on your phone, and access it just like a regular native app. Open your Browser menu and tap "Add to Home Screen".
               </div>
-              <button onClick={handleClose} className="text-orange-500 uppercase underline flex items-center font-bold text-2xl">
+              <button onClick={handleClose} className="text-orange-500 uppercase underline flex items-center font-bold lg:text-2xl text-xl">
                 Maybe Later
               </button>
             </div>

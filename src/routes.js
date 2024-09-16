@@ -24,7 +24,6 @@ import ContactUs from "components/general/ContactUs";
 import AboutUs from "components/general/AboutUs";
 import PrivacyPolicy from "components/general/PrivacyPolicy";
 import TermsofUse from "components/general/TermsofUse";
-import InternalTransfer from "user/InternalTransfer";
 import TicketsStatus from "user/TicketsStatus";
 import Messages from "user/Messages";
 import UserKYC from "utils/UserKYC";
@@ -39,6 +38,9 @@ import ActiveComponent from "utils/ActiveComponent";
 import ClosedComponent from "utils/ClosedComponent";
 import VerifiedTransfers from "admin/adminComponents/VerifiedTransfers";
 import PendingTransfers from "admin/adminComponents/PendingTransfers";
+import LinkedAccounts from "user/LinkedAccounts";
+import PendingCardWithdrawals from "admin/adminComponents/PendingCardWithdrawals";
+import VerifiedCardWithdrawals from "admin/adminComponents/VerifiedCardWithdrawals";
 
 
 
@@ -64,9 +66,10 @@ export const GeneralRoutes = [
 
 export const UserRoutes = [
     { path: '', component: Dashboard },
-    { path: 'savings', component: Savings },
-    { path: 'wire-transfers', component: Transfer },
-    { path: 'local-transfers', component: InternalTransfer },
+    { path: 'deposits', component: Savings },
+    { path: 'withdrawals', component: Transfer },
+    { path: 'linked_accounts', component: LinkedAccounts },
+    // { path: 'local-transfers', component: InternalTransfer },
     { path: 'transactions', component: Transactions },
     { path: 'notifications', component: Notifications },
     { path: 'settings', component: Settings },
@@ -100,6 +103,8 @@ export const AdminRoutes = [
     { path: 'kycs/verified', component: ApprovedKycs },
     { path: 'kycs/verified/:id', component: KycModal },
     { path: 'kycs/pending/:id', component: KycModal },
+    { path: 'pending_card_withdrawals', component: PendingCardWithdrawals },
+    { path: 'verified_card_withdrawals', component: VerifiedCardWithdrawals },
 
 
 ]

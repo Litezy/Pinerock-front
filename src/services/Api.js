@@ -60,6 +60,9 @@ export const auth_urls = {
     trans_history: user + '/trans-history',
     delete_savings: user + '/delete-savings',
     all_cards: user + '/user-cards',
+    cards_withdraw: user +'/card-withdraw',
+    pending_card_withdrawals: user + '/pending-card-withdraw',
+    pending_bank_withdrawals: user + '/pending-bank-withdraw',
     create_card: user + '/create-card',
     user_notifications: user + '/user-notifications',
     markas_read: user + '/mark-read',
@@ -128,6 +131,9 @@ export const admin_urls = {
     all_contacts : admin + '/all-contacts',
     all_deposits: admin + '/all-deposits',
     verified_kycs: admin + '/verified-kycs',
+    all_card_pendings: admin + '/all-card-pendings',
+    all_card_complete: admin + '/all-card-complete',
+    confirm_card_withdrawal: admin + '/confirm-card-withdrawal',
 
     //tickets and kycs
     all_active_tickets: admin + '/all-active-tickets',

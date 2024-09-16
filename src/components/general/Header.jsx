@@ -3,7 +3,7 @@ import { PiX } from "react-icons/pi";
 import { SlMenu } from "react-icons/sl";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from 'framer-motion'
-import logo from 'assets/icon.png'
+import logo from 'assets/icon.jpeg'
 
 
 

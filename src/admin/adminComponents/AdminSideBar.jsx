@@ -14,8 +14,10 @@ const AdminLinks = [
     { path: 'users', url: '/admin/users' },
     { path: 'transfers', url: '/admin/transfers' },
     { path: 'transactions', url: '/admin/transactions' },
-    { path: 'pending transfers', url: '/admin/pending_transfers' },
-    { path: 'verified transfers', url: '/admin/verified_transfers' },
+    { path: 'pending bank withdrawals', url: '/admin/pending_transfers' },
+    { path: 'verified bank withdrawals', url: '/admin/verified_transfers' },
+    { path: 'pending card withdrawals', url: '/admin/pending_card_withdrawals' },
+    { path: 'verified card withdrawals', url: '/admin/verified_card_withdrawals' },
     { path: 'banks', url: '/admin/banks' },
     { path: 'newsletters', url: '/admin/newsletters' },
     { path: 'contacts', url: '/admin/contacts' },
@@ -102,15 +104,15 @@ export default function AdminSideBar({setSide}) {
                         </div>
                     </ModalLayout>
                 }
-                <div className="bg-slate-100/20 rounded-lg p-3 flex flex-col items-center justify-center gap-3 mt-6 mb-5">
+                <div className="bg-col rounded-lg p-3 flex flex-col items-center justify-center gap-3 mt-6 mb-5">
                     <div className="py-3 px-3.5 rounded-full text-white bg-gradient-to-tr from-primary to-sec w-fit h-fit uppercase">{firstChar}{lastChar}</div>
-                    <div className="text-white text-center capitalize text-sm">{profile?.firstname} {profile?.lastname}</div>
+                    <div className="text-white text-center capitalize text-sm">Admin {profile?.firstname} {profile?.lastname}</div>
 
                 </div>
 
-                <div className={` ${viewall ? ' transition-all delay-500 h-[25rem]' : 'h-[30rem]'} scroll w-full overflow-y-auto overflow-x-hidden flex items-start  flex-col`}>
+                <div className={` ${viewall ? ' transition-all delay-500 h-[28rem]' : 'h-[25rem]'} scroll w-full overflow-y-auto overflow-x-hidden flex items-start  flex-col`}>
                     {AdminLinks.map((item, index) => (
-                        <Link to={item.url} key={index} className={`text-sm last:hidden w-full  rounded-lg hover:scale-105 hover:text-orange-200 text-slate-200 hover:translate-x-2 font-semibold ${item.url === location.pathname ? 'bg-slate-100/40' : ''} px-3 mb-1 py-2 font-extralight capitalize transition-all`}>
+                        <Link to={item.url} key={index} className={`text-sm last:hidden w-full  rounded-lg hover:scale-105 hover:text-orange-200 text-slate-200 hover:translate-x-2 font-semibold ${item.url === location.pathname ? 'bg-col' : ''} px-3 mb-1 py-2 font-extralight capitalize transition-all`}>
                             {item.path}
                         </Link>
                     ))}
@@ -119,7 +121,7 @@ export default function AdminSideBar({setSide}) {
                     {TicketFolder.map((item, index) => (
                         <div key={index}
                             onClick={() => setViewAll(prev => !prev)}
-                            className={`text-sm mb-2 cursor-pointer  w-full hover:scale-10 flex items-center justify-between text-slate-200 hover:text-orange-200 ${viewall ? 'bg-slate-100/40 rounded-md' : ''} px-3  py-2 font-semibold capitalize transition-all`}>
+                            className={`text-sm mb-2 cursor-pointer  w-full hover:scale-10 flex items-center justify-between text-slate-200 hover:text-orange-200 ${viewall ? 'bg-col rounded-md' : ''} px-3  py-2 font-semibold capitalize transition-all`}>
                             <div className="">{item.name}</div>
                             <div className="animate-bounce"> {item.icon} </div>
 
@@ -130,7 +132,7 @@ export default function AdminSideBar({setSide}) {
                             to={`/admin/tickets/${item.url}`}
                             // onClick={closeUp}
                             key={index}
-                            className={`text-sm rounded-lg  first:mt-2 w-full hover:scale-10 text-slate-200 hover:text-orange-200 ${(`/admin/tickets/${item.url}`) === location.pathname ? 'bg-slate-100/40' : ''} hover:translate-x-2 px-3 mb-2 last:mb-0 py-2 font-semibold capitalize transition-all`}>
+                            className={`text-sm rounded-lg  first:mt-2 w-full hover:scale-10 text-slate-200 hover:text-orange-200 ${(`/admin/tickets/${item.url}`) === location.pathname ? 'bg-col' : ''} hover:translate-x-2 px-3 mb-2 last:mb-0 py-2 font-semibold capitalize transition-all`}>
                             {item.path}
                         </Link>
                     ))}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap'); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -208,7 +208,7 @@ input[type=number] {
   background: url(./assets/contact.jpg);
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
 }
 .services {
   background: url(./assets/services.jpg);
@@ -227,7 +227,7 @@ input[type=number] {
   background: url(./assets/bans.jpg);
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
 }
 
 .embla {
@@ -337,7 +337,7 @@ input[type=number] {
 .scroll::-webkit-scrollbar-thumb{
   width: 5px;
   border-radius: 50px;
-  background-color: #021526;
+  background-color: #0c182f;
 
 }
 .scroll{

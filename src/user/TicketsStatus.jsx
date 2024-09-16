@@ -140,7 +140,7 @@ const TicketsStatus = () => {
                                 />
                                 <span className="px-2 text-sm text-gray-600 truncate">{fileName || 'No file chosen'}</span>
                                 {fileName && <span className=''><MdDelete onClick={deleteImage} className='text-red-600 cursor-pointer font-bold text-2xl ' /></span>}
-                                <button onClick={uploadImg} className='bg-gradient-to-tr from-primary to bg-purple-700 w-fit px-4 py-2 rounded-md text-white '>browse</button>
+                                <button onClick={uploadImg} className='bg-gradient-to-tr from-primary to bg-sec w-fit px-4 py-2 rounded-md text-white '>browse</button>
                             </div>
                         </div>
                         <ButtonComponent disabled={loading ? true : false}

@@ -16,6 +16,11 @@ import { MdSupportAgent } from "react-icons/md";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { GiPodiumWinner } from "react-icons/gi";
 import { SiteName } from './functions'
+import heroimg from 'assets/hero-slide-1.png'
+import heroimg1 from 'assets/hero-slide-2.png'
+import heroimg2 from 'assets/hero-slide-3.png'
+
+
 
 
 export const HomeServices = [
@@ -52,6 +57,26 @@ export const HomeTestimonials = [
     { img: img4, content: `"As a student, budgeting and saving can be tough, but ${SiteName} has made it much easier. Their student account has no hidden fees, and the mobile app is super convenient for managing my money on the go. Plus, their customer service is always helpful when I have questions. I highly recommend them to all students!"`, user: 'Michael B., College Student' },
 ]
 
+export const HeroSlides = [
+    {
+        tip:'instant money transfer',
+        title:'Digital banking made for digital users',
+        content:'Pinerock credit union is an all-in one mobile banking app chock full of all the tools, tips, and tricks you need to take contol of your financies.',
+        img:heroimg,
+    },
+    {
+        tip:'online payment system',
+        title:'secured & easy online payment solution',
+        content:"Feel reassured when you bank with us - we're certified by the government programme Cyber Essentials. This means we're able to defend against common cyber threats.",
+        img:heroimg1,
+    },
+    {
+        tip:'Global money transfer',
+        title:'Move your money in easy secured steps',
+        content:"Feel safe when you bank online on our mobile. As long as  you manage your account properly, our guarantee protects you and your money from fraud.",
+        img:heroimg2,
+    }
+]
 export const services = [
     {
         title: 'Seamless International Transfers',

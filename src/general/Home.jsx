@@ -35,7 +35,7 @@ export default function Home() {
       animate={{opacity:1}}
       transition={{delay:0.5 , duration:0.5}}
       >
-        <div className="mt-32 h-fit py-3  w-11/12 mx-auto ">
+        <div className="mt-20 md:mt-32   h-fit py-3  mx-auto ">
           <HeroSection />
         </div>
       </motion.div>
@@ -46,7 +46,7 @@ export default function Home() {
       >
         <div className="bg-gradient-to-b from-primary to-black/30 w-full h-full">
           <div className="flex justify-center w-11/12 mx-auto h-full flex-col items-center text-white backdrop-blur-sm">
-            <div className="font-bold text-4xl lg:text-6xl mb-3 text-orange-500">
+            <div className="font-bold text-3xl lg:text-6xl mb-3 text-orange-500">
               <TypeAnimation
                 sequence={[
                   "Seamless Experience",
@@ -133,7 +133,7 @@ export default function Home() {
         scale, 
         opacity, 
       }}
-      className="py-10 mb-10">
+      className="py-10 ">
         <div className="w-11/12 mx-auto lg:w-10/12">
           <div className="w-fit mx-auto mb-10 font-bold text-4xl lg:text-5xl">
             <div className="bg-zinc-500 h-1 w-3/5 mt-3"></div>
@@ -150,13 +150,13 @@ export default function Home() {
         scale, 
         opacity, 
       }}
-      className="w-11/12 mx-auto lg:w-10/12 mb-20">
-        <div className="w-fit mx-auto mb-10 font-bold text-3xl lg:text-4xl">
+      className="w-11/12 mx-auto lg:w-10/12 ">
+        <div className="w-fit mx-auto  font-bold text-3xl lg:text-4xl">
           <div className="bg-primary h-1 w-3/5 mt-3 ml-auto"></div>
           <div className="">
             <div className="text-center text-primary">Why Choose Us?</div>
           </div>
-          <div className="bg-primary h-1 w-3/5 mt-3"></div>
+          <div className="bg-primary h-1 w-3/5 "></div>
         </div>
 
       </motion.div>

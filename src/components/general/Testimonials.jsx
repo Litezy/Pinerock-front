@@ -67,14 +67,14 @@ export default function Testimonials(props) {
                 <div className="">
                     <img src={item.img} alt="" className="size-28 object-cover border-4 border-white shadow-2xl rounded-full" />
                 </div>
-                <div className="font-bold text-2xl pt-10">{item.user}</div>
-                <div className="pt-5 pb-10">{item.content}</div>
+                <div className="font-bold text-xl pt-10">{item.user}</div>
+                <div className="pt-5 pb-10 text-sm">{item.content}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="embla__controls">
+      <div className="embla__controls ">
         <div className="embla__buttons">
           <PrevButton
             onClick={() => onButtonAutoplayClick(onPrevButtonClick)}

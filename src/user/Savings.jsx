@@ -202,10 +202,9 @@ const Savings = () => {
         if (!proofForm.amount) return errorMessage(`Input amount is required to proceed`)
         if (proofForm.amount <= 0) return errorMessage(`No negative amount`)
         const formdata = new FormData()
-        formdata.append('firstname', profile?.firstname)
         formdata.append('amount', proofForm.amount)
         formdata.append('image', proofimg.image)
-        // return console.log(formdata)
+        // return console.log(profile?.firstname)
         setLoad(true)
         try {
             const res = await PostApi(Apis.auth.deposit, formdata)
@@ -227,6 +226,8 @@ const Savings = () => {
             }
         } catch (error) {
             errorMessage(error.message)
+        }finally{
+            setLoad(false)
         }
 
     }
@@ -332,8 +333,9 @@ const Savings = () => {
     }
 
 
+
     return (
-        <div className={`w-11/12  mx-auto ${add && 'overflow-hidden'}`}>
+        <div className={`w-11/12  mx-auto `}>
 
             {createsave &&
                 <ModalLayout setModal={setCreateSave} clas={`lg:w-[60%] w-11/12 mx-auto`}>
@@ -600,12 +602,6 @@ const Savings = () => {
                 }
             </div>
 
-            <div className="my-10 relative">
-                <CardComponent setAdd={setAdd} add={add} />
-            </div>
-            <div className="my-10 relative">
-                <UserBanks setAdd={setAdd} add={add} />
-            </div>
 
             <div className="mt-5 text-xl font-semibold">Latest Savings Transactions</div>
             <div className=" w-full bg-white shadow-lg pb-3">

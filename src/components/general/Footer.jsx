@@ -64,7 +64,7 @@ export default function Footer() {
     }
   }
   return (
-    <div className="bg-primary h-fit w-full pt-10 pb-5 overflow-hidden">
+    <div className="bg-sec h-fit w-full pt-20 pb-10 overflow-hidden">
       <div className="w-11/12 text-slate-300 mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <div className="w-full">
@@ -122,7 +122,7 @@ export default function Footer() {
                 value={email.email}
                 onChange={(e) => setEmail({ ...email, [e.target.name]: e.target.value })}
               />
-              <button onClick={subscribe} className="w-full px-5 py-3 rounded-lg text-slate-300 bg-orange-500">
+              <button onClick={subscribe} className="w-full px-5 py-3 rounded-lg text-white bg-orange-500">
                 Subscribe
               </button>
             </div>

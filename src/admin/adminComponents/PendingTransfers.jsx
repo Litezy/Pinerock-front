@@ -29,7 +29,7 @@ const PendingTransfers = () => {
     const fetchTransfers = useCallback(async () => {
         try {
             const res = await GetApi(Apis.admin.pending_transfers)
-            if (res.status !== 200) return errorMessage(res.msg)
+            if (res.status !== 200) return ;
             setData(res.data)
         } catch (error) {
             console.log(error)

@@ -143,12 +143,12 @@ const Notifications = () => {
             </span>
 
             <div className=" flex items-center gap-4 mt-2 xs:mt-0">
-              <button onClick={prevPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-gradient-to-tr from-primary to-sec rounded-md
+              <button onClick={prevPage} className="flex items-center justify-center px-4 h-10 text-base font-medium text-white bg-col rounded-md
                       ">
                 Prev
               </button>
               <button onClick={nextPage} className="flex items-center justify-center px-4 h-10 text-base font-medium
-                     text-white bg-gradient-to-tr from-primary to-sec  rounded-md  rounded-e   ">
+                     text-white bg-col  rounded-md  rounded-e   ">
                 Next
               </button>
             </div>

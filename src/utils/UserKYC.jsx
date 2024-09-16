@@ -9,11 +9,19 @@ import { errorMessage, successMessage } from './functions';
 import { useSelector } from 'react-redux';
 import Loader from './Loader';
 import { Link, useNavigate } from 'react-router-dom';
+import ModalLayout from './ModalLayout';
+import { FaRegIdCard } from "react-icons/fa";
+import Forminput from './Forminput';
+import { MenuItem } from '@mui/material';
+import FormComponent from './FormComponent';
+import ButtonComponent from './ButtonComponent';
 
 
 const UserKYC = ({ }) => {
     const [loading, setLoading] = useState(false)
+    const [load, setLoad] = useState(false)
     const [data, setData] = useState({})
+    const [confirm, setConfirm] = useState(false)
 
     const profile = useSelector((state) => state.profile.profile)
 
@@ -28,7 +36,9 @@ const UserKYC = ({ }) => {
         dob: '',
         id_type: '',
         zip: '',
-        id_number: ''
+        id_number: '',
+        ssn: '',
+        options: ''
     })
     const [frontimg, setfrontImg] = useState({
         img: null,
@@ -90,7 +100,6 @@ const UserKYC = ({ }) => {
         if (!forms.id_number) return errorMessage("ID card number is required")
         if (frontimg.image === null) return errorMessage('ID front image is required')
         if (backimg.image === null) return errorMessage('ID back image is required')
-
         const formdata = new FormData()
         formdata.append('frontimg', frontimg.image)
         formdata.append('backimg', backimg.image)
@@ -101,14 +110,6 @@ const UserKYC = ({ }) => {
         formdata.append('second_address', forms.second_address)
         formdata.append('id_number', forms.id_number)
         formdata.append('id_type', forms.id_type)
-
-        // for (let [key, value] of formdata.entries()) {
-        //     if (value instanceof File) {
-        //         console.log(`${key}: ${value.name}`); // Logs the file name
-        //     } else {
-        //         console.log(`${key}: ${value}`); // Logs other form data
-        //     }
-        // }
 
         setLoading(true)
         try {
@@ -124,8 +125,42 @@ const UserKYC = ({ }) => {
     }
 
 
-    const [width, setWidth] = useState('0%');
+    const submitUSKYC = async () => {
+        if (!forms.marital) return errorMessage("Marital status is required")
+        if (!forms.dob) return errorMessage("Date of birth is required")
+        if (!forms.first_address) return errorMessage("First line adress is required")
+        if (!forms.zip) return errorMessage("Zip code is required")
+        if (!forms.id_type) return errorMessage("ID card type is required")
+        if (!forms.id_number) return errorMessage("ID card number is required")
+        if (frontimg.image === null) return errorMessage('ID front image is required')
+        if (backimg.image === null) return errorMessage('ID back image is required')
+        if (!forms.ssn === null) return errorMessage('SSN is required for government compliance')
+        const formdata = new FormData()
+        formdata.append('frontimg', frontimg.image)
+        formdata.append('backimg', backimg.image)
+        formdata.append('dob', forms.dob)
+        formdata.append('marital', forms.marital)
+        formdata.append('zip', forms.zip)
+        formdata.append('first_address', forms.first_address)
+        formdata.append('second_address', forms.second_address)
+        formdata.append('id_number', forms.id_number)
+        formdata.append('id_type', forms.id_type)
+        formdata.append('ssn', forms.ssn)
+        setLoad(true)
+        try {
+            const response = await PostApi(Apis.auth.submit_kyc, formdata)
+            if (response.status !== 200) return errorMessage(response.msg)
+            successMessage(response.msg)
+            navigate(`/user/settings`)
+        } catch (error) {
+            errorMessage(error.message)
+        } finally {
+            setLoad(false)
+        }
+    }
 
+
+    const [width, setWidth] = useState('0%');
     useEffect(() => {
         if (profile?.kyc === 'verified') {
             setWidth('100%');
@@ -137,37 +172,130 @@ const UserKYC = ({ }) => {
             setWidth('05%');
         }
     }, [profile?.kyc]);
+
+
+    const NextPage = () => {
+        if (!forms.marital) return errorMessage("Marital status is required")
+        if (!forms.dob) return errorMessage("Date of birth is required")
+        if (!forms.first_address) return errorMessage("First line adress is required")
+        if (!forms.zip) return errorMessage("Zip code is required")
+        if (!forms.id_type) return errorMessage("ID card type is required")
+        if (!forms.id_number) return errorMessage("ID card number is required")
+        if (frontimg.image === null) return errorMessage('ID front image is required')
+        if (backimg.image === null) return errorMessage('ID back image is required')
+        setConfirm(true)
+    }
+
+    const handleITIN = (e) => {
+        let value = e.target.value.replace(/\D/g, ''); // Remove non-numeric characters
+        value = value.substring(0, 9); // Limit to 9 digits
+        let formattedValue = value;
+        // Format as XXX-XX-XXXX
+        if (value.length > 5) {
+            formattedValue = `${value.substring(0, 3)}-${value.substring(3, 5)}-${value.substring(5, 9)}`;
+        } else if (value.length > 3) {
+            formattedValue = `${value.substring(0, 3)}-${value.substring(3, 5)}`
+        }
+        setForms({
+            ...forms,
+            ssn: formattedValue
+        })
+    };
+
+    useEffect(() => {
+        if (confirm === false) {
+            setForms({
+                ...forms,
+                options: ''
+            })
+        }
+    }, [confirm])
+
     return (
         <div className=' h-fit px-4 mt-3 py-5 '>
+
+            {confirm &&
+                <ModalLayout setModal={setConfirm} clas={`w-11/12 mx-auto lg:w-[60%]`}>
+                    <div className="w-full bg-white p-10 rounded-lg">
            
+                    {load &&
+                            <div className="absolute top-0  backdrop-blur-sm w-full z-40 h-full rounded-md left-1/2 -translate-x-1/2">
+                                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-fit p-5 rounded-md bg-white"><Loader />
+                                </div>
+                            </div>
+                        }
+
+                        <div className="flex flex-col gap-5">
+                            <div className="text-2xl font-bold">Confirm your Social Security Number Number or ITIN</div>
+                            <div className="text-base">US law requires we verify your identity. This is a one-time verification process and will not affect your credit score. We keep your information safe, encrypted and never share it.
+
+                            </div>
+
+                            <div className="flex items-center gap-10 w-full">
+                                <div className="text-lg font-bold">ITIN Type:</div>
+                                <div className="w-1/2 ">
+                                    <label className='w-1/2 ' >
+                                        <select name="options" value={forms.options} onChange={handleChange} className='w-full outline-none h-14 border px-5 py-1 rounded-md' id="">
+                                            <option value="">--select--</option>
+                                            <option value="SSN">SSN</option>
+                                            <option value="ITIN">ITIN</option>
+                                        </select>
+
+                                    </label>
+                                </div>
+                            </div>
+
+                            {forms.options &&
+                                <>
+                                    <div className="w-11/12 mx-auto lg:w-3/4 lg:mx-0">
+                                        <Forminput
+                                            name={'ssn'}
+                                            value={forms.ssn}
+                                            onChange={handleITIN}
+                                            formtype="text"
+                                            label={`${forms.options} Number`} />
+                                    </div>
+
+                                    {forms.ssn.length > 10 && <div className="w-11/12 mx-auto lg:w-3/4">
+                                        <ButtonComponent onclick={submitUSKYC} type='button' title={`Submit `} bg={`h-14 bg-primary text-white rounded-md`} />
+                                    </div>}
+                                </>
+                            }
+                        </div>
+
+                    </div>
+                </ModalLayout>
+            }
+
+
             <div className="w-11/12 mx-auto ">
-            <Link to={'/user/settings'} className="w-fit  rounded-md px-5 py-1 bg-gradient-to-tr from-primary to-sec text-white mr-auto cursor-pointer ">
-                back
-            </Link>
+                <Link to={'/user/settings'} className="w-fit  rounded-md px-5 py-1 bg-gradient-to-tr from-primary to-sec text-white mr-auto cursor-pointer ">
+                    back
+                </Link>
                 <h1 className='mb-2 mt-5 text-2xl font-bold'>{profile?.kyc === 'unverified' ? 'Complete Kyc Information below' : profile?.kyc === 'submitted' ? 'Track your kyc review progress' : 'Kyc Approved'}</h1>
                 <div className={`w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 
                 ${profile?.kyc !== 'verified' ? ' animate-pulse' : ''}`}>
                     <div className={`${profile?.kyc === 'verified' ? 'bg-green-500' : "bg-gradient-to-tr from-primary to-sec"}  h-2.5 rounded-full`} style={{ width }}></div>
                 </div>
                 <div className="flex w-full items-center justify-between mt-2 text-sm">
-                    <p className={`${profile?.kyc === 'unverified' && 'text-primary font-bold' }`}>
+                    <p className={`${profile?.kyc === 'unverified' && 'text-primary font-bold'}`}>
                         Not Submitted</p>
                     <p className={`${profile?.kyc === 'submitted' && 'text-primary font-bold'}`}>Submitted</p>
-                    <p className={`${profile?.kyc === 'verified' && 'text-green-500 font-bold' }`}>Approved</p>
+                    <p className={`${profile?.kyc === 'verified' && 'text-green-500 font-bold'}`}>Approved</p>
                 </div>
             </div>
             {profile?.kyc === 'unverified' &&
                 <>
 
-                   
-                    <form onSubmit={submitForm} className="mt-5 h-fit relative  border rounded-md text-sm bg-[white] py-5 px-4">
 
-                    {loading &&
-                        <div className="absolute top-0  backdrop-blur-sm w-full z-40 h-full rounded-md left-1/2 -translate-x-1/2">
-                            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-fit p-5 rounded-md bg-white"><Loader />
+                    <form className="mt-5 h-fit relative  border rounded-md text-sm bg-[white] py-5 px-4">
+
+                        {loading &&
+                            <div className="absolute top-0  backdrop-blur-sm w-full z-40 h-full rounded-md left-1/2 -translate-x-1/2">
+                                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-fit p-5 rounded-md bg-white"><Loader />
+                                </div>
                             </div>
-                        </div>
-                    }
+                        }
                         <div className="md:flex md:items-baseline gap-5 w-full ">
                             <div className="md:w-1/2">
 
@@ -214,7 +342,6 @@ const UserKYC = ({ }) => {
                                         <option >--select--</option>
                                         <option value="driver's license/state ID">Driver's License/State ID</option>
                                         <option value="Passport">Passport</option>
-                                        <option value="social security card">Social Security Number (SSN)</option>
                                         <option value="national id">National ID</option>
                                     </select>
                                 </div>
@@ -257,36 +384,42 @@ const UserKYC = ({ }) => {
 
                         </div>
                         <div className="mt-5 w-8/12  mx-auto">
-                            <button disabled={loading ? true :false} className='px-5 py-3  w-full bg-gradient-to-tr from-primary to-sec text-white rounded-full text-base lg:text-xl'>Submit details</button></div>
+                            {profile?.country === 'United States' ?
+                                <button type='button' onClick={NextPage} className='px-5 py-3  w-full bg-gradient-to-tr from-primary to-sec text-white rounded-full text-base lg:text-xl'>Next</button> :
+                                <button type='button'
+                                    onClick={submitForm}
+                                    className='px-5 py-3  w-full bg-gradient-to-tr from-primary to-sec text-white rounded-full text-base lg:text-xl'>Submit</button>
+                            }
+                        </div>
                     </form>
-        </>}
-{
-    profile?.kyc === 'verified' &&
-    <>
-        <div className="h-screen">
-            <div className="flex mt-5 md:mt-0 items-center justify-center h-3/4 shadow-lg bg-white w-11/12 mx-auto rounded-md">
-                <div className="px-4 flex flex-col">
-                    <h1 className='text-center md:text-xl'>Congratulations, You have passed your KYC.</h1>
-                    <img src={kycpassed} className='w-96 mx-auto' alt="" />
-                </div>
-            </div>
-        </div>
-    </>
-}
-{
-    profile?.kyc === 'submitted' &&
-    <>
-        <div className="h-screen mt-8">
-            <div className="flex mt-5 md:mt-0 items-center justify-center h-3/4 shadow-lg bg-white w-11/12 mx-auto rounded-md">
-                <div className="px-4 flex flex-col">
-                    <h1 className='md:text-center md:text-xl'>Kindly wait for your KYC submission to be approved.</h1>
-                    <p className='md:text-center text-sm'>This usually takes about 3-5 working days.</p>
-                    <img src={pendingkyc} className='w-96 mx-auto' alt="" />
-                </div>
-            </div>
-        </div>
-    </>
-}
+                </>}
+            {
+                profile?.kyc === 'verified' &&
+                <>
+                    <div className="h-screen">
+                        <div className="flex mt-5 md:mt-0 items-center justify-center h-3/4 shadow-lg bg-white w-11/12 mx-auto rounded-md">
+                            <div className="px-4 flex flex-col">
+                                <h1 className='text-center md:text-xl'>Congratulations, You have passed your KYC.</h1>
+                                <img src={kycpassed} className='w-96 mx-auto' alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </>
+            }
+            {
+                profile?.kyc === 'submitted' &&
+                <>
+                    <div className="h-screen mt-8">
+                        <div className="flex mt-5 md:mt-0 items-center justify-center h-3/4 shadow-lg bg-white w-11/12 mx-auto rounded-md">
+                            <div className="px-4 flex flex-col">
+                                <h1 className='md:text-center md:text-xl'>Kindly wait for your KYC submission to be approved.</h1>
+                                <p className='md:text-center text-sm'>This usually takes about 3-5 working days.</p>
+                                <img src={pendingkyc} className='w-96 mx-auto' alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </>
+            }
         </div >
 
     )

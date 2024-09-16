@@ -44,32 +44,10 @@ export default function VerifyEmailAccount() {
 
 
     const navigate = useNavigate()
+    
     const HandleSubmission = async e => {
         e.preventDefault()
-        if (profile?.email) {
-            const form = {
-                code: pins.join('')
-            }
-            const formdata = {
-                email: profile?.email,
-                reset_code: form.code
-            }
-            setLoading(true)
-            try {
-                const res = await PostApi(Apis.non_auth.verify_email, formdata)
-                if (res.status === 200) {
-                    successMessage(res.msg)
-                    navigate(`/login`)
-                } else {
-                    errorMessage(res.msg)
-                }
-            } catch (error) {
-                errorMessage(error.message)
-                console.log(error)
-            } finally {
-                setLoading(false)
-            }
-        } else {
+        if (email) {
             const form = {
                 code: pins.join('')
             }
@@ -92,6 +70,32 @@ export default function VerifyEmailAccount() {
             } finally {
                 setLoading(false)
             }
+
+            
+        } else {
+            const form = {
+                code: pins.join('')
+            }
+            const formdata = {
+                email: profile?.email,
+                reset_code: form.code
+            }
+            setLoading(true)
+            try {
+                const res = await PostApi(Apis.non_auth.verify_email, formdata)
+                if (res.status === 200) {
+                    successMessage(res.msg)
+                    navigate(`/login`)
+                } else {
+                    errorMessage(res.msg)
+                }
+            } catch (error) {
+                errorMessage(error.message)
+                console.log(error)
+            } finally {
+                setLoading(false)
+            }
+            
         }
 
     }
