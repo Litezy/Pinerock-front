@@ -11,6 +11,7 @@ import { dispatchCurrency, dispatchNotifications, dispatchProfile } from 'app/re
 import axios from 'axios'
 import { FiRefreshCcw } from "react-icons/fi";
 import { MdVerified } from "react-icons/md";
+import logo from 'assets/logo.png'
 
 const SideLinks = [
     { path: 'dashboard', url: '/user' },
@@ -143,10 +144,10 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                 }
                 <div className="bg-col rounded-lg p-3 flex flex-col items-center justify-center gap-3 mt-6 mb-5">
                     <div className="py-3 px-3.5 rounded-full text-white bg-gradient-to-tr from-primary to-sec w-fit h-fit uppercase">{firstChar}{lastChar}</div>
-                   <div className="flex items-center gap-2">
-                   <div className="text-white text-center capitalize text-sm">{profile?.firstname} {profile?.lastname}</div>
-                  {profile?.kyc === 'verified' && <div className=""> <MdVerified className='text-primary text-lg'/></div>}
-                   </div>
+                    <div className="flex items-center gap-2">
+                        <div className="text-white text-center capitalize text-sm">{profile?.firstname} {profile?.lastname}</div>
+                        {profile?.kyc === 'verified' && <div className=""> <MdVerified className='text-primary text-lg' /></div>}
+                    </div>
                     <div className="text-white items-center gap-2 font-bold text-xl flex justify-center">
                         <div onClick={fetchUserProfile} className="">
                             <FiRefreshCcw className={`text-sm cursor-pointer ${isRotating ? 'rotating' : ''}`} />
@@ -158,7 +159,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                         <IoEyeOutline onClick={() => setHide(prev => !prev)} className='text-sm self-center ml-2 cursor-pointer' />
                     </div>
                 </div>
-                <div ref={containerRef} className={` ${viewall ? ' transition-all delay-500 h-[30rem]' : 'h-40rem'} scroll w-full overflow-y-auto overflow-x-hidden flex items-start  flex-col`}>
+                <div ref={containerRef} className={` ${viewall ? ' transition-all delay-500 h-[30rem]' : 'h-30rem'} scroll w-full overflow-y-auto overflow-x-hidden flex items-start  flex-col`}>
                     {SideLinks.map((item, index) => (
                         <Link to={item.url}
                             key={index}
@@ -197,8 +198,12 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                         ))}
                     </div>
                 </div>
+                
             </div>
-
+            <div className="mt-2 w-11/12 mx-auto flex items-center justify-center flex-col   ">
+                <div className="font-bold"><span className='text-col'>Pine<span>rock</span></span> Credit Union</div>
+                <div className="">All rights reserved, 2024</div>
+                </div>
         </div>
     )
 }

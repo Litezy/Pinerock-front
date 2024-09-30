@@ -61,7 +61,7 @@ export default function ContactForm() {
 
 
   return (
-    <div className='h-fit bg-white p-4 rounded-xl backdrop-blur-sm'>
+    <div className='h-fit bg-white p-4 rounded-xl '>
       <div className="nunito font-bold text-3xl text-black text-center">Get In Touch</div>
       <form onSubmit={SubmitForm} className="w-full rounded-md h-fit py-3 bg-white relative">
 

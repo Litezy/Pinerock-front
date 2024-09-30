@@ -1,5 +1,5 @@
 import Summary from 'admin/adminComponents/Summary'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
 import { Apis, GetApi, PostApi, profileImg } from 'services/Api'
 import { errorMessage, successMessage } from 'utils/functions'
@@ -18,8 +18,8 @@ const ValidateDeposit = ({ setScreen }) => {
   const [validate, setValidate] = useState(false)
   const [confirm, setConfirm] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [decline,setDecline] = useState(false)
-  
+  const [decline, setDecline] = useState(false)
+
 
   const getProofs = useCallback(async () => {
     try {
@@ -46,7 +46,21 @@ const ValidateDeposit = ({ setScreen }) => {
     getProofs()
   }, [])
 
- 
+  const val = useRef(null)
+  
+  useEffect(() => {
+    if (val) {
+      window.addEventListener('click', (e) => {
+        if (val.current && !val.current.contains(e.target)) {
+          setValidate(false)
+          setDecline(false)
+          // setConfirm(false)
+        }
+      }, true)
+    }
+  }, [])
+
+
   const selectItem = (item) => {
     setSelectedItem(item)
   }
@@ -57,6 +71,7 @@ const ValidateDeposit = ({ setScreen }) => {
       id: selectedItem?.id,
       amount: selectedItem?.amount
     }
+    //  return console.log(formdata)
     setConfirm(false)
     setLoading(true)
     try {
@@ -66,17 +81,19 @@ const ValidateDeposit = ({ setScreen }) => {
         successMessage(res.msg)
         setModal(false)
         getProofs()
-      }else{
+      } else {
         errorMessage(res.msg)
       }
     } catch (error) {
       errorMessage(error.message)
       console.log(error)
     }
-    finally{
+    finally {
       setLoading(false)
     }
   }
+
+
   const declinePayment = async (e) => {
     e.preventDefault()
     const formdata = {
@@ -90,18 +107,18 @@ const ValidateDeposit = ({ setScreen }) => {
         successMessage(res.msg)
         setModal(false)
         getProofs()
-      }else{
+      } else {
         errorMessage(res.msg)
       }
     } catch (error) {
       errorMessage(error.message)
       console.log(error)
     }
-    finally{
+    finally {
       setLoading(false)
     }
   }
- 
+
   return (
     <div>
       <div className="w-full flex items-center justify-between">
@@ -110,34 +127,34 @@ const ValidateDeposit = ({ setScreen }) => {
           <ModalLayout setModal={setModal} clas={`w-11/12 mx-auto lg:w-[60%]`}>
             <div className="  rounded-lg bg-white p-5 w-full relative">
 
-        
+
               {confirm &&
-                <div className="absolute p-5 rounded-md w-11/12 lg:w-2/4 top-1/2 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-white h-fit">
-                   <div className="text-xl font-bold text-center">Take Action?</div>
-                   <div className="my-4 flex items-center justify-between">
-                    <button onClick={()=> setDecline(true)} className='w-fit px-5 py-1 rounded-md bg-red-500 text-white'>decline</button>
-                    <button onClick={()=> setValidate(true)} className='w-fit px-5 py-1 rounded-md bg-green-500 text-white'>validate</button>
-                   </div>
+                <div  className="absolute p-5 rounded-md w-11/12 lg:w-2/4 top-1/2 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-primary h-fit">
+                  <div className="text-xl font-bold text-center text-white">Take Action?</div>
+                  <div className="my-4 flex items-center justify-between">
+                    <button onClick={() => setDecline(true)} className='w-fit px-5 py-1 rounded-md bg-red-500 text-white'>decline</button>
+                    <button onClick={() => setValidate(true)} className='w-fit px-5 py-1 rounded-md bg-green-500 text-white'>validate</button>
+                  </div>
                 </div>
 
               }
               {decline &&
-                <div className="absolute p-5 rounded-md w-11/12 lg:w-2/4 top-1/2 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-white h-fit">
-                   <div className="text-xl font-bold text-center">Confirm Decline</div>
-                   <div className="my-4 flex items-center justify-between">
-                    <button onClick={()=> setDecline(false)} className='w-fit px-5 py-1 bg-primary rounded-md  text-white'>cancel</button>
+                <div ref={val} className="absolute p-5 rounded-md w-11/12 lg:w-2/4 top-1/2 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-primary  h-fit">
+                  <div className="text-xl font-bold text-center text-white">Confirm Decline</div>
+                  <div className="my-4 flex items-center justify-between">
+                    <button onClick={() => setDecline(false)} className='w-fit px-5 py-1 bg-primary rounded-md  text-white'>cancel</button>
                     <button onClick={declinePayment} className='w-fit px-5 py-1 rounded-md bg-red-500 text-white'>decline</button>
-                   </div>
+                  </div>
                 </div>
 
               }
               {validate &&
-                <div className="absolute p-5 rounded-md w-11/12 lg:w-2/4 top-1/2 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-white h-fit">
-                   <div className="text-xl font-bold text-center">Confirm Approval</div>
-                   <div className="my-4 flex items-center justify-between">
-                    <button onClick={()=> setValidate(false)} className='w-fit px-5 py-1 rounded-md bg-red-500 text-white'>cancel</button>
+                <div ref={val} className="absolute p-5 rounded-md w-11/12 lg:w-2/4 top-1/2 left-1/2 -translate-x-1/2 backdrop-blur-sm bg-primary  h-fit">
+                  <div className="text-xl font-bold text-center text-white">Confirm Approval</div>
+                  <div className="my-4 flex items-center justify-between">
+                    <button onClick={() => setValidate(false)} className='w-fit px-5 py-1 rounded-md bg-red-500 text-white'>cancel</button>
                     <button onClick={ValidatePayment} className='w-fit px-5 py-1 rounded-md bg-green-500 text-white'>proceed</button>
-                   </div>
+                  </div>
                 </div>
 
               }
@@ -216,9 +233,9 @@ const ValidateDeposit = ({ setScreen }) => {
           <tbody>
             {proofs.length > 0 ? proofs.map((item, i) => (
               <tr className="bg-white border-b " key={i}>
-                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                <td scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                   {item.userdeposits?.firstname}  {item.userdeposits?.lastname}
-                </th>
+                </td>
                 <td className="px-6 py-4">
                   {item.userdeposits?.id}
                 </td>
@@ -232,9 +249,11 @@ const ValidateDeposit = ({ setScreen }) => {
                   <button onMouseOver={() => selectItem(item)} onClick={() => setModal(true)} className="bg-primary text-white px-5 rounded-lg py-2">review</button>
                 </td>
               </tr>
-            )):
-          <div className=" w-full text-lg font-semibold flex items-center justify-center">No deposits to validate</div>
-          }
+            )) :
+              <tr className=" w-full text-lg font-semibold flex items-center justify-center">
+                <td>No deposits to validate</td>
+              </tr>
+            }
 
           </tbody>
         </table>

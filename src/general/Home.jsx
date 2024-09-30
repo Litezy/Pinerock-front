@@ -183,7 +183,7 @@ export default function Home() {
           <div className="">Contact Us</div>
           <div className="bg-zinc-500 h-1 w-3/5 mt-3"></div>
         </div>
-        <div className="contacts rounded-xl py-10 px-5 grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="contacts backdrop-blur-md rounded-xl py-10 px-5 grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="">
           </div>
           <ContactForm />

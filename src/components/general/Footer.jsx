@@ -68,7 +68,10 @@ export default function Footer() {
       <div className="w-11/12 text-slate-300 mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <div className="w-full">
+            <div className="flex items-center gap-3">
+            <img src={logo} className="w-32 h-20 mb-5" alt="pinerock logo" />
             <div className=" text-3xl font-bold mb-5 text-white border-b pb-5">  {SiteName}</div>
+            </div>
             <div className="text-base">Pinerockcreditunion is a multinational regional financial services provider that is committed to delivering complete solutions to customers through differentiated segment offerings and an ecosystem that supports simple, fast and seamless customer experiences, underpinned by a cohesive and inspired workforce, and relationships built with stakeholders.</div>
             <div className="text-slate-300 my-3  pt-2 flex flex-col gap-3">
               <div className="flex items-center gap-2"> <SlClock /> Working hours: 24/7</div>

@@ -38,10 +38,10 @@ export default function Header({show}) {
         initial="hidden"
         animate="visible"
         transition={{delay: 0.5,duration: 1}}
-        className="flex items-center bg-sec  justify-between px-3 py-1 md:py-2  nunito">
+        className="flex items-center bg-sec  justify-between  px-10 lg:px-20 py-1 md:py-2  nunito">
         <div className="">
           <Link to="/" className="text-xl md:text-3xl font-bold text-white">
-           <img src={logo} className="w-32 h-16 " alt="pinerock logo" />
+           <img src={logo} className="max-w-32  h-16 " alt="pinerock logo" />
           </Link>
         </div>
         <div className="hidden lg:flex items-center  justify-end">

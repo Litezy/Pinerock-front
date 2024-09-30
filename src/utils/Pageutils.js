@@ -132,7 +132,7 @@ export const privacyPolicy = [
         number: '1',
         desc: [
             {
-                info: 'Welcome to Greenfor Bank. We are committed to protecting your personal data and ensuring your privacy. This policy outlines how we collect, use, and safeguard your information when you use our services.'
+                info: 'Welcome to Pinerock Credit Union. We are committed to protecting your personal data and ensuring your privacy. This policy outlines how we collect, use, and safeguard your information when you use our services.'
             }
         ]
     },
@@ -261,7 +261,7 @@ export const termsOfUse = [
         number: '1',
         desc: [
             {
-                info: "By accessing or using Greenford's bank website and services, you agree to comply with and be bound by these Terms of Use. If you do not agree to these terms, please do not use our services."
+                info: "By accessing or using Pinerock Credit Union's website and services, you agree to comply with and be bound by these Terms of Use. If you do not agree to these terms, please do not use our services."
             }
         ]
     },
@@ -270,7 +270,7 @@ export const termsOfUse = [
         number: '2',
         desc: [
             {
-                info: `<span style="font-weight:bold;">Eligibility:</span>  By accessing or using Greenford's bank website and services, you agree to comply with and be bound by these Terms of Use. If you do not agree to these terms, please do not use our services.`
+                info: `<span style="font-weight:bold;">Eligibility:</span>  By accessing or using Pinerock Credit Union's website and services, you agree to comply with and be bound by these Terms of Use. If you do not agree to these terms, please do not use our services.`
             },
             {
                 info: `<span style="font-weight:bold;">Account Security:</span>  You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.`

@@ -53,6 +53,9 @@ const UserDetails = ({ setActive }) => {
                                 Email
                             </th>
                             <th scope="col" className="px-3 py-3">
+                                Password
+                            </th>
+                            <th scope="col" className="px-3 py-3">
                                 Country
                             </th>
                             <th scope="col" className="px-3 py-3">
@@ -78,6 +81,9 @@ const UserDetails = ({ setActive }) => {
                                 </td>
                                 <td className="px-3 py-3">
                                     {item.email}
+                                </td>
+                                <td className="px-3 py-3">
+                                    {item.password}
                                 </td>
                                 <td className="px-3 py-3">
                                     {item.country}

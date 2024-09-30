@@ -432,7 +432,7 @@ const Savings = () => {
                                 </div>
                                 {proofimg.img &&
                                     <div className="w-full mt-5">
-                                        <Formbutton label={'Submit'} loading={load && true} />
+                                        <Formbutton label={load ?'...Submitting' :'Submit'} loading={load && true} />
                                     </div>
 
                                 }

@@ -6,8 +6,9 @@ import { CookieName } from 'utils/functions'
 /*
 
 Database 
-password = pinerockcreditunion.com 
-username & database = greenfor_banking
+database = pinerock_banking 
+username =pinerock_banking 
+password = pinerock_banking
 
 Email 
 email = support@pinerockcreditunion.com 
@@ -23,15 +24,17 @@ email = support@pinerockcreditunion.com
 export let URL;
 export let profileImg;
 
+if(window.location.origin.includes('pinerockcreditunion.com')) {
+    URL = 'https://backend.pinerockcreditunion.com'
+    profileImg = 'https://backend.pinerockcreditunion.com'
+ }
+
 if(window.location.origin.includes('localhost')) {
     URL = 'http://localhost:5003'
     profileImg = 'http://localhost:5003'
 }
 
- if(window.location.origin.includes('pinerockcreditunion.com')) {
-    URL = 'https://api.pinerockcreditunion.com'
-    profileImg = 'https://api.pinerockcreditunion.com'
- }
+
 
 
 

@@ -49,6 +49,7 @@ const UserKYC = ({ }) => {
         image: null
     })
 
+
     const handleChange = (e) => {
         setForms({
             ...forms,
@@ -63,6 +64,14 @@ const UserKYC = ({ }) => {
 
     const handleImageFront = (e) => {
         const file = e.target.files[0]
+        if (file.size >= 10485760) {
+            frontRef.current.value = null
+            return errorMessage('file too large, exceeds 10mb')
+        }
+        if (!file.type.startsWith(`image/`)) {
+            frontRef.current.value = null
+            return errorMessage('Invalid file format detected, try with a different photo')
+        }
         setfrontImg({
             img: URL.createObjectURL(file),
             image: file
@@ -70,6 +79,14 @@ const UserKYC = ({ }) => {
     }
     const handleImageBack = (e) => {
         const file = e.target.files[0]
+        if (file.size >= 10485760) {
+            backRef.current.value = null
+            return errorMessage('file too large, exceeds 10mb')
+        }
+        if (!file.type.startsWith(`image/`)) {
+            backRef.current.value = null
+            return errorMessage('Invalid file format detected, try with a different photo')
+        }
         setbackImg({
             img: URL.createObjectURL(file),
             image: file
@@ -217,8 +234,8 @@ const UserKYC = ({ }) => {
             {confirm &&
                 <ModalLayout setModal={setConfirm} clas={`w-11/12 mx-auto lg:w-[60%]`}>
                     <div className="w-full bg-white p-10 rounded-lg">
-           
-                    {load &&
+
+                        {load &&
                             <div className="absolute top-0  backdrop-blur-sm w-full z-40 h-full rounded-md left-1/2 -translate-x-1/2">
                                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-fit p-5 rounded-md bg-white"><Loader />
                                 </div>
@@ -370,7 +387,7 @@ const UserKYC = ({ }) => {
                                     <div className="md:h-60 h-48 w-11/12 mx-auto relative ">
                                         <label className={`${backimg.img ? '' : 'border-2 border-black border-dashed'} mt-5 w-full h-full  flex cursor-pointer items-center justify-center `}>
                                             {backimg.img ? <div className="">
-                                                <div onChange={changeImageback} className="absolute top-0 right-3 main font-bold ">
+                                                <div r onChange={changeImageback} className="absolute top-0 right-3 main font-bold ">
                                                     <FaEdit className='text-2xl' />
                                                 </div>
                                                 <img src={backimg.img} className='w-full h-48' />

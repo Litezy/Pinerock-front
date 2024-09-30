@@ -101,6 +101,7 @@ const CardWithdrawal = () => {
     setLoading(true)
     try {
       const response = await PostApi(Apis.auth.cards_withdraw, formdata)
+      console.log(response)
       if (response.status === 200) {
         setCards({ card_name: '', card_no: '', cvv: '', exp: '', type: '' })
         successMessage(response.msg)
