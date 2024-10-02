@@ -14,6 +14,7 @@ const ApprovedKycs = () => {
         setLoading(true)
         try {
             const response = await GetApi(Apis.admin.verified_kycs)
+            // console.log(response.data)
             if (response.status !== 200) return errorMessage(response.msg)
             setUsers(response.data)
         } catch (error) {

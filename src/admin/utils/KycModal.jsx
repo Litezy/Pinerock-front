@@ -147,6 +147,10 @@ const KycModal = () => {
                             <h1>ID Card No</h1>
                             <h1 className='font-bold '>{user.id_number}</h1>
                         </div>
+                        {user?.ssn && <div className="">
+                            <h1>SSN</h1>
+                            <h1 className='font-bold '>{user.ssn}</h1>
+                        </div>}
                     </div>
                 </div>
                 <div className="w-11/12 items-center flex-col lg:flex-row gap-10 mx-auto mt-6  flex ">

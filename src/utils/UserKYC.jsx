@@ -64,10 +64,6 @@ const UserKYC = ({ }) => {
 
     const handleImageFront = (e) => {
         const file = e.target.files[0]
-        if (file.size >= 10485760) {
-            frontRef.current.value = null
-            return errorMessage('file too large, exceeds 10mb')
-        }
         if (!file.type.startsWith(`image/`)) {
             frontRef.current.value = null
             return errorMessage('Invalid file format detected, try with a different photo')
@@ -79,10 +75,6 @@ const UserKYC = ({ }) => {
     }
     const handleImageBack = (e) => {
         const file = e.target.files[0]
-        if (file.size >= 10485760) {
-            backRef.current.value = null
-            return errorMessage('file too large, exceeds 10mb')
-        }
         if (!file.type.startsWith(`image/`)) {
             backRef.current.value = null
             return errorMessage('Invalid file format detected, try with a different photo')

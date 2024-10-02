@@ -72,7 +72,7 @@ const Messages = () => {
 
         <div className="h-[12dvh]  w-full border-b flex items-center px-5 justify-between">
           <Link
-            className='w-fit text-xs px-4 py-1 rounded-md bg-gradient-to-tr from-primary to bg-purple-700 text-white'
+            className='w-fit text-xs px-4 py-1 rounded-md bg-gradient-to-tr from-primary to-sec text-white'
             to={active ? `/user/tickets/status/active` : `/user/tickets/status/closed`}
           >back</Link>
 
