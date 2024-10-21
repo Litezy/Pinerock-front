@@ -17,6 +17,7 @@ const Transactions = () => {
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const recordsPerPage = 10
+  const profile = useSelector((state)=> state.profile.profile)
 
   const fetchTransHistory = useCallback(async () => {
     setLoading(true)
@@ -85,7 +86,7 @@ const Transactions = () => {
       setFilteredData(transdata)
     }
   }
-
+  const newCurr = useSelector((state) => state.profile.newCurr)
   const terminated = 'Goal Savings Terminated'
   return (
     <div className='w-full'>
@@ -129,7 +130,7 @@ const Transactions = () => {
                         }`}>
                         {item.type === 'Deposit' && item.status === 'success' ? '+' :
                           item.type === 'Deposit' && item.status === 'pending' ? '' :
-                            item.type === terminated && item.status === 'success' ? '+' : '-'}{currency}{parseInt(item.amount).toLocaleString()}
+                            item.type === terminated && item.status === 'success' ? '+' : '-'}{profile?.currency === '?' ? newCurr : currency}{parseInt(item.amount).toLocaleString()}
                       </div>
                       <div className="text-xs text-right">{item.date}</div>
                     </div>

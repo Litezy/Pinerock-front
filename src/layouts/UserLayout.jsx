@@ -116,7 +116,7 @@ export default function UserLayout({ children }) {
             {profile?.verified === 'true' &&
                 <div className="flex items-center h-screen  bg-white">
                     <div className="h-screen hidden lg:block lg:w-[20%] bg-gradient-to-tr from-primary to-sec text-white">
-                        <UserSidebar setOpenSide={setOpenSide} />
+                        <UserSidebar  setOpenSide={setOpenSide} />
                     </div>
                     <div className="bg-slate-50 lg:w-[80%] h-screen overflow-y-auto w-full relative">
                        {!chats && <div className="lg:w-[78.8%] md:w-[98.25%]  w-[100%] bg-white flex z-50 items-center overflow-y-hidden overflow-x-hidden justify-between fixed  h-fit px-5 py-2">

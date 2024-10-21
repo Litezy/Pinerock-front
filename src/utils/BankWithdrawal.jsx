@@ -121,7 +121,7 @@ const BankWithdrawal = () => {
         setScreen(1)
     }
 
-
+const newCurr = useSelector((state) => state.profile.newCurr)
 
 
     return (
@@ -166,7 +166,7 @@ const BankWithdrawal = () => {
                                 </div>
 
                                 <div className="flex items-start flex-col lg:w-1/2 mx-auto w-full">
-                                    <div className="-500 text-base">Amount ({currency})</div>
+                                    <div className="-500 text-base">Amount ({profile?.currency === '?' ? newCurr : currency})</div>
                                     <FormComponent formtype='phone' placeholder={`enter aamount`} name={`amount`} value={forms.amount} onchange={handleChange} />
                                 </div>
                                 <div className="flex items-start flex-col  w-full">
@@ -215,7 +215,7 @@ const BankWithdrawal = () => {
                                         <div className="capitalize text-base font-bold">{forms.swift}</div>
                                     </div>
                                     <div className="flex items-center gap-3  w-full">
-                                        <div className="-500 text-base">Amount({currency}):</div>
+                                        <div className="-500 text-base">Amount({profile?.currency === '?' ? newCurr : currency}):</div>
                                         <div className="capitalize text-base font-bold">{forms.amount}</div>
                                     </div>
 
@@ -266,7 +266,7 @@ const BankWithdrawal = () => {
                                         </div>
                                         <div className="flex items-center gap-3  w-full">
                                             <div className="-500 text-base">Amount:</div>
-                                            <div className="capitalize text-base font-bold">{currency}{receipt.amount}</div>
+                                            <div className="capitalize text-base font-bold">({profile?.currency === '?' ? newCurr : currency}){receipt.amount}</div>
                                         </div>
                                         <div className="flex items-center gap-3  w-full">
                                             <div className="-500 text-base">Memo:</div>

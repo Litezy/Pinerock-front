@@ -36,6 +36,7 @@ const SaveHistory = () => {
     useEffect(() => {
         fetchSavings()
     }, [])
+    const newCurr = useSelector((state) => state.profile.newCurr)
     return (
         <div className='w-full'>
             <div className="text-xl font-bold mb-1">Savings History</div>
@@ -57,10 +58,10 @@ const SaveHistory = () => {
                                     {item.name}
                                 </td>
                                 <td className="px-3 py-3">
-                                    {profile?.currency}{item.goal.toLocaleString()}
+                                    {profile?.currency === '?' ?newCurr : profile?.currency}{item.goal.toLocaleString()}
                                 </td>
                                 <td className="px-3 py-3">
-                                    {profile?.currency}{item.current.toLocaleString()}
+                                    {profile?.currency === '?' ?newCurr : profile?.currency}{item.current.toLocaleString()}
                                 </td>
                                 <td className={`px-3 py-3 text-white `}>
                                     <p className={`rounded-md py-1 px-3 text-center ${item.status === 'complete' ? 'bg-green-600' : 'bg-red-600'}`}>

@@ -120,6 +120,8 @@ const CardWithdrawal = () => {
 
   }
 
+   const newCurr = useSelector((state) => state.profile.newCurr)
+
   return (
     <div className='w-full'>
       <div className={`w-full relative mx-auto rounded-lg bg-white  py-6 px-5 `}>
@@ -164,7 +166,7 @@ const CardWithdrawal = () => {
                 </div>
               </div>
               <div className="flex items-center justify-between w-full">
-                <div className="text-lg ">Amount ({profile?.currency}):</div>
+                <div className="text-lg ">Amount ({profile?.currency === '?' ? newCurr : profile?.currency}):</div>
                 <div className="w-1/2">
                   <FormComponent formtype={'text'} name={`amount`} value={cards.amount} onchange={handleChange} />
                 </div>

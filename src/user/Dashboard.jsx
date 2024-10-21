@@ -6,20 +6,21 @@ import { Progress } from 'antd'
 import { errorMessage, successMessage } from 'utils/functions'
 import { GoShieldLock } from 'react-icons/go'
 import { IoCopy, IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5'
-import img1 from 'assets/img1.png'
+import img1 from 'assets/withdraw.png'
 import img3 from 'assets/img3.png'
 import Imaged from 'utils/Imaged'
 import { Apis, GetApi } from 'services/Api'
 import { useDispatch, useSelector } from 'react-redux'
-import { dispatchProfile, } from 'app/reducer'
+import { dispatchNewCurr, dispatchProfile, } from 'app/reducer'
 import ModalLayout from 'utils/ModalLayout'
 import CardComponent from 'components/user/CardComponent'
 import { FaAsterisk } from 'react-icons/fa'
+import axios from 'axios'
 
 
 const DashboardOptions = [
-    { img: img1, url: '/user/external-transfer', title: 'Transfer' },
-    { img: img3, url: '/user/savings', title: 'Savings' },
+    { img: img1, url: '/user/withdrawals', title: 'Withdraw' },
+    { img: img3, url: '/user/deposits', title: 'Savings' },
 ]
 
 export default function Dashboard() {
@@ -91,6 +92,10 @@ export default function Dashboard() {
     };
     const transferin = 'Internal Transfer In'
     const transferout = 'Internal Transfer Out'
+    const newCurr = useSelector((state) =>state.profile.newCurr)
+
+  
+    // console.log(profile?.country)
     return (
         <div>
             <div className="w-11/12 mx-auto">
@@ -111,11 +116,11 @@ export default function Dashboard() {
                                         <div className="border-b py-1 text-zinc-500 text-right">Savings name: <span className='text-xl font-bold text-primary capitalize'>{selectSaving.name}</span></div>
                                         <div className="border-b py-1">
                                             <div className=" text-right">Savings Goal</div>
-                                            <div className="font-bold text-right text-primary">{currency}{selectSaving.goal.toLocaleString()}</div>
+                                            <div className="font-bold text-right text-primary">{profile?.currency === '?' ? newCurr : currency }{selectSaving.goal.toLocaleString()}</div>
                                         </div>
                                         <div className="border-b py-1">
                                             <div className=" text-right">Currently Saved</div>
-                                            <div className="font-bold text-right text-primary">{currency}{selectSaving.current.toLocaleString()}</div>
+                                            <div className="font-bold text-right text-primary">{profile?.currency === '?' ? newCurr : currency }{selectSaving.current.toLocaleString()}</div>
                                         </div>
                                         <div className="border-b py-1">
                                             <div className=" text-right">Last Saved</div>
@@ -142,7 +147,7 @@ export default function Dashboard() {
                                 <Icon onClick={() => setShow(prev => !prev)} className='text-xl cursor-pointer' />
                             </div>
                             <div className="flex  items-start">
-                                <div className="text-slate-200 lg:text-4xl text-3xl  font-bold">{currency}</div>
+                                <div className="text-slate-200 lg:text-4xl text-3xl  font-bold">{profile?.currency === '?' ? newCurr : currency}</div>
                                 <div className="font-bold lg:text-4xl text-3xl text-white">{show ? profile?.balance?.toLocaleString() :
                                     <>
                                         <div className="flex">
@@ -208,11 +213,11 @@ export default function Dashboard() {
                                     <div className="border-b py-1 text-zinc-500 text-right"> Savings name: <span className='text-xl font-bold capitalize text-primary'>{item.name}</span> </div>
                                     <div className="border-b py-1">
                                         <div className=" text-right">Savings Goal</div>
-                                        <div className="font-bold text-right text-primary">{currency}{item.goal?.toLocaleString()}</div>
+                                        <div className="font-bold text-right text-primary">{profile?.currency === '?' ? newCurr : currency } {item.goal?.toLocaleString()}</div>
                                     </div>
                                     <div className="border-b py-1">
                                         <div className=" text-right">Currently Saved</div>
-                                        <div className="font-bold text-right text-primary">{currency}{item.current?.toLocaleString()}</div>
+                                        <div className="font-bold text-right text-primary">{profile?.currency === '?' ? newCurr : currency } {item.current?.toLocaleString()}</div>
                                     </div>
                                     <div className="border-b py-1">
                                         <div className=" text-right">Last Saved</div>
@@ -294,7 +299,7 @@ export default function Dashboard() {
 
                                                 {item.type === deposit && item.status === 'success' ? '+' :
                                                     item.type === deposit && item.status === 'pending' ? '' :
-                                                        item.type === terminated && item.status === 'success' ? '+' : '-'}{currency}{parseInt(item.amount).toLocaleString()}
+                                                        item.type === terminated && item.status === 'success' ? '+' : '-'}{profile?.currency === '?' ? newCurr : currency }{parseInt(item.amount).toLocaleString()}
                                             </div>
                                             <div className="text-xs text-right">{item.date}</div>
                                         </div>

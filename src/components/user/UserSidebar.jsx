@@ -7,7 +7,7 @@ import ModalLayout from 'utils/ModalLayout'
 import Cookies from 'js-cookie'
 import { useDispatch, useSelector } from 'react-redux'
 import { BsChevronDoubleDown } from "react-icons/bs";
-import { dispatchCurrency, dispatchNotifications, dispatchProfile } from 'app/reducer'
+import { dispatchCurrency, dispatchNewCurr, dispatchNotifications, dispatchProfile } from 'app/reducer'
 import axios from 'axios'
 import { FiRefreshCcw } from "react-icons/fi";
 import { MdVerified } from "react-icons/md";
@@ -95,7 +95,34 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
             setIsRotating(false)
         }
     }, [dispatch]);
+    const fetchCurrency = async () =>{
+        try {
+            const response = await axios.get(`https://restcountries.com/v3.1/name/${profile?.country}`);
+            if (response.data && response.data.length > 0) {
+             if(profile?.country === 'china'){
+                const countryData = response.data[2];
+                const currencySymbol = Object.values(countryData.currencies)[0].symbol;
+                dispatch(dispatchNewCurr(currencySymbol))
+                console.log(currencySymbol)
+             }else{
+                const countryData = response.data[0];
+                const currencySymbol = Object.values(countryData.currencies)[0].symbol;
+                dispatch(dispatchNewCurr(currencySymbol))
+                console.log(currencySymbol)
+             }
+            } else {
+              console.error('Unexpected response format:', response);
+            }
+          } catch (apiError) {
+            console.error('Error fetching currency:', apiError);
+          }
+    }
 
+   const newCurr = useSelector((state) =>state.profile.newCurr)
+
+    useEffect(()=>{
+          if(newCurr === null ) { fetchCurrency()}
+    },[newCurr])
 
 
     useEffect(() => {
@@ -110,7 +137,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
 
 
     const searchParams = new URLSearchParams(location.search);
-    const status = searchParams.get('status');
+   
 
     useEffect(() => {
         if (viewall && containerRef) {
@@ -149,11 +176,11 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                         {profile?.kyc === 'verified' && <div className=""> <MdVerified className='text-primary text-lg' /></div>}
                     </div>
                     <div className="text-white items-center gap-2 font-bold text-xl flex justify-center">
-                        <div onClick={fetchUserProfile} className="">
+                        <div onClick={fetchCurrency} className="">
                             <FiRefreshCcw className={`text-sm cursor-pointer ${isRotating ? 'rotating' : ''}`} />
                         </div>
                         <div className="flex items-center ">
-                            <span>{currency}</span>
+                            <span>{profile?.currency === '?' ? newCurr : currency}</span>
                             <span>{hide ? '***' : profile?.balance?.toLocaleString()}</span>
                         </div>
                         <IoEyeOutline onClick={() => setHide(prev => !prev)} className='text-sm self-center ml-2 cursor-pointer' />
@@ -201,8 +228,8 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                 
             </div>
             <div className="mt-2 w-11/12 mx-auto flex items-center justify-center flex-col   ">
-                <div className="font-bold"><span className='text-col'>Pine<span>rock</span></span> Credit Union</div>
-                <div className="">All rights reserved, 2024</div>
+                <div className="font-bold text-white"><span className='text-col'>Pine<span>rock</span></span> Credit Union</div>
+                <div className="text-white">All rights reserved, 2024</div>
                 </div>
         </div>
     )

@@ -123,7 +123,7 @@ const InternalTransfer = () => {
             setLoad(false)
         }
     }
-
+    const newCurr = useSelector((state) =>state.profile.newCurr)
 
     return (
         <div>
@@ -135,7 +135,7 @@ const InternalTransfer = () => {
                         <Icon onClick={() => setBal(prev => !prev)} className='text-2xl cursor-pointer' />
                     </div>
                     <div className="flex mt-5 self-center ">
-                        <div className="text-slate-200 text-2xl self-end font-bold">{currency} </div>
+                        <div className="text-slate-200 text-2xl self-end font-bold">{profile?.currency === '?' ? newCurr : currency} </div>
                         <div className="font-bold text-2xl text-white">{bal ? profile?.balance?.toLocaleString() :
                             <>
                                 <div className="flex">

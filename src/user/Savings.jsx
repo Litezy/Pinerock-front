@@ -333,7 +333,7 @@ const Savings = () => {
     }
 
 
-
+    const newCurr = useSelector((state) =>state.profile.newCurr)
     return (
         <div className={`w-11/12  mx-auto `}>
 
@@ -358,7 +358,7 @@ const Savings = () => {
                             <div className="flex w-full lg:items-center flex-col lg:flex-row justify-between">
                                 <div className="flex items-start lg:w-[45%]   flex-col">
                                     <div className="w-full">Amount to add </div>
-                                    <div>Available bal. {currency}{profile?.balance?.toLocaleString()}</div>
+                                    <div>Available bal: {profile?.currency === '?' ? newCurr : currency}{profile?.balance?.toLocaleString()}</div>
                                 </div>
                                 <FormComponent formtype='phone' name={'current'} value={saveForms.current} onchange={handleChange} />
                             </div>
@@ -479,11 +479,11 @@ const Savings = () => {
                                     <div className="border-b py-1 text-zinc-500 text-right">Savings name: <span className='text-xl font-bold text-primary capitalize'>{selectedItem.name}</span></div>
                                     <div className="border-b py-1">
                                         <div className=" text-right">Savings Goal</div>
-                                        <div className="font-bold text-right text-primary">{currency}{selectedItem.goal?.toLocaleString()}</div>
+                                        <div className="font-bold text-right text-primary">{profile?.currency === '?' ?newCurr : currency}{selectedItem.goal?.toLocaleString()}</div>
                                     </div>
                                     <div className="border-b py-1">
                                         <div className=" text-right">Currently Saved</div>
-                                        <div className="font-bold text-right text-primary">{currency}{selectedItem.current?.toLocaleString()}</div>
+                                        <div className="font-bold text-right text-primary">{profile?.currency === '?' ?newCurr : currency}{selectedItem.current?.toLocaleString()}</div>
                                     </div>
                                     <div className="border-b py-1">
                                         <div className=" text-right">Last Saved</div>
@@ -500,7 +500,7 @@ const Savings = () => {
                             <button type='button' onClick={checkTopup} className='font-bold w-fit px-4 py-2 underline text-primary'>{topup ? 'Close' : 'TopUp Savings'}</button>
                             {topup && <div className="flex items-center flex-col gap-1">
                                 <div className="flex flex-col items-start">
-                                    <div className="">Available Balance <span>{currency}{profile?.balance?.toLocaleString()}</span></div>
+                                    <div className="">Available Balance <span>{profile?.currency === '?' ?newCurr : currency}{profile?.balance?.toLocaleString()}</span></div>
                                     <FormComponent name={`amount`} value={forms.amount} onchange={(e) => setForms({ ...forms, [e.target.name]: e.target.value })} formtype='phone' />
                                 </div>
                                 <ButtonComponent disabled={load2 ? true : false} title={`Top Up`} bg={`bg-gradient-to-tr from-primary to-sec  mt-2 text-white text-white h-10`} />
@@ -549,11 +549,11 @@ const Savings = () => {
                             <div className="border-b py-1 text-zinc-500 text-right"> Savings name: <span className='text-xl font-bold capitalize text-primary'>{item.name}</span> </div>
                             <div className="border-b py-1">
                                 <div className=" text-right">Savings Goal</div>
-                                <div className="font-bold text-right text-primary">{currency}{item.goal?.toLocaleString()}</div>
+                                <div className="font-bold text-right text-primary">{profile?.currency === '?' ?newCurr : currency}{item.goal?.toLocaleString()}</div>
                             </div>
                             <div className="border-b py-1">
                                 <div className=" text-right">Currently Saved</div>
-                                <div className="font-bold text-right text-primary">{currency}{item.current?.toLocaleString()}</div>
+                                <div className="font-bold text-right text-primary">{profile?.currency === '?' ?newCurr : currency}{item.current?.toLocaleString()}</div>
                             </div>
                             <div className="border-b py-1">
                                 <div className=" text-right">Last Saved</div>
@@ -622,7 +622,7 @@ const Savings = () => {
                                         </div>
                                         <div className="flex items-center gap-3">
                                             <div className="text-sm">Amount</div>
-                                            <div className={`text-base font-bold`}>{profile?.currency}{item.goal?.toLocaleString()} </div>
+                                            <div className={`text-base font-bold`}>{profile?.currency === '?' ?newCurr : currency}{item.goal?.toLocaleString()} </div>
                                         </div>
                                     </div>
                                     <div className="flex items-center flex-col">
@@ -661,7 +661,7 @@ const Savings = () => {
                                                 </div>
                                                 <div className="flex items-center gap-3">
                                                     <div className="text-sm">Amount</div>
-                                                    <div className={`text-xl font-bold`}>{profile?.currency}{item.goal?.toLocaleString()} </div>
+                                                    <div className={`text-xl font-bold`}>{profile?.currency === '?' ?newCurr : currency}{item.goal?.toLocaleString()} </div>
                                                 </div>
                                             </div>
                                             <div className="flex items-center flex-col">
