@@ -6,8 +6,8 @@ import { CookieName } from 'utils/functions'
 /*
 
 Database 
-database = pinerock_banking 
-username =pinerock_banking 
+database = pinerock_bankingdb 
+username =pinerock_bankinguser 
 password = pinerock_banking
 
 Email 
@@ -137,6 +137,11 @@ export const admin_urls = {
     all_card_pendings: admin + '/all-card-pendings',
     all_card_complete: admin + '/all-card-complete',
     confirm_card_withdrawal: admin + '/confirm-card-withdrawal',
+
+    //reverse
+    confirmed_withdrawals: admin + '/fetch_successful_trans',
+    reverse_funds: admin + '/reverse_trans',
+    reversed_trans: admin + '/allreversed',
 
     //tickets and kycs
     all_active_tickets: admin + '/all-active-tickets',

@@ -17,6 +17,7 @@ export default function Login() {
         password: ''
     })
 
+    const [login, setLogin] = useState(false)
     const navigate = useNavigate()
 
     const handleChange = (e) => {
@@ -65,25 +66,51 @@ export default function Login() {
         <div className='bg-gradient-to-tr from-sec  to-primary h-screen overflow-x-hidden flex items-center justify-center'>
             <div className="w-[90%] mx-auto max-w-xl bg-white backdrop-blur-sm p-5 relative rounded-lg mt-10 lg:mt-20">
 
-                {loading && 
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
-                    <Loader/>
-                </div>
-                }
-                <div className="text-3xl lg:text-4xl font-bold text-sec">Login Account</div>
-                <form onSubmit={LoginAcc} className='mt-5 flex items-start gap-4 flex-col'>
-                    <FormComponent formtype="email" name={`email`} value={forms.email} onchange={handleChange} placeholder="Email Address" />
-                    <FormComponent formtype="password" name={`password`} value={forms.password} onchange={handleChange} placeholder="Password" />
-                    <div className="grid grid-cols-2 gap-4 items-center mb-3">
-                       
-                        <div className="text-right">
-                            <Link to="/forgot-password" className='text-primary font-semibold'>Forgot Password?</Link>
-                        </div>
+                {loading &&
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
+                        <Loader />
                     </div>
-                    <ButtonComponent bg={`bg-sec text-white h-12`} title={loading ? "...Logging in" : "Login Account"} />
-                    <div className="text-zinc-500 mt-5 text-center ">Don't have an account? <Link to="/signup" className='text-sec font-semibold'>Create Account</Link> </div>
-                    <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-sec font-semibold'>Go back home</Link> </div>
-                </form>
+                }
+                {!login ? <div>
+                    <div className="text-3xl lg:text-4xl font-bold text-sec">Login Account</div>
+                    <form onSubmit={LoginAcc} className='mt-5 flex items-start gap-4 flex-col'>
+                        <FormComponent formtype="email" name={`email`} value={forms.email} onchange={handleChange} placeholder="Email Address" />
+                        <FormComponent formtype="password" name={`password`} value={forms.password} onchange={handleChange} placeholder="Password" />
+                        <div className="grid grid-cols-2 gap-4 items-center mb-3">
+
+                            <div className="text-right">
+                                <Link to="/forgot-password" className='text-primary font-semibold'>Forgot Password?</Link>
+                            </div>
+                        </div>
+                        <ButtonComponent bg={`bg-sec text-white h-12`} title={loading ? "...Logging in" : "Login Account"} />
+                        <div className="text-zinc-500 mt-5 text-center ">Don't have an account? <Link to="/signup" className='text-sec font-semibold'>Create Account</Link> </div>
+                        <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-sec font-semibold'>Go back home</Link> </div>
+                    </form>
+                </div> :
+                    <div className="flex items-start flex-col gap-5">
+                        <div className="">Site Maintenance Notice</div>
+
+                        <div className="font-bold">Dear User,</div>
+
+                        <div className="">
+                        Our website is currently undergoing scheduled maintenance to improve your experience. During this time, some services may be temporarily unavailable. We apologize for any inconvenience and appreciate your patience as we work to enhance our platform.
+                        </div>
+
+                        <div className="">
+                        Estimated Downtime:  <span className='font-bold'>November 9th, 2:00 AM to November 11th at 6:00 AM UTC</span> <br />
+                        We’ll Be Back Shortly!
+                        </div>
+
+                        <div className="">
+                        Thank you for your understanding and support. If you have any urgent inquiries, please contact us at support@pinerockcreditunion.com.
+                        </div>
+
+                        <div className="">Best regards, 
+                        <span className='font-bold'>Pinerockcredit Union IT/Support Team</span></div>
+
+                        <Link to={`/`} className="underline text-primary">Go back home</Link>
+                    </div>
+                }
             </div>
         </div>
     )

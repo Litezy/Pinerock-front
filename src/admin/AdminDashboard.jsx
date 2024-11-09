@@ -35,6 +35,7 @@ const AdminDashboard = () => {
     const [pendingKycs, setPendingKycs] = useState([])
     const [approvedKycs, setApprovedKycs] = useState([])
     const [news, setNews] = useState([])
+    const [reversed, setReversed] = useState([])
 
 
 
@@ -256,6 +257,16 @@ const AdminDashboard = () => {
           errorMessage(error.message)
         }
       }, [])
+    const fetchReveresedTrans = useCallback(async () => {
+        try {
+          const res = await GetApi(Apis.admin.reversed_trans)
+          if (res.status !== 200) return ;
+            setReversed(res.data)
+        } catch (error) {
+          console.log(error)
+          errorMessage(error.message)
+        }
+      }, [])
     useEffect(() => {
         fetchUsers()
         fetchTransactions()
@@ -276,6 +287,7 @@ const AdminDashboard = () => {
         fetchPendingKyc()
         fetchApprovedKyc()
         fetchNews()
+        fetchReveresedTrans()
     }, [profile, dispatch])
 
 
@@ -297,6 +309,7 @@ const AdminDashboard = () => {
                 <Summary color='bg-sky-500 text-white' title={"Total Terminated Savings Amount"} data={`$${terminatedamount}`} />
                 <Summary color='bg-slate-700 text-white' title={"Total Completed Savings"} data={completedSavings.length} />
                 <Summary color='bg-sky-700 text-white' title={"Total Completed Savings Amount"} data={`$${completedamount}`} />
+                <Summary color='bg-sky-300 text-white' title={"Total Reversed Transactions"} data={`${reversed.length}`} />
                 <Summary color='bg-yellow-300 text-white' title={"Total KYC's"} data={kyc.length} />
                 <Summary color='bg-yellow-600 text-white' title={"Total Pending KYC's"} data={pendingKycs.length} />
                 <Summary color='bg-yellow-900 text-white' title={"Total Approved KYC's"} data={approvedKycs.length} />

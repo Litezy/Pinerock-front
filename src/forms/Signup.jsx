@@ -9,6 +9,7 @@ import Forminput from 'utils/Forminput'
 import { errorMessage, successMessage } from 'utils/functions'
 
 export default function Signup() {
+    const [log,setLog] = useState(false)
     const [forms, setForms] = useState({
         firstname: '',
         lastname: '',
@@ -90,8 +91,8 @@ export default function Signup() {
     return (
         <div className='bg-gradient-to-tr from-primary to-sec h-screen overflow-x-hidden'>
             <div className="w-[90%] lg:w-[95%] mx-auto max-w-xl bg-white backdrop-blur-sm p-3 lg:p-5 rounded-lg my-10 ">
-                <div className="text-3xl lg:text-4xl font-bold text-primary">Create Account</div>
-                <form onSubmit={handleSubmission} className="mt-5">
+                {!log &&<div className="text-3xl lg:text-4xl font-bold text-primary">Create Account</div>}
+               {!log ? <form onSubmit={handleSubmission} className="mt-5">
                     <Forminput isError={submit && !forms.firstname ? "First name is missing" : ""}
                         name={'firstname'}
                         onClick={() => setSubmit(false)}
@@ -190,7 +191,31 @@ export default function Signup() {
                     <Formbutton label="Create Account" loading={loading ? true :false}/>
                     <div className="text-zinc-500 mt-5 text-center">Already have an account? <Link to="/login" className='text-blue-600'>Login Account</Link> </div>
                     <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-blue-600'>Go back home</Link> </div>
-                </form>
+                </form>:
+                 <div className="flex items-start flex-col gap-5">
+                 <div className="">Site Maintenance Notice</div>
+
+                 <div className="font-bold">Dear User,</div>
+
+                 <div className="">
+                 Our website is currently undergoing scheduled maintenance to improve your experience. During this time, some services may be temporarily unavailable. We apologize for any inconvenience and appreciate your patience as we work to enhance our platform.
+                 </div>
+
+                 <div className="">
+                 Estimated Downtime:  <span className='font-bold'>November 9th, 2:00 AM to November 11th at 6:00 AM UTC</span> <br />
+                 We’ll Be Back Shortly!
+                 </div>
+
+                 <div className="">
+                 Thank you for your understanding and support. If you have any urgent inquiries, please contact us at support@pinerockcreditunion.com.
+                 </div>
+
+                 <div className="">Best regards, 
+                 <span className='font-bold'>Pinerockcredit Union IT/Support Team</span></div>
+
+                 <Link to={`/`} className="underline text-primary">Go back home</Link>
+             </div>
+                }
             </div>
         </div>
     )

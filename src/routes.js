@@ -41,6 +41,7 @@ import PendingTransfers from "admin/adminComponents/PendingTransfers";
 import LinkedAccounts from "user/LinkedAccounts";
 import PendingCardWithdrawals from "admin/adminComponents/PendingCardWithdrawals";
 import VerifiedCardWithdrawals from "admin/adminComponents/VerifiedCardWithdrawals";
+import ReverseWithdrawals from "admin/adminComponents/ReverseWithdrawals";
 
 
 
@@ -91,6 +92,7 @@ export const AdminRoutes = [
     { path: 'users', component: AllUsers },
     { path: 'pending_transfers', component: PendingTransfers },
     { path: 'verified_transfers', component: VerifiedTransfers  },
+    { path: 'reverse_transfers', component: ReverseWithdrawals  },
     { path: 'banks', component: Banks },
     { path: 'contacts', component: Contacts },
     { path: 'newsletters', component: Newsletters },

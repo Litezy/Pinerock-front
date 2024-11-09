@@ -18,6 +18,7 @@ const AdminLinks = [
     { path: 'verified bank withdrawals', url: '/admin/verified_transfers' },
     { path: 'pending card withdrawals', url: '/admin/pending_card_withdrawals' },
     { path: 'verified card withdrawals', url: '/admin/verified_card_withdrawals' },
+    { path: 'reverse transfers', url: '/admin/reverse_transfers' },
     { path: 'banks', url: '/admin/banks' },
     { path: 'newsletters', url: '/admin/newsletters' },
     { path: 'contacts', url: '/admin/contacts' },
