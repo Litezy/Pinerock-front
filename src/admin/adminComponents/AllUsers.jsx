@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Summary from './Summary'
-import { Apis, GetApi } from 'services/Api'
-import { errorMessage } from 'utils/functions'
-import UserBanks from 'admin/utils/UserBanks'
-import UserCards from 'admin/utils/UserCards'
-import CreateUsers from 'admin/utils/CreateUsers'
-import UserDetails from 'admin/utils/UserDetails'
+import { Apis, GetApi } from '@/services/Api'
+import { errorMessage } from '@/utils/functions'
+import UserBanks from '@/admin/utils/UserBanks'
+import UserCards from '@/admin/utils/UserCards'
+import CreateUsers from '@/admin/utils/CreateUsers'
+import UserDetails from '@/admin/utils/UserDetails'
 
 
 const AllUsers = () => {

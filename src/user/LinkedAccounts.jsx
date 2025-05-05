@@ -1,6 +1,6 @@
-import CardComponent from 'components/user/CardComponent'
+import CardComponent from '@/components/user/CardComponent'
 import React, { useState } from 'react'
-import UserBanks from 'utils/UserBanks'
+import UserBanks from '@/utils/UserBanks'
 
 const LinkedAccounts = () => {
     const [add,setAdd] = useState(false)

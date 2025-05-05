@@ -7,7 +7,7 @@ import {
     PrevButton,
     usePrevNextButtons
 } from './EmblaButtons'
-import { HeroSlides} from 'utils/Pageutils'
+import { HeroSlides} from '@/utils/Pageutils'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 

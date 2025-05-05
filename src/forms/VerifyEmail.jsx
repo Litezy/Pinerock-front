@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
-import { Apis, ClientPostApi, PostApi } from 'services/Api'
-import CountryStates from 'utils/CountryStates'
-import DailOptions from 'utils/DailOption'
-import Formbutton from 'utils/Formbutton'
-import Forminput from 'utils/Forminput'
-import { errorMessage, successMessage } from 'utils/functions'
-import Loader from 'utils/Loader'
-import OtpForm from 'utils/OtpForm'
+import { Apis, ClientPostApi, PostApi } from '@/services/Api'
+import Formbutton from '@/utils/Formbutton'
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
+import OtpForm from '@/utils/OtpForm'
 
 export default function VerifyEmailAccount() {
     const [loading, setLoading] = useState(false)

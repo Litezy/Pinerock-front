@@ -7,9 +7,9 @@ import {
 } from "react-icons/bs";
 import { SlClock, SlEarphonesAlt, SlEnvolope } from "react-icons/sl";
 import { Link } from "react-router-dom";
-import { Apis, ClientPostApi } from "services/Api";
-import { errorMessage, SiteContact, SiteEmail, SiteName, successMessage } from "utils/functions";
-import logo from 'assets/logo.png'
+import { Apis, ClientPostApi } from "@/services/Api";
+import { errorMessage, SiteContact, SiteEmail, SiteName, successMessage } from "@/utils/functions";
+import logo from '@/assets/logo.png'
 
 const QuickLinks = [
   { title: "home", url: "/" },

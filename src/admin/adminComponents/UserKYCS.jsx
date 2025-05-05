@@ -1,11 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import moment from 'moment'
-import { Apis, GetApi } from 'services/Api'
-import { errorMessage } from 'utils/functions'
+import { Apis, GetApi } from '@/services/Api'
+import { errorMessage } from '@/utils/functions'
 import Summary from './Summary'
-import PendingKycs from 'admin/utils/PendingKycs'
-import ApprovedKycs from 'admin/utils/ApprovedKycs'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link,} from 'react-router-dom'
 
 const UserKYCS = () => {
 

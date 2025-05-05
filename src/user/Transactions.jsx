@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { FaMinus } from 'react-icons/fa6'
 import { IoIosMailUnread } from 'react-icons/io'
 import { useSelector } from 'react-redux'
-import { Apis, GetApi } from 'services/Api'
-import { errorMessage, successMessage } from 'utils/functions'
+import { Apis, GetApi } from '@/services/Api'
+import { errorMessage, successMessage } from '@/utils/functions'
 import { FaCopy, FaFilter } from "react-icons/fa";
-import Loader from 'utils/Loader'
+import Loader from '@/utils/Loader'
 import { useNavigate } from 'react-router-dom'
 import { CiFilter } from "react-icons/ci";
 

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Apis, GetApi } from 'services/Api'
+import { Apis, GetApi } from '@/services/Api'
 import { errorMessage } from './functions'
 import { useSelector } from 'react-redux'
 import moment from 'moment'

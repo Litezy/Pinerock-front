@@ -3,19 +3,18 @@ import { Link } from 'react-router-dom'
 import { IoIosMailUnread } from 'react-icons/io'
 import { FaArrowLeft, FaArrowRight, FaMinus } from 'react-icons/fa6'
 import { Progress } from 'antd'
-import { errorMessage, successMessage } from 'utils/functions'
+import { errorMessage, successMessage } from '@/utils/functions'
 import { GoShieldLock } from 'react-icons/go'
 import { IoCopy, IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5'
-import img1 from 'assets/withdraw.png'
-import img3 from 'assets/img3.png'
-import Imaged from 'utils/Imaged'
-import { Apis, GetApi } from 'services/Api'
+import img1 from '@/assets/withdraw.png'
+import img3 from '@/assets/img3.png'
+import Imaged from '@/utils/Imaged'
+import { Apis, GetApi } from '@/services/Api'
 import { useDispatch, useSelector } from 'react-redux'
-import { dispatchNewCurr, dispatchProfile, } from 'app/reducer'
-import ModalLayout from 'utils/ModalLayout'
-import CardComponent from 'components/user/CardComponent'
+import {  dispatchProfile, } from "@/app/reducer"
+import ModalLayout from '@/utils/ModalLayout'
+import CardComponent from '@/components/user/CardComponent'
 import { FaAsterisk } from 'react-icons/fa'
-import axios from 'axios'
 
 
 const DashboardOptions = [
@@ -39,7 +38,6 @@ export default function Dashboard() {
     const fetchUserProfile = useCallback(async () => {
         try {
             const response = await GetApi(Apis.auth.profile);
-            // console.log(response)
             if (response.status === 200) {
                 setProfile(response.data);
                 dispatch(dispatchProfile(response.data));

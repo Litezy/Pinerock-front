@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Summary from './Summary'
 import { useSelector } from 'react-redux'
-import { Apis, GetApi, PostApi } from 'services/Api'
-import { errorMessage, successMessage } from 'utils/functions'
-import Loader from 'utils/Loader'
-import ModalLayout from 'utils/ModalLayout'
-import FormComponent from 'utils/FormComponent'
-import ButtonComponent from 'utils/ButtonComponent'
+import { Apis, GetApi, PostApi } from '@/services/Api'
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
+import ModalLayout from '@/utils/ModalLayout'
+import FormComponent from '@/utils/FormComponent'
+import ButtonComponent from '@/utils/ButtonComponent'
 
 const Banks = () => {
   const [banks, setBanks] = useState([])

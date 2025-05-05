@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
-import { Apis, PostApi } from 'services/Api'
-import ButtonComponent from 'utils/ButtonComponent'
-import FormComponent from 'utils/FormComponent'
-import { errorMessage, successMessage } from 'utils/functions'
-import Loader from 'utils/Loader'
+import { Apis, PostApi } from '@/services/Api'
+import ButtonComponent from '@/utils/ButtonComponent'
+import FormComponent from '@/utils/FormComponent'
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
 
 const InitateWithdrawal = ({setScreen}) => {
   const [loading, setLoading] = useState(false)

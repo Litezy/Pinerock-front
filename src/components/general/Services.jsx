@@ -1,6 +1,6 @@
-import { SiteName } from 'utils/functions'
+import { SiteName } from '@/utils/functions'
 import React, { useRef } from 'react'
-import { services } from 'utils/Pageutils'
+import { services } from '@/utils/Pageutils'
 import FAQ from './FAQ'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
@@ -39,7 +39,7 @@ const Services = () => {
                                 className="relative bg-white  rounded-lg overflow-hidden group cursor-pointer p-5 h-[24rem] shadow-2xl" key={index}>
                                 <div className={`absolute inset-0 bg-orange-500 transition-transform transform scale-y-0 ${isEven ? 'origin-top':'origin-bottom'} group-hover:scale-y-100 duration-500`}></div>
                                 <div className="relative z-10 text-4xl lg:text-5xl w-fit mx-auto bg-gradient-to-tr from-primary to-sec p-3 rounded-lg text-white group-hover:text-white group-hover:bg-white">
-                                    {item.icon}
+                                    {<item.icon/>}
                                 </div>
                                 <div className="relative group-hover:text-white z-10 font-bold text-center text-2xl mb-5 mt-3 ">
                                     {item.title}

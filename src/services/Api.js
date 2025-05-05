@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
-import { CookieName } from 'utils/functions'
+import { CookieName } from '@/utils/functions'
 
 
 /*
@@ -33,10 +33,6 @@ if(window.location.origin.includes('localhost')) {
     URL = 'http://localhost:5003'
     profileImg = 'http://localhost:5003'
 }
-
-
-
-
 
 const user = 'user'
 const admin = 'admin'
@@ -177,13 +173,11 @@ export const GetApi = async (endpoint) => {
     const getCookie = Cookies.get(CookieName)
     const response = await axios.get(`${URL}/${endpoint}`, {
         headers: {
-            Authorization: `Bearer ${getCookie}` // Include the JWT token in the Authorization header
+            Authorization: `Bearer ${getCookie}` 
         }
     })
     return response.data
 }
-
-
 
 export const PostApi = async (endpoint, data) => {
     const token = Cookies.get(CookieName)

@@ -1,15 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { CiUser } from "react-icons/ci";
-import ButtonComponent from 'utils/ButtonComponent';
-import FormComponent from 'utils/FormComponent';
+import ButtonComponent from '@/utils/ButtonComponent';
+import FormComponent from '@/utils/FormComponent';
 import { FaEdit } from "react-icons/fa";
-import { useDispatch, useSelector } from 'react-redux';
-import { Apis, ClientPostApi, GetApi, PostApi, profileImg } from 'services/Api';
-import { errorMessage, successMessage } from 'utils/functions';
+import { useDispatch, } from 'react-redux';
+import { Apis, ClientPostApi, GetApi, PostApi, profileImg } from '@/services/Api';
+import { errorMessage, successMessage } from '@/utils/functions';
 import { FaUserLarge } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
-import { dispatchProfile } from 'app/reducer';
-import Loader from 'utils/Loader';
+import { dispatchProfile } from "@/app/reducer";
+import Loader from '@/utils/Loader';
 
 const Profile = () => {
 

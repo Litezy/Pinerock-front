@@ -2,8 +2,8 @@ import moment from 'moment'
 import React, { useCallback, useEffect, useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
 import { useSelector } from 'react-redux'
-import { Apis, GetApi } from 'services/Api'
-import { errorMessage } from 'utils/functions'
+import { Apis, GetApi } from '@/services/Api'
+import { errorMessage } from '@/utils/functions'
 
 const UserDetails = ({ setActive }) => {
 

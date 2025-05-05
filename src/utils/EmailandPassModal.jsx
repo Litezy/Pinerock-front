@@ -7,7 +7,7 @@ import FormComponent from './FormComponent';
 import Loader from './Loader';
 import { CookieName, errorMessage, successMessage } from './functions';
 import { useSelector } from 'react-redux';
-import { Apis, PostApi } from 'services/Api';
+import { Apis, PostApi } from '@/services/Api';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 

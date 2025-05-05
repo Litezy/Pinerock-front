@@ -3,9 +3,9 @@ import { CiMail } from 'react-icons/ci'
 import { FaFacebookF, FaInstagram, FaLocationArrow, FaPinterestP, FaXTwitter } from 'react-icons/fa6'
 import { FiPhoneIncoming, FiPrinter } from 'react-icons/fi'
 import { FaAsterisk } from "react-icons/fa";
-import { errorMessage, SiteAddress, SiteContact, SiteEmail, successMessage } from 'utils/functions';
-import { Apis, ClientPostApi } from 'services/Api';
-import image from 'assets/contactimg.jpg'
+import { errorMessage, SiteAddress, SiteContact, SiteEmail, successMessage } from '@/utils/functions';
+import { Apis, ClientPostApi } from '@/services/Api';
+import image from '@/assets/contactimg.jpg'
 
 
 

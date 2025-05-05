@@ -2,11 +2,11 @@ import moment from 'moment'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { Apis, GetApi, PostApi } from 'services/Api'
-import ChatForm from 'utils/ChatForm'
-import { errorMessage, successMessage } from 'utils/functions'
-import Loader from 'utils/Loader'
-import ModalLayout from 'utils/ModalLayout'
+import { Apis, GetApi, PostApi } from '@/services/Api'
+import ChatForm from "@/utils/ChatForm"
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
+import ModalLayout from '@/utils/ModalLayout'
 
 const AdminActiveChats = () => {
     const profile = useSelector((state) => state.profile.profile)

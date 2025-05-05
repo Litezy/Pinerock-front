@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
-import { Apis, GetApi, PostApi } from 'services/Api'
-import ButtonComponent from 'utils/ButtonComponent'
-import FormComponent from 'utils/FormComponent'
-import { errorMessage, successMessage } from 'utils/functions'
-import Loader from 'utils/Loader'
+import { Apis, GetApi, PostApi } from '@/services/Api'
+import ButtonComponent from '@/utils/ButtonComponent'
+import FormComponent from '@/utils/FormComponent'
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
 
 const InitiateDeposit = ({ setScreen }) => {
   const [loading, setLoading] = useState(false)

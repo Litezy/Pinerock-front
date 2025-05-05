@@ -7,7 +7,7 @@ import {
   PrevButton,
   usePrevNextButtons
 } from './EmblaButtons'
-import { HomeTestimonials } from 'utils/Pageutils'
+import { HomeTestimonials } from '@/utils/Pageutils'
 
 export default function Testimonials(props) {
     const { slides, options } = props

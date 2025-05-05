@@ -1,13 +1,13 @@
 
-import ContactForm from "components/general/ContactForm";
-import FAQ from "components/general/FAQ";
-import HeroSection from "components/general/HeroSection";
-import Testimonials from "components/general/Testimonials";
+import ContactForm from "@/components/general/ContactForm";
+import FAQ from "@/components/general/FAQ";
+import HeroSection from "@/components/general/HeroSection";
+import Testimonials from "@/components/general/Testimonials";
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
-import Counter from "utils/Counter";
-import { HomeAnalyses, HomeServices } from "utils/Pageutils";
+import Counter from "@/utils/Counter";
+import { HomeAnalyses, HomeServices } from "@/utils/Pageutils";
 import { motion,useScroll,useTransform } from 'framer-motion'
 
 export default function Home() {

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import moment from 'moment'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Apis, GetApi } from 'services/Api'
+import { Apis, GetApi } from '@/services/Api'
 import { errorMessage } from './functions'
 
 

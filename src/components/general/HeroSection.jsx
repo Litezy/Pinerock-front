@@ -1,8 +1,4 @@
 import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
-import { GoNorthStar } from "react-icons/go";
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { HeroSlides } from 'utils/Pageutils';
 import HeroSlideShow from './HeroSlides';
 
 

@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { isExpired } from 'react-jwt'
 import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
-import { dispatchProfile } from 'app/reducer'
-import { CookieName, errorMessage } from 'utils/functions'
+import { dispatchProfile } from '@/app/reducer'
+import { CookieName, errorMessage } from '@/utils/functions'
 import { Apis, GetApi } from './Api'
 
 

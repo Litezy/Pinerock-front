@@ -1,12 +1,12 @@
 import { Box, LinearProgress } from '@mui/material';
-import AdminSideBar from 'admin/adminComponents/AdminSideBar';
+import AdminSideBar from '@/admin/adminComponents/AdminSideBar';
 import { FaBars } from "react-icons/fa6";
 import React, { useEffect, useRef, useState } from 'react'
 import { GrClose } from "react-icons/gr";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Apis, PostApi } from 'services/Api';
-import ModalLayout from 'utils/ModalLayout';
-import { CookieName, errorMessage, successMessage } from 'utils/functions';
+import { Apis, PostApi } from '@/services/Api';
+import ModalLayout from '@/utils/ModalLayout';
+import { CookieName, errorMessage, successMessage } from '@/utils/functions';
 import Cookies from 'js-cookie';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import { useSelector } from 'react-redux';

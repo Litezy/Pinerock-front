@@ -1,15 +1,15 @@
 import { Box, LinearProgress } from '@mui/material';
-import { dispatchCurrency, dispatchProfile } from 'app/reducer';
-import UserSidebar from 'components/user/UserSidebar';
+import { dispatchCurrency, dispatchProfile } from '@/app/reducer';
+import UserSidebar from '@/components/user/UserSidebar';
 import { BiUser } from "react-icons/bi";
-import VerifyEmailAccount from 'forms/VerifyEmail';
+import VerifyEmailAccount from '@/forms/VerifyEmail';
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { BsBell } from 'react-icons/bs';
 import { MdHistory } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Apis, GetApi, profileImg } from 'services/Api';
-import { errorMessage } from 'utils/functions';
+import { Apis, GetApi, profileImg } from '@/services/Api';
+import { errorMessage } from '@/utils/functions';
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import {AnimatePresence, motion} from 'framer-motion'
 

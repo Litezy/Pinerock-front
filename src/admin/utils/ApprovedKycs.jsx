@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
-import { Apis, GetApi } from 'services/Api'
+import { Apis, GetApi } from '@/services/Api'
 import moment from 'moment'
-import { errorMessage } from 'utils/functions'
+import { errorMessage } from '@/utils/functions'
 
 const ApprovedKycs = () => {
    

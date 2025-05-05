@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { RiLockPasswordFill } from "react-icons/ri";
 import { IoMailUnreadSharp } from "react-icons/io5";
-import ModalLayout from 'utils/ModalLayout';
-import EmailandPassModal from 'utils/EmailandPassModal';
+import ModalLayout from '@/utils/ModalLayout';
+import EmailandPassModal from '@/utils/EmailandPassModal';
 import { FaIdCard } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 

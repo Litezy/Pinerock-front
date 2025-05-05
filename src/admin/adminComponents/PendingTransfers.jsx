@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Summary from './Summary'
-import { Apis, GetApi, PostApi, profileImg } from 'services/Api'
-import { errorMessage, successMessage } from 'utils/functions'
+import { Apis, GetApi, PostApi, profileImg } from '@/services/Api'
+import { errorMessage, successMessage } from '@/utils/functions'
 import moment from 'moment'
-import Loader from 'utils/Loader'
+import Loader from '@/utils/Loader'
 import { useNavigate } from 'react-router-dom'
-import ModalLayout from 'utils/ModalLayout'
+import ModalLayout from '@/utils/ModalLayout'
 
 
 const TableHeaders = [

@@ -1,11 +1,11 @@
 import { PiUserBold } from 'react-icons/pi'
 import { GiReceiveMoney } from 'react-icons/gi'
 import { BsPiggyBank } from 'react-icons/bs'
-import img from 'assets/img.jpg'
-import img1 from 'assets/img1.jpg'
-import img2 from 'assets/img2.jpg'
-import img3 from 'assets/img3.jpg'
-import img4 from 'assets/img4.jpg'
+import img from '@/assets/img.jpg'
+import img1 from '@/assets/img1.jpg'
+import img2 from '@/assets/img2.jpg'
+import img3 from '@/assets/img3.jpg'
+import img4 from '@/assets/img4.jpg'
 import { TbTransactionDollar } from "react-icons/tb";
 import { BiTransferAlt } from "react-icons/bi";
 import { BsPersonArmsUp } from "react-icons/bs";
@@ -16,9 +16,9 @@ import { MdSupportAgent } from "react-icons/md";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { GiPodiumWinner } from "react-icons/gi";
 import { SiteName } from './functions'
-import heroimg from 'assets/hero-slide-1.png'
-import heroimg1 from 'assets/hero-slide-2.png'
-import heroimg2 from 'assets/hero-slide-3.png'
+import heroimg from '@/assets/hero-slide-1.png'
+import heroimg1 from '@/assets/hero-slide-2.png'
+import heroimg2 from '@/assets/hero-slide-3.png'
 
 
 
@@ -81,47 +81,47 @@ export const services = [
     {
         title: 'Seamless International Transfers',
         desc: "Effortlessly send and receive money across borders with our intuitive platform. We support multiple currencies, ensuring your funds are transferred quickly and securely, all while offering some of the most competitive rates in the market.",
-        icon: <BiTransferAlt />
+        icon: BiTransferAlt
     },
     {
         title: 'Low Transaction Fees',
         desc: "Keep more of your money where it belongs—with you. We charge minimal fees on every transaction, whether local or international, so you can save more and spend less on unnecessary costs.",
-        icon: <TbTransactionDollar />
+        icon: TbTransactionDollar 
     },
     {
         title: 'Personalized Savings Goals',
         desc: "Achieve your financial dreams with our tailored savings goals feature. Set specific targets, track your progress, and enjoy the satisfaction of reaching your goals with our easy-to-use tools.",
-        icon: <BsPersonArmsUp />
+        icon: BsPersonArmsUp 
     },
     {
         title: 'Automated Savings',
         desc: "Make saving effortless by setting up automated contributions to your savings goals. Whether you want to save weekly, bi-weekly, or monthly, we’ve got you covered. Sit back and watch your savings grow without lifting a finger.",
-        icon: <MdSavings />
+        icon: MdSavings 
     },
     {
         title: 'Comprehensive Account Management',
         desc: "Manage your account with ease. From tracking transactions to setting budgets, our user-friendly dashboard puts all your financial tools in one place, giving you complete control over your finances.",
-        icon: <FcManager />
+        icon: FcManager 
     },
     {
         title: 'Robust Security',
         desc: "Your security is our top priority. We use advanced encryption and multi-factor authentication to protect your personal and financial information, ensuring your peace of mind with every transaction.",
-        icon: <MdOutlineSecurity />
+        icon: MdOutlineSecurity 
     },
     {
         title: '24/7 Customer Support',
         desc: "Our dedicated customer support team is available around the clock to assist you with any questions or concerns. Whether you need help with a transaction or have a query about our services, we’re just a call or click away.",
-        icon: <MdSupportAgent />
+        icon: MdSupportAgent 
     },
     {
         title: 'Flexible Fund Management',
         desc: "Easily move funds between your accounts or send money to others with just a few clicks. Our platform makes fund management flexible and straightforward, so you can handle your finances with confidence.",
-        icon: <MdOutlineManageAccounts />
+        icon: MdOutlineManageAccounts 
     },
     {
         title: 'Rewards and Incentives',
         desc: "Enjoy exclusive rewards for being a loyal user. From cashback on transactions to bonuses on savings, we believe in giving back to our customers. Stay tuned for exciting offers and promotions designed just for you.",
-        icon: <GiPodiumWinner />
+        icon: GiPodiumWinner 
     },
 
 ]

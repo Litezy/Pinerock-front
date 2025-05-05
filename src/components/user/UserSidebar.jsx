@@ -1,17 +1,17 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { IoEyeOutline } from 'react-icons/io5'
 import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
-import { Apis, GetApi, PostApi } from 'services/Api'
-import { CookieName, errorMessage, successMessage } from 'utils/functions'
-import ModalLayout from 'utils/ModalLayout'
+import { Apis, GetApi, PostApi } from '@/services/Api'
+import { CookieName, errorMessage, successMessage } from '@/utils/functions'
+import ModalLayout from '@/utils/ModalLayout'
 import Cookies from 'js-cookie'
 import { useDispatch, useSelector } from 'react-redux'
 import { BsChevronDoubleDown } from "react-icons/bs";
-import { dispatchCurrency, dispatchNewCurr, dispatchNotifications, dispatchProfile } from 'app/reducer'
+import { dispatchCurrency, dispatchNewCurr, dispatchNotifications, dispatchProfile } from '@/app/reducer'
 import axios from 'axios'
 import { FiRefreshCcw } from "react-icons/fi";
 import { MdVerified } from "react-icons/md";
-import logo from 'assets/logo.png'
+import logo from '@/assets/logo.png'
 
 const SideLinks = [
     { path: 'dashboard', url: '/user' },
@@ -103,7 +103,7 @@ export default function UserSidebar({ setOpenSide, smallView = false }) {
                 const countryData = response.data[2];
                 const currencySymbol = Object.values(countryData.currencies)[0].symbol;
                 dispatch(dispatchNewCurr(currencySymbol))
-                console.log(currencySymbol)
+                // console.log(currencySymbol)
              }else{
                 const countryData = response.data[0];
                 const currencySymbol = Object.values(countryData.currencies)[0].symbol;

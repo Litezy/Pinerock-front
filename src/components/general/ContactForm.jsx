@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Apis, ClientPostApi } from 'services/Api'
-import ButtonComponent from 'utils/ButtonComponent'
-import { errorMessage, successMessage } from 'utils/functions'
-import Loader from 'utils/Loader'
+import { Apis, ClientPostApi } from '@/services/Api'
+import ButtonComponent from '@/utils/ButtonComponent'
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false)

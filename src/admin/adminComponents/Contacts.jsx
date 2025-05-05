@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Apis, GetApi } from 'services/Api'
-import { errorMessage } from 'utils/functions'
+import { Apis, GetApi } from '@/services/Api'
+import { errorMessage } from '@/utils/functions'
 import Summary from './Summary'
 import moment from 'moment'
-import ModalLayout from 'utils/ModalLayout'
+import ModalLayout from '@/utils/ModalLayout'
 
 const Contacts = () => {
 

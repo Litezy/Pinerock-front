@@ -64,7 +64,8 @@ export default function DailOptions({ title, setup, defaultValue }) {
                         {codes.map((item, i) => {
                             const itemflag = ApiCountryFlags.find((ele) => ele.name?.toLocaleLowerCase() === item.code?.toLocaleLowerCase())
                             return (
-                                <div onClick={() => handleSelection(item)} className="text-xs p-1.5 border-b cursor-pointer hover:bg-slate-50 flex items-center gap-2" key={i}> <Imaged loading="lazy" decoding="async" data-nimg="1" src={itemflag?.data} alt="" className="w-5" /> {item.dial_code}</div>
+                                <div onClick={() => handleSelection(item)} className="text-xs p-1.5 border-b cursor-pointer hover:bg-slate-50 flex items-center gap-2" key={i}> 
+                                <Imaged loading="lazy" decoding="async" data-nimg="1" src={itemflag?.data} alt="" className="w-5" /> {item.dial_code}</div>
                             )
                         })}
                     </div>

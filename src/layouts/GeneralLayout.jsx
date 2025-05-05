@@ -1,5 +1,5 @@
-import Footer from 'components/general/Footer'
-import Header from 'components/general/Header'
+import Footer from '@/components/general/Footer'
+import Header from '@/components/general/Header'
 import React, { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 

@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { FaPlus, FaRegPaperPlane, FaRegSmile } from 'react-icons/fa'
 import { IoSend } from "react-icons/io5";
 import { errorMessage, MoveToBottom } from './functions';
-import { Apis, PostApi } from 'services/Api';
+import { Apis, PostApi } from '@/services/Api';
 import { useSelector } from 'react-redux';
 
 

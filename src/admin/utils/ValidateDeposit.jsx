@@ -1,14 +1,11 @@
-import Summary from 'admin/adminComponents/Summary'
+import Summary from '@/admin/adminComponents/Summary'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
-import { Apis, GetApi, PostApi, profileImg } from 'services/Api'
-import { errorMessage, successMessage } from 'utils/functions'
+import { Apis, GetApi, PostApi, profileImg } from '@/services/Api'
+import { errorMessage, successMessage } from '@/utils/functions'
 import moment from 'moment'
-import ModalLayout from 'utils/ModalLayout'
-import FormComponent from 'utils/FormComponent'
-import ButtonComponent from 'utils/ButtonComponent'
-import Loader from 'utils/Loader'
-import { useSelector } from 'react-redux'
+import ModalLayout from '@/utils/ModalLayout'
+import Loader from '@/utils/Loader'
 
 const ValidateDeposit = ({ setScreen }) => {
 

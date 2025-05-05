@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import FormComponent from './FormComponent'
 import Loader from './Loader';
-import { Apis, GetApi, PostApi } from 'services/Api';
+import { Apis, GetApi, PostApi } from '@/services/Api';
 import { errorMessage, successMessage } from './functions';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';

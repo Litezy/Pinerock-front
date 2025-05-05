@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { Apis, GetApi, PostApi } from 'services/Api'
-import { errorMessage, successMessage } from 'utils/functions'
-import Loader from 'utils/Loader'
+import { Apis, GetApi, PostApi } from '@/services/Api'
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
 import Summary from './Summary'
 import moment from 'moment'
-import ModalLayout from 'utils/ModalLayout'
-import ReverseModal from 'utils/ReverseModal'
+import ModalLayout from '@/utils/ModalLayout'
+import ReverseModal from '@/utils/ReverseModal'
 
 const ReverseWithdrawals = () => {
 

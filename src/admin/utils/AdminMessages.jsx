@@ -1,13 +1,13 @@
-import { dispatchMessages } from 'app/reducer'
+import { dispatchMessages } from "@/app/reducer"
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { Apis, GetApi, profileImg } from 'services/Api'
-import ChatForm from 'utils/ChatForm'
-import ChatMessages from 'utils/ChatMessages'
-import { errorMessage, MoveToBottom } from 'utils/functions'
+import { Apis, GetApi, profileImg } from '@/services/Api'
+import ChatForm from "@/utils/ChatForm"
+import ChatMessages from '@/utils/ChatMessages'
+import { errorMessage, MoveToBottom } from '@/utils/functions'
 import { FaLongArrowAltLeft } from "react-icons/fa";
-import Loader from 'utils/Loader'
+import Loader from '@/utils/Loader'
 import { FaUser } from 'react-icons/fa6'
 
 const AdminMessages = () => {

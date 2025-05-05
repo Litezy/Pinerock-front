@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
 import { FaEdit } from 'react-icons/fa';
-import kycpassed from 'assets/kycpassed.png'
-import pendingkyc from 'assets/pendingkyc.gif'
-import { Apis, GetApi, PostApi } from 'services/Api';
+import kycpassed from '@/assets/kycpassed.png'
+import pendingkyc from '@/assets/pendingkyc.gif'
+import { Apis, GetApi, PostApi } from '@/services/Api';
 import { errorMessage, successMessage } from './functions';
 import { useSelector } from 'react-redux';
 import Loader from './Loader';

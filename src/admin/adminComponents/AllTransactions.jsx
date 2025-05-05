@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Summary from './Summary'
-import { errorMessage, successMessage } from 'utils/functions'
-import { Apis, GetApi, PostApi } from 'services/Api'
+import { errorMessage, successMessage } from '@/utils/functions'
+import { Apis, GetApi, PostApi } from '@/services/Api'
 import { useSelector } from 'react-redux'
 import moment from 'moment'
-import ModalLayout from 'utils/ModalLayout'
-import ButtonComponent from 'utils/ButtonComponent'
-import Loader from 'utils/Loader'
+import ModalLayout from '@/utils/ModalLayout'
+import ButtonComponent from '@/utils/ButtonComponent'
+import Loader from '@/utils/Loader'
 import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker'
 

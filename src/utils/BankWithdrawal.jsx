@@ -1,11 +1,11 @@
-import { dispatchProfile } from 'app/reducer'
+import { dispatchProfile } from "@/app/reducer"
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { errorMessage, successMessage } from './functions'
-import { Apis, GetApi, PostApi } from 'services/Api'
+import { Apis, GetApi, PostApi } from '@/services/Api'
 import Lottie from 'lottie-react';
 import moment from 'moment';
-import animationLogo from "assets/animation.json"
+import animationLogo from "@/assets/animation.json"
 import Loader from './Loader'
 import ButtonComponent from './ButtonComponent'
 import FormComponent from './FormComponent'

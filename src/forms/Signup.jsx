@@ -1,12 +1,12 @@
 import { MenuItem } from '@mui/material'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Apis, PostApi } from 'services/Api'
-import CountryStates from 'utils/CountryStates'
-import DailOptions from 'utils/DailOption'
-import Formbutton from 'utils/Formbutton'
-import Forminput from 'utils/Forminput'
-import { errorMessage, successMessage } from 'utils/functions'
+import { Apis, PostApi } from '@/services/Api'
+import CountryStates from '@/utils/CountryStates'
+import DailOptions from '@/utils/DailOption'
+import Formbutton from '@/utils/Formbutton'
+import Forminput from '@/utils/Forminput'
+import { errorMessage, successMessage } from '@/utils/functions'
 
 export default function Signup() {
     const [log,setLog] = useState(false)
@@ -83,7 +83,7 @@ export default function Signup() {
             }
         } catch (error) {
             errorMessage(`sorry, something went wrong on our end`,error.message)
-            console.log(error)
+            // console.log(error)
         }finally{
             setLoading(false)
         }
@@ -127,7 +127,7 @@ export default function Signup() {
                     </div>
                     <div className="grid grid-cols-7 gap-1 lg:gap-3">
                         <div className="col-span-2">
-                            <DailOptions title="+234" setup={setup} />
+                            <DailOptions title="+1" setup={setup} />
                         </div>
                         <div className="col-span-5">
                             <Forminput

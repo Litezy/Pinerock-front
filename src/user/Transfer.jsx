@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, {  useState } from 'react'
 import { GoShieldLock } from 'react-icons/go'
 import { IoEyeOutline, IoEyeOffSharp } from 'react-icons/io5'
-import { FaAsterisk, FaPlus } from "react-icons/fa6";
-import BankWithdrawal from 'utils/BankWithdrawal';
-import CardWithdrawal from 'utils/CardWithdrawal';
+import { FaAsterisk } from "react-icons/fa6";
+import BankWithdrawal from '@/utils/BankWithdrawal';
+import CardWithdrawal from '@/utils/CardWithdrawal';
 import { useSelector } from 'react-redux';
 
 const Transfer = () => {

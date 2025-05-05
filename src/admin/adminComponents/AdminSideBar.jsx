@@ -1,12 +1,12 @@
 
 import React, { useCallback, useEffect, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import ModalLayout from 'utils/ModalLayout'
+import ModalLayout from '@/utils/ModalLayout'
 import Cookies from 'js-cookie'
 import { useDispatch } from 'react-redux'
-import { Apis, GetApi, PostApi } from 'services/Api'
-import { CookieName, errorMessage, successMessage } from 'utils/functions'
-import { dispatchProfile } from 'app/reducer'
+import { Apis, GetApi, PostApi } from '@/services/Api'
+import { CookieName, errorMessage, successMessage } from '@/utils/functions'
+import { dispatchProfile } from '@/app/reducer'
 import { BsChevronDoubleDown } from 'react-icons/bs'
 
 const AdminLinks = [

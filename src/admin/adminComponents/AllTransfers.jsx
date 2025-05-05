@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Summary from './Summary'
-import { errorMessage } from 'utils/functions'
-import { Apis, GetApi } from 'services/Api'
-import ValidateDeposit from 'admin/utils/ValidateDeposit'
-import InitiateDeposit from 'admin/utils/InitiateDeposit'
-import InitateWithdrawal from 'admin/utils/InitateWithdrawal'
-import SettledDeposits from 'admin/utils/SettledDeposits'
+import { errorMessage } from '@/utils/functions'
+import { Apis, GetApi } from '@/services/Api'
+import ValidateDeposit from '@/admin/utils/ValidateDeposit'
+import InitiateDeposit from '@/admin/utils/InitiateDeposit'
+import InitateWithdrawal from '@/admin/utils/InitateWithdrawal'
+import SettledDeposits from '@/admin/utils/SettledDeposits'
 
 const AllTransfers = () => {
   const [screen, setScreen] = useState(0)

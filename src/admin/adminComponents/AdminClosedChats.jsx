@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import moment from 'moment'
 import { useSelector } from 'react-redux'
-import { errorMessage } from 'utils/functions'
-import { Apis, GetApi } from 'services/Api'
+import { errorMessage } from '@/utils/functions'
+import { Apis, GetApi } from '@/services/Api'
 import { Link } from 'react-router-dom'
 
 const AdminClosedChats = () => {

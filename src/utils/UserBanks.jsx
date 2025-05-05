@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Apis, GetApi, PostApi } from 'services/Api'
+import { Apis, GetApi, PostApi } from '@/services/Api'
 import { errorMessage } from './functions'
 import ModalLayout from './ModalLayout'
 import FormComponent from './FormComponent'

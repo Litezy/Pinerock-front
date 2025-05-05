@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Summary from './Summary'
-import { errorMessage } from 'utils/functions'
-import { Apis, GetApi } from 'services/Api'
+import { errorMessage } from '@/utils/functions'
+import { Apis, GetApi } from '@/services/Api'
 import moment from 'moment'
 
 const Newsletters = () => {

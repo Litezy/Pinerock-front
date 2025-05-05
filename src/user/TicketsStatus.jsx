@@ -1,15 +1,12 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import ActiveComponent from 'utils/ActiveComponent'
-import ButtonComponent from 'utils/ButtonComponent'
-import ClosedComponent from 'utils/ClosedComponent'
-import FormComponent from 'utils/FormComponent'
-import { errorMessage, successMessage } from 'utils/functions'
+import React, {  useRef, useState } from 'react'
+import { useNavigate, } from 'react-router-dom'
+import ButtonComponent from '@/utils/ButtonComponent'
+import FormComponent from '@/utils/FormComponent'
+import { errorMessage, successMessage } from '@/utils/functions'
 import { MdDelete } from "react-icons/md";
-import { Apis, GetApi, PostApi } from 'services/Api'
-import Loader from 'utils/Loader'
+import { Apis,  PostApi } from '@/services/Api'
+import Loader from '@/utils/Loader'
 import { useDispatch } from 'react-redux'
-import { dispatchActiveChats, dispatchClosedChats } from 'app/reducer'
 
 const TicketsStatus = () => {
     const [loading, setLoading] = useState(false)

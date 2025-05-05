@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import { Apis, GetApi, PostApi, profileImg } from 'services/Api'
-import { errorMessage, successMessage } from 'utils/functions'
-import Loader from 'utils/Loader'
-import ModalLayout from 'utils/ModalLayout'
+import { Apis, GetApi, PostApi, profileImg } from '@/services/Api'
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
+import ModalLayout from '@/utils/ModalLayout'
 
 
 const KycModal = () => {

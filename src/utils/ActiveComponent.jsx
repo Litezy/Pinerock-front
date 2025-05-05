@@ -1,9 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import moment from 'moment'
-import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
-import { Apis, GetApi } from 'services/Api'
-import { dispatchActiveChats } from 'app/reducer'
+import { Apis, GetApi } from '@/services/Api'
 import { errorMessage } from './functions'
 
 const ActiveComponent = () => {

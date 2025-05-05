@@ -1,5 +1,5 @@
 import React from 'react'
-import { privacyPolicy } from 'utils/Pageutils'
+import { privacyPolicy } from '@/utils/Pageutils'
 
 const PrivacyPolicy = () => {
   return (

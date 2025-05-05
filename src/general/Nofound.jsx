@@ -1,8 +1,8 @@
 
 
-import img from 'assets/not-found.png'
+import img from '@/assets/not-found.png'
 import { Link } from 'react-router-dom'
-import Imaged from "utils/Imaged"
+import Imaged from "@/utils/Imaged"
 
 
 

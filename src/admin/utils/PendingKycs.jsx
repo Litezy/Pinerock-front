@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
-import { Apis, GetApi } from 'services/Api'
-import { errorMessage } from 'utils/functions'
+import { Apis, GetApi } from '@/services/Api'
+import { errorMessage } from '@/utils/functions'
 
 const PendingKycs = () => {
     const [users,setUsers] = useState([])

@@ -1,9 +1,9 @@
 import moment from 'moment'
 import React, { useCallback, useEffect, useState } from 'react'
 import { IoReturnUpBackOutline } from 'react-icons/io5'
-import { Apis, GetApi, profileImg } from 'services/Api'
-import { errorMessage } from 'utils/functions'
-import ModalLayout from 'utils/ModalLayout'
+import { Apis, GetApi, profileImg } from '@/services/Api'
+import { errorMessage } from '@/utils/functions'
+import ModalLayout from '@/utils/ModalLayout'
 
 const SettledDeposits = ({ setScreen }) => {
 

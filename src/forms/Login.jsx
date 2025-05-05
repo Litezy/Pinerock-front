@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import ButtonComponent from 'utils/ButtonComponent'
-import FormComponent from 'utils/FormComponent'
-import Forminput from 'utils/Forminput'
-import { CookieName, errorMessage, successMessage, UserRole } from 'utils/functions'
+import ButtonComponent from '@/utils/ButtonComponent'
+import FormComponent from '@/utils/FormComponent'
+import { CookieName, errorMessage, successMessage, UserRole } from '@/utils/functions'
 import Cookies from 'js-cookie'
-import { Apis, PostApi } from 'services/Api'
+import { Apis, PostApi } from '@/services/Api'
 import { decodeToken } from 'react-jwt'
-import Loader from 'utils/Loader'
+import Loader from '@/utils/Loader'
 
 export default function Login() {
 

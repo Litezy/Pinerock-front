@@ -1,15 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import mastercardimg from '../../assets/dashboard/mastercard.png'
 import visacardimg from '../../assets/dashboard/visa.png'
-import FormComponent from 'utils/FormComponent'
-import { errorMessage, successMessage } from 'utils/functions'
-import { FaAsterisk } from "react-icons/fa";
-import Loader from 'utils/Loader'
-import ModalLayout from 'utils/ModalLayout'
-import { Apis, GetApi, PostApi } from 'services/Api'
-import Formbutton from 'utils/Formbutton'
-import chip from 'assets/chip-sm.png'
-import ButtonComponent from 'utils/ButtonComponent'
+import FormComponent from '@/utils/FormComponent'
+import { errorMessage, successMessage } from '@/utils/functions'
+import Loader from '@/utils/Loader'
+import ModalLayout from '@/utils/ModalLayout'
+import { Apis, GetApi, PostApi } from '@/services/Api'
+import chip from '@/assets/chip-sm.png'
+import ButtonComponent from '@/utils/ButtonComponent'
 import { useLocation } from 'react-router-dom'
 
 const CardComponent = () => {
@@ -68,8 +66,8 @@ const CardComponent = () => {
     }, [])
 
     const handleCardNumberChange = (event) => {
-        let value = event.target.value.replace(/\D/g, ''); // Remove all non-digit characters
-        value = value.substring(0, 16); // Limit to 16 digits
+        let value = event.target.value.replace(/\D/g, ''); 
+        value = value.substring(0, 16);
         const formattedValue = value.match(/.{1,4}/g)?.join('-') || value; // Insert hyphens every 4 digits
         setCards({
             ...cards,

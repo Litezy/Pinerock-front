@@ -1,26 +1,24 @@
 import { Progress } from 'antd'
-import UserLayout from 'layouts/UserLayout'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { FaArrowLeft, FaArrowRight, FaMinus } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
-import { Currency, errorMessage, successMessage } from 'utils/functions'
+import { Currency, errorMessage, successMessage } from '@/utils/functions'
 import { BiSupport } from "react-icons/bi";
 import { MdAddAPhoto } from "react-icons/md";
 import { MdOutlineAvTimer } from "react-icons/md";
 import { FaEdit, FaPlus } from "react-icons/fa";
-import Formbutton from 'utils/Formbutton'
+import Formbutton from '@/utils/Formbutton'
 import { IoIosMailUnread } from 'react-icons/io'
-import CardComponent from 'components/user/CardComponent'
-import { Apis, GetApi, PostApi } from 'services/Api'
+import { Apis, GetApi, PostApi } from '@/services/Api'
 import { useDispatch, useSelector } from 'react-redux'
 import { MdPayment } from "react-icons/md";
-import ModalLayout from 'utils/ModalLayout'
-import FormComponent from 'utils/FormComponent'
-import ButtonComponent from 'utils/ButtonComponent'
-import Loader from 'utils/Loader'
-import UserBanks from 'utils/UserBanks'
-import { dispatchProfile } from 'app/reducer'
-import SaveHistory from 'utils/SaveHistory'
+import ModalLayout from '@/utils/ModalLayout'
+import FormComponent from '@/utils/FormComponent'
+import ButtonComponent from '@/utils/ButtonComponent'
+import Loader from '@/utils/Loader'
+import UserBanks from '@/utils/UserBanks'
+import { dispatchProfile } from '@/app/reducer'
+import SaveHistory from '@/utils/SaveHistory'
 
 const Savings = () => {
 
@@ -304,6 +302,7 @@ const Savings = () => {
             setLoad2(false)
         }
     }
+    
     const withdrawsavings = async (e) => {
         e.preventDefault()
         const formdata = {

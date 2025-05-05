@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import aboutusimg from '../../assets/aboutus.jpg'
-import { SiteName } from 'utils/functions';
+import { SiteName } from '@/utils/functions';
 import { motion, useScroll, useTransform } from 'framer-motion'
 
 

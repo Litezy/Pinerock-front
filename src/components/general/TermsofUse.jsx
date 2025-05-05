@@ -1,5 +1,5 @@
 import React from 'react'
-import { termsOfUse } from 'utils/Pageutils'
+import { termsOfUse } from '@/utils/Pageutils'
 
 const TermsofUse = () => {
   return (
