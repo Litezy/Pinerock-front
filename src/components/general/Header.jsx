@@ -13,7 +13,7 @@ const HeadNavs = [
   { title: "contact us", url: "/contact-us" },
   { title: "about us", url: "/about-us" },
 ];
-export default function Header({show}) {
+export default function Header() {
   const [views, setViews] = useState(false)
   const location = useLocation()
   const pathname = location.pathname
@@ -25,7 +25,7 @@ export default function Header({show}) {
     },
     visible: {
       opacity: 1,
-      y: 0, 
+      y: 0,
     }
   }
 
@@ -37,11 +37,11 @@ export default function Header({show}) {
         variants={headerVars}
         initial="hidden"
         animate="visible"
-        transition={{delay: 0.5,duration: 1}}
-        className="flex items-center bg-sec  justify-between  px-10 lg:px-20 py-1 md:py-2  nunito">
+        transition={{ delay: 0.5, duration: 1 }}
+        className="flex items-center bg-sec lg:bg-white  justify-between   px-10 lg:px-20 py-1 md:py-4  nunito">
         <div className="">
-          <Link to="/" className="text-xl md:text-3xl font-bold text-white">
-           <img src={logo} className="max-w-32  h-16 " alt="pinerock logo" />
+          <Link to="/" className="text-xl md:text-3xl font-bold">
+            <img src={logo} className="max-w-16  h-10 " alt="pinerock logo" />
           </Link>
         </div>
         <div className="hidden lg:flex items-center  justify-end">
@@ -51,7 +51,7 @@ export default function Header({show}) {
               <Link
                 key={index}
                 to={`${item.url}`}
-                className={`${isActive ? 'border-b-white font-bold border-b' : 'font-light'} text-white hover:text-orange-500 px-3 capitalize text-base   transition-all`}
+                className={`${isActive ? 'border-b-sec font-bold border-b' : 'font-light'} text-sec hover:text-sec/60 px-3 capitalize text-base   transition-all`}
               >
                 {item.title}
               </Link>
@@ -62,46 +62,50 @@ export default function Header({show}) {
         <div className="hidden lg:flex flex-row items-center gap-5">
           <Link
             to="/login"
-            className="px-2  rounded-md py-2 truncate bg-white  text-sec items-center flex justify-center font-semibold transition-all "
+            className="px-10  py-2 truncate bg-white  text-col border rounded-md broder-col items-center flex justify-center font-semibold transition-all "
           >
-            Login account
+            Login
           </Link>
           <Link
             to="/signup"
-            className="px-5  rounded-md py-2 truncate   bg-orange-500  text-white items-center flex justify-center font-semibold transition-all "
+            className="px-5  rounded-md py-2 truncate   bg-orange-500  text-white items-center flex justify-center font-semibold transition-all capitalize "
           >
-            Open an account
+            create account
           </Link>
 
         </div>
         <div onClick={() => setViews(prev => !prev)} className="lg:hidden text-2xl cursor-pointer">
           {" "}
-          <BarIcon className="text-white"/>{" "}
+          <BarIcon className="text-white font-bold text-2xl" />{" "}
         </div>
       </motion.div>
-      <div className={`${views ? 'h-[20rem]' : 'h-0'} bg-white transition-all overflow-hidden`}>
+      <div className={`${views ? 'h-[20rem]' : 'h-0'} bg-sec text-white transition-all overflow-hidden`}>
         <div className="flex lg:hidden flex-col items-center justify-end">
           {HeadNavs.map((item, index) => (
             <Link
               key={index}
-              onClick={()=> setViews(prev => !prev)}
+              onClick={() => setViews(prev => !prev)}
               to={`${item.url}`}
-              className="px-3 hover:text-orange-500 py-3 capitalize font-bold transition-all"
+              className="px-3 hover:text-gray-300 py-3 capitalize transition-all"
             >
               {item.title}
             </Link>
           ))}
+
           <Link
             to={`/login`}
-            className="px-3 py-3 capitalize hover:text-orange-500  transition-all"
-          >
-            Login
+            className=" transition-all w-full">
+            <div className="w-1/2 mx-auto py-3 mb-3 text-center bg-white text-col capitalize rounded-md">
+              Login
+            </div>
+
           </Link>
+
+
           <Link
             to={`/signup`}
-            className="px-3 py-3 capitalize hover:text-orange-500  transition-all"
-          >
-            Sign up
+            className=" capitalize  transition-all w-full" >
+            <div className="w-1/2 mx-auto py-3 text-center bg-col text-white capitalize rounded-md">Sign up</div>
           </Link>
         </div>
       </div>
