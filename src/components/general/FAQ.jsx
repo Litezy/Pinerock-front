@@ -1,73 +1,106 @@
-import React, { useState } from 'react'
-import { IoChevronDownSharp, IoChevronUpSharp } from 'react-icons/io5';
+import React, { useState } from 'react';
+import { IoChevronDownOutline, IoChevronUpOutline } from 'react-icons/io5';
 
-const FAQ = ({styles,ans,iconcol=true}) => {
 
-    const FAQS = [
+
+const FAQ = () => {
+    const [active, setActive] = useState(null);
+
+    const faqs = [
         {
-            ques: 'What are the transaction fees on the platform?',
-            ans: "We offer some of the lowest transaction fees in the industry. Our goal is to help you save more by charging minimal fees on every transaction you make. Whether you're transferring funds locally or internationally, you can rest assured that our fees are competitive and transparent."
+            que: `What are the transaction fees on the platform?`,
+            ans: `Pinerock is a secure, user-friendly online payment app that allows users to send and receive money, pay bills, and manage transactions effortlessly.`,
         },
         {
-            ques: 'How do I set up and manage my savings goals?',
-            ans: "Setting up your savings goals is simple. Just log into your account, navigate to the 'Savings' section, and follow the prompts to create your goal. You can name your goal, set a target amount, and even choose a timeline. We'll help you track your progress and stay on course to achieve your financial objectives."
+            que: ` How do I sign up for Pinerock?`,
+            ans: `Pinerock is a secure, user-friendly online payment app that allows users to send and receive money, pay bills, and manage transactions effortlessly.`,
         },
         {
-            ques: 'Is my money safe on your platform?',
-            ans: "Absolutely. We prioritize your security and have implemented advanced encryption technologies to protect your funds and personal information. Additionally, our platform is fully compliant with international banking regulations, ensuring that your money is safe and secure at all times."
+            que: `Is Pinerock safe to use?`,
+            ans: `Pinerock is a secure, user-friendly online payment app that allows users to send and receive money, pay bills, and manage transactions effortlessly.`,
         },
 
         {
-            ques: 'How do I track my savings progress?',
-            ans: "You can easily track your savings progress in the 'Savings' section of your account. Here, you’ll see a visual representation of how close you are to reaching your goal, along with details of your contributions and any interest earned."
+            que: `What payment methods does Pinerock support?`,
+            ans: `Pinerock is a secure, user-friendly online payment app that allows users to send and receive money, pay bills, and manage transactions effortlessly.`,
         },
         {
-            ques: 'Are there any rewards for saving regularly?',
-            ans: "Yes! We believe in rewarding our users for their dedication. By saving regularly, you may become eligible for various rewards, such as cashback offers, bonus interest rates, or even entry into special promotions. Keep an eye on your account notifications for details."
+            que: `Can I pay bills using Pinerock?`,
+            ans: `Pinerock is a secure, user-friendly online payment app that allows users to send and receive money, pay bills, and manage transactions effortlessly.`,
         },
+      
         {
-            ques: 'How can I get the best out of my account?',
-            ans: "To maximize your experience, we recommend exploring all the features our platform offers. From setting up multiple savings goals to taking advantage of our low transaction fees for international transfers, there’s a lot to gain. Additionally, staying informed through our newsletters will help you make the most of your account."
+            que: `Can I use Pinerock internationally?`,
+            ans: `Pinerock is a secure, user-friendly online payment app that allows users to send and receive money, pay bills, and manage transactions effortlessly.`,
         },
     ];
 
-    const [active, setActive] = useState(null);
-
-    const selectAns = (i) => {
+    const selectFaq = (i) => {
         setActive(active === i ? null : i);
     };
+
     return (
-        <div>
-
-            <div className={`py-10 px-4 w-full ${styles}  text-white shadow-md mb-10 rounded-lg`}>
-                <div className="w-full flex items-center gap-5 flex-col ">
-                    <div className="text-2xl text-center lg:text-4xl font-bold capitalize">Save when you send worldwide</div>
-                    <div className="text-base lg:text-center font-semibold lg:w-3/5">At Pinerock Credit Union, our foremost goal is to empower our members to achieve financial growth. We provide tailored financial solutions and expert guidance, helping you build wealth and secure your financial future.</div>
-
-                    <div className="w-full  lg:w-10/12 mx-auto">
-                        {FAQS.map((item, i) => {
-                            const isActive = active === i;
-                            const Icon = isActive ? IoChevronUpSharp : IoChevronDownSharp;
-                            return (
-                                <div onClick={() => selectAns(i)} className={`nunito cursor-pointer overflow-hidden ${active === i ? 'max-h-[500px] py-2   transition-all duration-500 ease-in-out' : 'max-h-32 transition-all duration-500 ease-in-out py-2 '}  w-full px-2 mb-3 rounded-xl gap-5 lg:py-5`} key={i}>
-                                    <div className="flex items-center w-full justify-between">
-                                        <div className={`${active === i ? '':''} font-extrabold text-xl  lg:text-2xl`}>{item.ques}</div>
-                                        <div className="">
-                                            <Icon className={` ${active === i ? '' : iconcol ? 'text-white':'text-white/70'} lg:text-2xl text-lg font-bold cursor-pointer`} />
-                                        </div>
-                                    </div>
-                                    {active === i && <div className={`p1-2 text-base lg:text-lg mt-2 ${ans}`}>{item.ans}</div>}
-                                    {active === i && <hr className={`w-full border-white my-2 transition-all delay-200 `} />}
-                                </div>
-
-                            );
-                        })}
+        <div className="w-full  pt-32 lg:pt-60 text-white">
+            <div className="w-11/12 mx-auto text-dark-200">
+                <div className="w-full flex items-start justify-between flex-col lg:flex-row gap-10">
+                    <div className="w-full lg:w-1/2 flex items-start flex-col gap-3">
+                        <div className="text-[30px] md:text-[35px] leading-[1.2] font-bold w-3/4">
+                            Why choose us
+                        </div>
+                        <p className="text-base font-semibold n ">
+                            At Pinerock Credit Union, our foremost goal is to empower our members to achieve financial growth. We provide tailored financial solutions and expert guidance, helping you build wealth and secure your financial future.
+                        </p>
+                        <button className='bg-col px-5 w-fit py-2.5 rounded-md text-white'>Create Account</button>
                     </div>
 
+                    <div className="w-full lg:w-1/2">
+                        {faqs.map((item, i) => (
+                            <div
+                                key={i}
+                                className="flex items-start flex-col gap-3 w-full  text-sec py-4"
+                            >
+                                <div className="flex  text-sec bg-white w-full px-3 cursor-pointer lg:py-4  py-2.5 rounded-md 
+                                " onClick={() => selectFaq(i)}
+                                >
+                                    <div className="w-full flex-col gap-2">
+                                        {/* Question Section */}
+                                        <div
+                                            className="text-[18px] font-semibold cursor-pointer flex items-center justify-between"
+                                            onClick={() => selectFaq(i)}
+                                        >
+                                            {item.que}
+                                        </div>
+
+                                        {/* Answer Section (Animated) */}
+                                        <div
+                                            className={`overflow-hidden transition-all duration-500 ease-in-out ${active === i ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 h-0"
+                                                }`}
+                                        >
+                                            {active === i && (
+                                                <p className="text-[16px] font-normal transition-opacity delay-200">
+                                                    {item.ans}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <div className="w-[5%] cursor-pointer " >
+                                        <div className={`transition-transform duration-300 ${active === i ? "rotate-180" : ""}`}>
+                                            {active === i ? (
+                                                <IoChevronUpOutline className="text-xl " />
+                                            ) : (
+                                                <IoChevronDownOutline className="text-xl " />
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default FAQ
+export default FAQ;

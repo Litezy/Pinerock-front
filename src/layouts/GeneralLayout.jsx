@@ -34,7 +34,6 @@ export default function GeneralLayout({ children }) {
 
   return (
     <div className="overflow-hidden w-full">
-      
       <Header  />
       {children}
       <Footer />

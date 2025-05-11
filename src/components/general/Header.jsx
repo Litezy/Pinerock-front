@@ -9,9 +9,9 @@ import logo from '@/assets/logo.png'
 
 const HeadNavs = [
   { title: "home", url: "/" },
+  { title: "about us", url: "/about-us" },
   { title: "services", url: "/services" },
   { title: "contact us", url: "/contact-us" },
-  { title: "about us", url: "/about-us" },
 ];
 export default function Header() {
   const [views, setViews] = useState(false)

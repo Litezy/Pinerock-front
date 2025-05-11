@@ -2,8 +2,8 @@ import toast from "react-hot-toast"
 
 export const SiteName = 'Pinerock Credit Union'
 export const SiteEmail = 'support@pinerockcreditunion.com'
-export const SiteContact = '+ Coming soon'
-export const SiteAddress = ''
+export const SiteContact = '+44 45 7200 8200'
+export const SiteAddress = 'L.K.Road, Vashi -410200'
 export const Currency = '£'
 export const errorMessage = (message) => {
     return toast.error(message, {

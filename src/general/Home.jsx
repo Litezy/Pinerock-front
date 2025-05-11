@@ -4,6 +4,9 @@ import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from 'framer-motion'
 import CounterNumbers from "@/components/general/CounterNumbers";
 import PaymentAndHowItWorks from "@/components/general/PaymentAndHowItWorks";
+import footerbg from "@/assets/general/footerbg.png";
+import FAQ from "@/components/general/FAQ";
+import ContactUs from "@/components/general/ContactUs";
 
 export default function Home() {
 
@@ -49,9 +52,19 @@ export default function Home() {
         transition={{ delay: 0.5, duration: 0.5 }}
       >
         <div className="w-full  ">
-          <PaymentAndHowItWorks/>
+          <PaymentAndHowItWorks />
         </div>
       </motion.div>
+      <div
+        className="w-full lg:h-[1506px] pb-10 lg:pb-0  bg-no-repeat  relative bg-cover bg-center"
+        style={{ backgroundImage: `url(${footerbg})`, zIndex: 0 }}
+      >
+        <div className="w-full flex items-start flex-col gap-10 lg:gap-32">
+          <FAQ />
+          <ContactUs />
+        </div>
+
+      </div>
     </>
   );
 }
