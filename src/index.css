@@ -5,13 +5,15 @@
 
 
 body {
-    font-family: "Nunito Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
+  font-family: 'DMSans', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-optical-sizing: auto;
   }
 .nunito{
-  font-family: "Nunito Sans", sans-serif; 
+  font-family: 'DMSans', sans-serif;
+  font-weight: 800;
+  font-style: normal 
 }
 .rubik{
   font-family: "Rubik", sans-serif;
@@ -362,3 +364,132 @@ input[type=number] {
   border-radius: 32px;
 }
 
+
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('..src/utils/fonts/static/DMSans-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* Italic styles */
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-ExtraLightItalic.ttf') format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'DMSans';
+  src: url('../src/utils/fonts/static/DMSans-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}

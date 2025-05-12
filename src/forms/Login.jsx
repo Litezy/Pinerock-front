@@ -7,6 +7,11 @@ import Cookies from 'js-cookie'
 import { Apis, PostApi } from '@/services/Api'
 import { decodeToken } from 'react-jwt'
 import Loader from '@/utils/Loader'
+// import blockImg from '@/assets/general/block.png'
+import blocksImg from '@/assets/general/blocks.png'
+import savingsImg from '@/assets/general/house_savings.png'
+import offerImg from '@/assets/general/offer.png'
+import GoogleIcon from '@/components/general/GoogleIcon'
 
 export default function Login() {
 
@@ -62,53 +67,59 @@ export default function Login() {
         }
     }
     return (
-        <div className='bg-gradient-to-tr from-sec  to-primary h-screen overflow-x-hidden flex items-center justify-center'>
-            <div className="w-[90%] mx-auto max-w-xl bg-white backdrop-blur-sm p-5 relative rounded-lg mt-10 lg:mt-20">
-
-                {loading &&
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2">
-                        <Loader />
+        <div className='bg-gradient-to-tr  from-sec h-screen to-primary overflow-x-hidden flex items-start '>
+            {loading &&
+                <div className="absolute top-1/2 left-1/2  -translate-x-1/2">
+                    <Loader />
+                </div>
+            }
+            <div className="lg:w-1/2  hidden lg:block h-full bg-transparent">
+                <div className="w-full h-full flex items-center relative py-2 flex-col">
+                    <img src={blocksImg} className='h-24' alt="blocks img" />
+                    <img src={offerImg} className='h-full' alt="offer img" />
+                    <img src={savingsImg} className='absolute bottom-40 left-0' alt="savings img" />
+                    <div className="self-start flex items-start flex-col gap-2 mt-3 w-11/12 mx-auto text-white">
+                        <div className="text-2xl font-bold">Built for Speed, Security, and Savings</div>
+                        <p className='text-sm text-zinc-300'>Our platform ensures a smooth and intuitive payment flow from start to finish. With no unnecessary redirects or delays, users can complete transactions in just a few taps—making the entire process fast, simple, and frustration-free.</p>
                     </div>
-                }
-                {!login ? <div>
-                    <div className="text-3xl lg:text-4xl font-bold text-sec">Login Account</div>
-                    <form onSubmit={LoginAcc} className='mt-5 flex items-start gap-4 flex-col'>
-                        <FormComponent formtype="email" name={`email`} value={forms.email} onchange={handleChange} placeholder="Email Address" />
-                        <FormComponent formtype="password" name={`password`} value={forms.password} onchange={handleChange} placeholder="Password" />
-                        <div className="grid grid-cols-2 gap-4 items-center mb-3">
+                </div>
+            </div>
+            <div className="w-full h-full overflow-auto flex items-start py-10 justify-center lg:w-1/2 mx-auto  bg-white ">
 
-                            <div className="text-right">
-                                <Link to="/forgot-password" className='text-primary font-semibold'>Forgot Password?</Link>
+                {!login && <div className='w-11/12 mx-auto'>
+                    <div className="w-fit ml-auto">Don't have an account? <Link to={`/signup`} className='underline text-col'>Sign up</Link></div>
+                    <div className="flex items-center mt-10 w-full flex-col gap-5">
+                        <div className="">
+                            <div className="text-3xl font-bold text-sec">Welcome Back to Pinerock </div>
+                            <div className="">Please enter your details to sign in your account</div>
+                        </div>
+                        <form onSubmit={LoginAcc} className='mt-5 w-full flex items-start gap-4 flex-col'>
+                            <div className="w-full flex items-start flex-col">
+                                <div className="">Email Address</div>
+                                <FormComponent formtype="email" name={`email`} value={forms.email} onchange={handleChange} placeholder="Email Address" />
                             </div>
-                        </div>
-                        <ButtonComponent bg={`bg-sec text-white h-12`} title={loading ? "...Logging in" : "Login Account"} />
-                        <div className="text-zinc-500 mt-5 text-center ">Don't have an account? <Link to="/signup" className='text-sec font-semibold'>Create Account</Link> </div>
-                        <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-sec font-semibold'>Go back home</Link> </div>
-                    </form>
-                </div> :
-                    <div className="flex items-start flex-col gap-5">
-                        <div className="">Site Maintenance Notice</div>
+                            <div className="w-full flex items-start flex-col">
+                                <div className="">Password</div>
+                                <FormComponent formtype="password" name={`password`} value={forms.password} onchange={handleChange} placeholder="minimum of 6 characters" />
+                            </div>
+                            <ButtonComponent bg={`bg-col text-white h-12`} title={loading ? "...Logging in" : "Login Account"} />
+                            <div className="w-full flex items-center  justify-between">
+                                <hr className='border w-[32%]' />
+                                <div className="text-zinc-500 truncate  w-[30%] text-center">or sign in with</div>
+                                <hr className='border w-[32%]' />
+                            </div>
+                            <div className="flex items-center bg-sec border py-2 rounded-md cursor-pointer gap-3 w-full justify-center">
+                                <GoogleIcon />
+                                <span className="text-white font-semibold">Google</span>
+                            </div>
 
-                        <div className="font-bold">Dear User,</div>
-
-                        <div className="">
-                        Our website is currently undergoing scheduled maintenance to improve your experience. During this time, some services may be temporarily unavailable. We apologize for any inconvenience and appreciate your patience as we work to enhance our platform.
-                        </div>
-
-                        <div className="">
-                        Estimated Downtime:  <span className='font-bold'>November 9th, 2:00 AM to November 11th at 6:00 AM UTC</span> <br />
-                        We’ll Be Back Shortly!
-                        </div>
-
-                        <div className="">
-                        Thank you for your understanding and support. If you have any urgent inquiries, please contact us at support@pinerockcreditunion.com.
-                        </div>
-
-                        <div className="">Best regards, 
-                        <span className='font-bold'>Pinerockcredit Union IT/Support Team</span></div>
-
-                        <Link to={`/`} className="underline text-primary">Go back home</Link>
+                            <div className="w-full flex items-center justify-between gap-5">
+                                <Link to="/forgot-password" className='text-col underline text-center w-full font-semibold'>Forgot Password?</Link>
+                                <Link to="/" className='text-col underline text-center w-full font-semibold'>Go Home</Link>
+                            </div>
+                        </form>
                     </div>
+                </div>
                 }
             </div>
         </div>
