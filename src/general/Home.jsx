@@ -61,7 +61,7 @@ export default function Home() {
       >
         <div className="w-full flex items-start flex-col gap-10 lg:gap-32">
           <FAQ />
-          <ContactUs />
+          <ContactUs bg_active={false}/>
         </div>
 
       </div>

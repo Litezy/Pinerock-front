@@ -29,7 +29,7 @@ const QuickLinks2 = [
 
 
 
-export default function Footer() {
+export default function Footer({show}) {
 
   const [email, setEmail] = useState({
     email: '',
@@ -60,9 +60,11 @@ export default function Footer() {
       errorMessage('sorry, something went wrong. try again')
     }
   }
+
+
   return (
     <div className="w-full  ">
-      
+     {show && <ContactUs />}
       <div className="bg-white text-sec h-fit w-full pt-20 pb-10 overflow-hidden">
         <div className="w-11/12 mx-auto ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

@@ -2,15 +2,16 @@ import React, { useState } from 'react'
 import { CiMail } from 'react-icons/ci'
 import { FaFacebookF, FaInstagram, FaLocationArrow, FaPinterestP, FaXTwitter } from 'react-icons/fa6'
 import { FiPhoneIncoming, FiPrinter } from 'react-icons/fi'
+import contact_bg from '@/assets/general/contact_bg.png'
 import { errorMessage, SiteAddress, SiteContact, SiteEmail, successMessage } from '@/utils/functions';
 import { Apis, ClientPostApi } from '@/services/Api';
 
 
 
-const ContactUs = () => {
+const ContactUs = ({ bg_active = true }) => {
 
   const links = [
-   
+
     {
       img: < FiPhoneIncoming />,
       title: 'Give us a call',
@@ -20,7 +21,7 @@ const ContactUs = () => {
       img: <CiMail />,
       title: 'Send us an email',
       desc: SiteEmail,
-      type:'email'
+      type: 'email'
     },
     {
       img: <FaLocationArrow />,
@@ -83,8 +84,11 @@ const ContactUs = () => {
     }
   }
   return (
-    <div className=''>
-      <div className="w-full h-full   pt-5 lg:pt-0 lg:border-none text-white ">
+    <div
+      className={`w-full lg:h-[800px] h-[1300px] ${bg_active && 'pt-52 lg:mt-20'} bg-no-repeat relative bg-cover bg-center`}
+      style={bg_active ? { backgroundImage: `url(${contact_bg})`, zIndex: 0 } : { zIndex: 0 }}
+    >
+      <div className="w-full h-full  lg:pt-0 lg:border-none text-white ">
         <div className="w-11/12 mx-auto">
           <div className="flex items-start flex-col lg:flex-row lg:gap-10 w-full">
             <div className="lg:w-1/2 w-full text-dark flex items-start flex-col gap-6 h-fit pb-10 lg:pb-0">
@@ -98,8 +102,8 @@ const ContactUs = () => {
                     </div>
                     <div className="flex items-start flex-col">
                       <div className="text-sm text-gray-600 font-semibold">{item.title}</div>
-                      <a href={item.type  && `mailto:${item.desc}` } 
-                      className={`text-sm  text-sec font-bold ${item.type && 'underline'}`}>{item.desc}</a>
+                      <a href={item.type && `mailto:${item.desc}`}
+                        className={`text-sm  text-sec font-bold ${item.type && 'underline'}`}>{item.desc}</a>
                     </div>
                   </div>
                 ))}
