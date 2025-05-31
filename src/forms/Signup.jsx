@@ -212,15 +212,7 @@ export default function Signup() {
 
 
                         <ButtonComponent bg={`bg-col text-white h-12`} title={loading ? "...Logging in" : "Create Account"} />
-                        <div className="w-full flex items-center  justify-between">
-                            <hr className='border w-[32%]' />
-                            <div className="text-zinc-500 truncate  w-[30%] text-center">or sign up with</div>
-                            <hr className='border w-[32%]' />
-                        </div>
-                        <div className="flex items-center bg-sec border py-2 rounded-md cursor-pointer gap-3 w-full justify-center">
-                            <GoogleIcon />
-                            <span className="text-white font-semibold">Google</span>
-                        </div>
+                        
                         <Link to="/" className='text-col underline text-center w-full font-semibold'>Go Home</Link>
                     </form>
                 }

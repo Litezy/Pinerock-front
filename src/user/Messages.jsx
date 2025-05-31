@@ -63,16 +63,16 @@ const Messages = () => {
 
   return (
     <div className=' w-full mx-auto lg:h-screen h-[100dvh] flex items-center justify-center'>
-      <div className="mb-5 w-full mx-auto md:w-11/12 bg-white  h-[100dvh] relative flex-col rounded-lg flex items-start justify-between">
+      <div className="my-5  w-full mx-auto md:w-11/12 bg-white  h-[100dvh] relative flex-col rounded-lg flex items-start justify-between">
         {loading &&
           <div className="fixed top-0  backdrop-blur-sm w-full h-full rounded-md left-1/2 -translate-x-1/2">
             <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-fit p-5 rounded-md bg-white"><Loader /></div>
           </div>
         }
 
-        <div className="h-[12dvh]  w-full border-b flex items-center px-5 justify-between">
+        <div className={`h-[12dvh] ${active && 'mt-16'}  w-full border-b flex items-center px-5 justify-between`}>
           <Link
-            className='w-fit text-xs px-4 py-1 rounded-md bg-gradient-to-tr from-primary to-sec text-white'
+            className='w-fit text-xs px-4 py-1 rounded-md bg-col text-white'
             to={active ? `/user/tickets/status/active` : `/user/tickets/status/closed`}
           >back</Link>
 

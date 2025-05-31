@@ -3,6 +3,7 @@ import moment from 'moment'
 import { Link, useNavigate } from 'react-router-dom'
 import { Apis, GetApi } from '@/services/Api'
 import { errorMessage } from './functions'
+import image from "@/assets/download.png"
 
 const ActiveComponent = () => {
 
@@ -43,7 +44,7 @@ const ActiveComponent = () => {
                 <div className="my-5">You have {actives && actives.length > 0 ? `${actives.length} active ticket(s), see them below.` : '0 active tickets.'}</div>
                 <div className="relative overflow-x-auto rounded-md ">
                     <table className="w-full text-sm text-left rtl:text-right relative">
-                        <thead className=" bg-gradient-to-tr from-primary to-sec text-xl text-white">
+                        <thead className=" bg-col text-xl text-white">
                             <tr>
                                 {TableHeaders.map((item, index) => (
                                     <th scope="col" key={index} className="px-3 py-3 text-sm truncate">
@@ -58,7 +59,7 @@ const ActiveComponent = () => {
                                     <td className="px-3 py-3">
                                         {item.id}
                                     </td>
-                                    <td className="px-3 py-3">
+                                    <td className="px-3 py-3 truncate w-fit">
                                         {item.subject}
                                     </td>
                                     <td className="px-3 py-3">
@@ -73,9 +74,14 @@ const ActiveComponent = () => {
                                     </td>
                                 </tr>
                             )) :
-                                <tr className=" w-full text-lg font-semibold flex items-center justify-center">
-                                    <td>No active tickets found</td>
-                                </tr>
+                                    <tr className='border'>
+                                        <td colSpan={5}>
+                                            <div className="flex w-full flex-col items-center justify-center py-10">
+                                                <img src={image} alt="trans image" className="mb-4" />
+                                                <div>No active tickets yet!</div>
+                                            </div>
+                                        </td>
+                                    </tr>
                             }
 
                         </tbody>

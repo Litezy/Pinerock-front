@@ -144,13 +144,13 @@ const EmailandPassModal = ({ email, pass, emaildiv, setModal }) => {
     return (
         <div ref={emaildiv} className="w-full bg-white h-fit py-3 rounded-lg relative ">
             <div className="flex w-full justify-between items-center px-3">
-                <div className="text-xl font-bold">Change {email ? 'Email' : 'Password'}</div>
+                <div className="text-xl font-bold ">Change {email ? 'Email' : 'Password'}</div>
                 <RiCloseLargeFill onClick={() => setModal(false)} className='text-2xl cursor-pointer' />
             </div>
             <hr className='my-5 bg-gray' />
 
             {loading &&
-                <div className="absolute h-full  top-1/2 left-1/2 -translate-x-1/2 items-center justify-center">
+                <div className="absolute h-full  top-20 left-1/2 -translate-x-1/2 items-center justify-center">
                     <Loader />
                 </div>
             }
@@ -159,7 +159,7 @@ const EmailandPassModal = ({ email, pass, emaildiv, setModal }) => {
                 <div className="flex flex-col gap-3 w-11/12 px-5  mx-auto items-start">
                     <div className="text-center  font-semibold underline">Enter OTP Code</div>
                     <FormComponent formtype='code' placeholder={`*****`} name={`code`} value={forms.code} onchange={handleChange}/>
-                    <button onClick={saveEmail} className='w-fit px-4 py-2 self-center rounded-md bg-primary text-white'>Submit</button>
+                    <button onClick={saveEmail} className='w-fit px-4 py-2 self-center rounded-md bg-col text-white'>Submit</button>
 
 
                     <div className="flex items-center justify-between w-full">
@@ -201,12 +201,12 @@ const EmailandPassModal = ({ email, pass, emaildiv, setModal }) => {
                 <div className=" mt-14">
                     {email && <ButtonComponent
                         type={`submit`}
-                        bg={`bg-primary text-white h-10`}
+                        bg={`bg-col text-white h-10`}
                         title={`Save Changes`} />}
 
 
                     {pass && <ButtonComponent
-                        bg={`bg-primary text-white h-10`}
+                        bg={`bg-col text-white h-10`}
                         title={`Save Password`} />}
                 </div>
             </form>}

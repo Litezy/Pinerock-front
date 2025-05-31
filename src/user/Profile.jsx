@@ -139,6 +139,8 @@ const Profile = () => {
         }
 
     }
+
+    console.log(`${profileImg}/profiles/${profile?.image}`)
     return (
         <div className='w-full lg:mt-10 mt-5'>
             <div className="w-11/12 mx-auto">

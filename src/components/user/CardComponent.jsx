@@ -9,6 +9,8 @@ import { Apis, GetApi, PostApi } from '@/services/Api'
 import chip from '@/assets/chip-sm.png'
 import ButtonComponent from '@/utils/ButtonComponent'
 import { useLocation } from 'react-router-dom'
+import visademo from "@/assets/visa.png"
+import downloaddemo from "@/assets/download.png"
 
 const CardComponent = () => {
 
@@ -66,7 +68,7 @@ const CardComponent = () => {
     }, [])
 
     const handleCardNumberChange = (event) => {
-        let value = event.target.value.replace(/\D/g, ''); 
+        let value = event.target.value.replace(/\D/g, '');
         value = value.substring(0, 16);
         const formattedValue = value.match(/.{1,4}/g)?.join('-') || value; // Insert hyphens every 4 digits
         setCards({
@@ -148,73 +150,77 @@ const CardComponent = () => {
                             }
                             <div className="text-xl font-semibold text-balance">Enter Card Details</div>
                             <div className="my-5 flex flex-col items-start gap-5">
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="text-lg ">Card type:</div>
-                                    <div className="w-1/2 ">
-                                        <label className='w-1/2 ' >
-                                            <select name="type" value={cards.type} onChange={handleChange} className='w-full outline-none h-14 border px-5 py-1 rounded-md' id="">
-                                                <option value="">Select Card Type</option>
-                                                <option value="visa">Visa</option>
-                                                <option value="mastercard">Mastercard</option>
-                                            </select>
+                                <div className="w-full flex items-center justify-between gap-5 lg:flex-row lg:gap-10 flex-col">
+                                    <div className="flex items-start flex-col justify-between w-full">
+                                        <div className="text-lg ">Card type:</div>
+                                        <div className="w-full ">
+                                            <label className='w-full ' >
+                                                <select name="type" value={cards.type} onChange={handleChange} className='w-full outline-none h-14 border px-5 py-1 rounded-md' id="">
+                                                    <option value="">Select Card Type</option>
+                                                    <option value="visa">Visa</option>
+                                                    <option value="mastercard">Mastercard</option>
+                                                </select>
 
-                                        </label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start flex-col justify-between w-full">
+                                        <div className="text-lg ">Card No:</div>
+                                        <div className="w-full">
+                                            <FormComponent formtype={'text'} value={cards.card_no} onchange={handleCardNumberChange} />
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="text-lg ">Card No:</div>
-                                    <div className="w-1/2">
-                                        <FormComponent formtype={'text'} value={cards.card_no} onchange={handleCardNumberChange} />
+                                <div className="w-full flex items-center justify-between gap-5 lg:flex-row lg:gap-10 flex-col">
+                                    <div className="flex items-start flex-col justify-between w-full">
+                                        <div className="text-lg ">Card Holder's Name:</div>
+                                        <div className="w-full">
+                                            <FormComponent formtype={'text'} name={`card_name`} value={cards.card_name} onchange={handleChange} />
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="text-lg ">Card Holder's Name:</div>
-                                    <div className="w-1/2">
-                                        <FormComponent formtype={'text'} name={`card_name`} value={cards.card_name} onchange={handleChange} />
-                                    </div>
-                                </div>
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="text-lg ">Card CVV:</div>
+                                    <div className="flex items-start flex-col justify-between w-full">
+                                        <div className="text-lg ">Card CVV:</div>
 
-                                    <div className="w-1/4">
-                                        <FormComponent formtype={'cvv'} name={`cvv`} value={cards.cvv} onchange={handleCvv} />
+                                        <div className="w-full">
+                                            <FormComponent formtype={'cvv'} name={`cvv`} value={cards.cvv} onchange={handleCvv} />
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex items-center justify-between w-full">
+                                <div className="flex items-start flex-col justify-between w-full">
                                     <div className="text-lg ">Card Exp:</div>
-                                    <div className="w-1/4">
+                                    <div className="w-1/2">
                                         <FormComponent formtype={'text'} name={`exp`} value={cards.exp} onchange={handleCardDate} />
                                     </div>
                                 </div>
-                                <div className="flex items-center justify-between w-full">
+                                <div className="flex items-start flex-col justify-between w-full">
                                     <div className="text-lg ">Billing Address:</div>
-                                    <div className="w-3/4">
+                                    <div className="w-full">
                                         <FormComponent formtype={'text'} name={`bill_address`} value={cards.bill_address} onchange={handleChange} />
                                     </div>
                                 </div>
                             </div>
-                            <button disabled={loading ? true : false} onClick={addCardsArr} className=' h-12 w-full bg-gradient-to-tr from-primary to-sec  text-white rounded-lg'>Add Card</button>
+                            <button disabled={loading ? true : false} onClick={addCardsArr} className=' h-12 w-full bg-col  text-white rounded-lg'>Add Card</button>
                         </div>
                     </ModalLayout>
                 </>
             }
 
             <div className="flex mb-2 w-full items-center justify-between">
-                <div className=" text-xl font-semibold">My Cards</div>
+                <div className=" text-base text-zinc-400 ">Overview</div>
                 {comp &&
                     allcards.length < 2 &&
                     <div className="w-fit ">
                         <ButtonComponent
                             onclick={() => setAdd(true)}
-                            title="Add New Card"
-                            bg={`text-white bg-gradient-to-tr px-3 from-primary text-sm to-sec h-12`} />
+                            title="+ Add New Card"
+                            bg={`text-white bg-col px-3 from-primary text-sm to-sec h-10`} />
                     </div>
                 }
             </div>
-            {Array.isArray(allcards) && allcards.length > 0 ? <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
+            {Array.isArray(allcards) && allcards.length > 1 ? <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
                 {allcards.map((item, i) => {
                     return (
-                        <div key={i} className={`lg:h-[17rem] h-fit w-full bg-gradient-to-tr from-primary to-sec  rounded-lg py-4 px-5`}>
+                        <div key={i} className={`lg:h-[17rem] h-fit w-full bg-col  rounded-lg py-4 px-5`}>
                             <div className="flex flex-col text-white h-full justify-between">
                                 <div className="flex items-center  justify-between">
                                     <div className={`w-fit  ${item.type === 'visa' ? 'h-16' : 'h-fit'} bg-white rounded-md flex items-center justify-center`}>
@@ -247,30 +253,22 @@ const CardComponent = () => {
                     )
                 })}
             </div> :
-                <div className="flex items-center flex-col lg:flex-row justify-between gap-5 lg:gap-10">
-                    {new Array(2).fill(0).map((item, i) => {
-                        return (
-                            <div key={i} className={`h-60 w-full  bg-gradient-to-tr from-primary to-sec rounded-lg py-6 px-5`}>
-                                <div className="flex gap-4 flex-col text-white h-full justify-between">
-                                    <div className="w-16 p-3 bg-white h-12 rounded-md ml-auto mr-2">
-                                    </div>
-                                    <div className="flex w-full  items-center justify-between  text-white text-base">
-                                        <div className=" w-3/4 flex-col flex items-start">
-                                            <div className="flex items-center gap-1 text-lg">
-                                                0000 - 0000 - 0000 - 0000 - 0000
-                                            </div>
-                                        </div>
-                                        <div className="w-1/4 bg-white rounded-md h-3"></div>
-                                    </div>
-                                    <div className="w-full bg-white rounded-md h-3"> </div>
-                                </div>
-                            </div>
-                        )
-                    })}
+                <div className="flex items-center flex-col  justify-center gap-5 lg:gap-10">
+                    <img src={visademo} alt="visa" />
+                    <div className="">
+                        <img src={downloaddemo} alt="image" />
+                        <div className="mb-2">No card added yet!</div>
+                        <div className="w-fit ">
+                            <ButtonComponent
+                                onclick={() => setAdd(true)}
+                                title="+ Add New Card"
+                                bg={`text-white bg-col px-3 from-primary text-sm to-sec h-10`} />
+                        </div>
+                    </div>
                 </div>
 
             }
-            <div className="font-light mt-1">* max of two credit/debit cards</div>
+            {/* <div className="font-light mt-1">* max of two credit/debit cards</div> */}
 
 
         </div>

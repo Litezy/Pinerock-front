@@ -11,7 +11,7 @@ import Loader from '@/utils/Loader'
 import blocksImg from '@/assets/general/blocks.png'
 import savingsImg from '@/assets/general/house_savings.png'
 import offerImg from '@/assets/general/offer.png'
-import GoogleIcon from '@/components/general/GoogleIcon'
+import GoogleSignButton from '@/components/general/GoogleSIgnButton'
 
 export default function Login() {
 
@@ -103,15 +103,7 @@ export default function Login() {
                                 <FormComponent formtype="password" name={`password`} value={forms.password} onchange={handleChange} placeholder="minimum of 6 characters" />
                             </div>
                             <ButtonComponent bg={`bg-col text-white h-12`} title={loading ? "...Logging in" : "Login Account"} />
-                            <div className="w-full flex items-center  justify-between">
-                                <hr className='border w-[32%]' />
-                                <div className="text-zinc-500 truncate  w-[30%] text-center">or sign in with</div>
-                                <hr className='border w-[32%]' />
-                            </div>
-                            <div className="flex items-center bg-sec border py-2 rounded-md cursor-pointer gap-3 w-full justify-center">
-                                <GoogleIcon />
-                                <span className="text-white font-semibold">Google</span>
-                            </div>
+                            
 
                             <div className="w-full flex items-center justify-between gap-5">
                                 <Link to="/forgot-password" className='text-col underline text-center w-full font-semibold'>Forgot Password?</Link>

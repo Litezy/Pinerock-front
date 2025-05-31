@@ -155,7 +155,7 @@ export default function ForgotPassword() {
     }
 
     return (
-        <div className='bg-gradient-to-tr from-primary to-sec h-screen py-20 overflow-x-hidden flex items-center justify-center'>
+        <div className='bg-col h-screen py-20 overflow-x-hidden flex items-center justify-center'>
             <div className="w-[90%] mx-auto max-w-xl bg-white relative backdrop-blur-sm p-5 rounded-lg mt-10 lg:mt-20">
 
                 {loading &&
@@ -167,7 +167,7 @@ export default function ForgotPassword() {
 
                 {screen === 1 &&
                     <>
-                        <div className="text-2xl lg:text-4xl font-bold text-primary">Forgot Password</div>
+                        <div className="text-2xl lg:text-4xl font-bold text-col">Forgot Password</div>
                         <div className="">Lets assist you recover your account</div>
                         <form onSubmit={checkEmail} className='mt-5'>
                             <Forminput
@@ -176,7 +176,7 @@ export default function ForgotPassword() {
                                 onChange={handleForms}
                                 formtype="text" label="Email Address"
                             />
-                            <Formbutton label="Find my email" />
+                            <Formbutton  label="Find my email"  />
                         </form>
                     </>
                 }
@@ -238,7 +238,7 @@ export default function ForgotPassword() {
                     </>
                 }
 
-                <div className="text-zinc-500 mt-3 text-center"><Link to="/" className='text-blue-600'>Go back home</Link> </div>
+                <div className="text-col mt-3 text-center"><Link to="/" className=''>Go back home</Link> </div>
             </div>
         </div>
     )

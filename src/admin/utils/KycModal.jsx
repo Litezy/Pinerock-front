@@ -44,11 +44,11 @@ const KycModal = () => {
         try {
             const response = await PostApi(Apis.admin.overturn_kyc, formdata)
             if (response.status !== 200) return errorMessage(response.msg)
-                successMessage(response.msg)
-                setDecline(false)
-               setTimeout(()=>{
+            successMessage(response.msg)
+            setDecline(false)
+            setTimeout(() => {
                 navigate(`/admin/kycs`)
-               },200)
+            }, 200)
         } catch (error) {
             errorMessage(error.message)
         } finally {
@@ -63,19 +63,50 @@ const KycModal = () => {
         try {
             const response = await PostApi(Apis.admin.approve_kyc, formdata)
             if (response.status !== 200) return errorMessage(response.msg)
-                successMessage(response.msg)
-                setDecline(false)
-               setTimeout(()=>{
+            successMessage(response.msg)
+            setDecline(false)
+            setTimeout(() => {
                 navigate(`/admin/kycs/verified`)
-               },200)
+            }, 200)
         } catch (error) {
             errorMessage(error.message)
         } finally {
             setLoading(false)
         }
     }
+
+    const [showImg, setShowImg] = useState({
+        status: false, src: ''
+    })
+
+
+    const showFullImage = (img) => {
+        setShowImg({ status: true, src: img })
+    }
     return (
         <div className="w-11/12 mx-auto mt-5 relative">
+
+            {showImg.status && (
+                <div
+                    onClick={(e) => {
+                        // Close modal if clicked outside the image
+                        if (e.target.id === "imageModalBackdrop") {
+                            setShowImg({ status: false, src: "" });
+                        }
+                    }}
+                    id="imageModalBackdrop"
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md px-4 sm:px-8 py-6 overflow-auto"
+                >
+                    <div className="max-w-4xl w-full max-h-[90vh] rounded-lg overflow-hidden shadow-lg">
+                        <img
+                            src={showImg.src}
+                            alt="Preview"
+                            className="w-full h-full object-contain bg-black rounded-lg"
+                        />
+                    </div>
+                </div>
+            )}
+
             <div ref={refdiv}
 
                 className={`  shadow-xl bg-white rounded-md py-5`}>
@@ -95,7 +126,7 @@ const KycModal = () => {
                     </div>
                 }
                 <div className="flex w-11/12 mx-auto items-baseline">
-                    <div className="flex flex-col gap-2 w-1/2">
+                    <div className="flex flex-col gap-4 w-1/2">
                         <div className="">
                             <h1 className='text-sm'>First Name:</h1>
                             <h1 className='font-bold text-md'>{user?.userkycs?.firstname}</h1>
@@ -116,9 +147,21 @@ const KycModal = () => {
                             <h1 className='text-sm'>Date Of Birth:</h1>
                             <h1 className='font-bold '>{user.dob}</h1>
                         </div>
+                        <div className="text-md">
+                            <h1 className='text-sm'>Mother's Maiden Name:</h1>
+                            <h1 className='font-bold '>{user.maiden}</h1>
+                        </div>
+                        <div className="text-md">
+                            <h1 className='text-sm'>State of Birth:</h1>
+                            <h1 className='font-bold '>{user.state_of_birth}</h1>
+                        </div>
+                        <div className="text-md">
+                            <h1 className='text-sm'>City of Birth:</h1>
+                            <h1 className='font-bold '>{user.city_of_birth}</h1>
+                        </div>
 
                     </div>
-                    <div className="">
+                    <div className="flex flex-col gap-4">
                         <div className="text-md">
                             <h1 className='text-sm'>Address Line One:</h1>
                             <h1 className='font-bold '>{user.first_address}</h1>
@@ -156,11 +199,15 @@ const KycModal = () => {
                 <div className="w-11/12 items-center flex-col lg:flex-row gap-10 mx-auto mt-6  flex ">
                     <div className="lg:w-1/2 ">
                         <h1>ID Front Photo</h1>
-                        <img src={`${profileImg}/kycs/${user?.userkycs?.firstname} ${user?.userkycs?.lastname}'s kyc/${user.frontimg}`} className='w-full md:h-96 object-contain' alt="" />
+                        <img
+                            onClick={() => showFullImage(`${profileImg}/kycs/${user?.userkycs?.firstname}/${user?.frontimg}`)}
+                            src={`${profileImg}/kycs/${user?.userkycs?.firstname}/${user?.frontimg}`} className='w-full cursor-pointer md:h-96 object-contain' alt="" />
                     </div>
                     <div className="lg:w-1/2">
                         <h1>ID Back Photo</h1>
-                        <img src={`${profileImg}/kycs/${user?.userkycs?.firstname} ${user?.userkycs?.lastname}'s kyc/${user.backimg}`} className='w-full md:h-96 object-contain' alt="" />
+                        <img
+                        onClick={() => showFullImage(`${profileImg}/kycs/${user?.userkycs?.firstname}/${user?.backimg}`)} 
+                        src={`${profileImg}/kycs/${user?.userkycs?.firstname}/${user.backimg}`} className='w-full cursor-pointer md:h-96 object-contain' alt="" />
                     </div>
                 </div>
                 {user?.status === 'pending' && <div className="w-11/12 mt-10 mb-5 mx-auto flex items-center justify-between">
@@ -192,7 +239,7 @@ const KycModal = () => {
                         </div>
                     </ModalLayout>
                 }
-                
+
             </div>
         </div>
     )

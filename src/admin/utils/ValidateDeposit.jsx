@@ -64,9 +64,10 @@ const ValidateDeposit = ({ setScreen }) => {
 
   const ValidatePayment = async (e) => {
     e.preventDefault()
+    const num = selectedItem?.amount.replace(/,/g, "")
     const formdata = {
       id: selectedItem?.id,
-      amount: selectedItem?.amount
+      amount: num
     }
     //  return console.log(formdata)
     setConfirm(false)

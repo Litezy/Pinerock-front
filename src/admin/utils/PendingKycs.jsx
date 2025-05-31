@@ -15,6 +15,7 @@ const PendingKycs = () => {
             const response = await GetApi(Apis.admin.pending_kycs)
             if (response.status !== 200) return errorMessage(response.msg)
             setUsers(response.data)
+        
         } catch (error) {
             errorMessage(error.message)
         } finally {

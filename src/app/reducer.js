@@ -9,7 +9,8 @@ const initialState = {
     messages:[],
     active_chats:[],
     closed_chats:[],
-    newCurr:null
+    newCurr:null,
+    path:''
   };
   
   export const globalStates = createSlice({
@@ -47,9 +48,12 @@ const initialState = {
       dispatchNewCurr: (state, action) => {
         state.newCurr = action.payload;
       },
+      dispatchNewPath: (state, action) => {
+        state.path = action.payload;
+      },
     },
   });
 
-export const { dispatchForms,dispatchNotifications,dispatchProfile,dispatchCurrency,dispatchUserSavings,dispatchMessages,dispatchActiveChats,dispatchClosedChats,dispatchNewCurr  } = globalStates.actions
+export const { dispatchForms,dispatchNewPath,dispatchNotifications,dispatchProfile,dispatchCurrency,dispatchUserSavings,dispatchMessages,dispatchActiveChats,dispatchClosedChats,dispatchNewCurr  } = globalStates.actions
 
 export default globalStates.reducer

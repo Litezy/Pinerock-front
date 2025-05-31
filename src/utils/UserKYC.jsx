@@ -38,7 +38,10 @@ const UserKYC = ({ }) => {
         zip: '',
         id_number: '',
         ssn: '',
-        options: ''
+        options: '',
+        maiden: '',
+        state_of_birth: '',
+        city_of_birth: ''
     })
     const [frontimg, setfrontImg] = useState({
         img: null,
@@ -107,6 +110,9 @@ const UserKYC = ({ }) => {
         if (!forms.zip) return errorMessage("Zip code is required")
         if (!forms.id_type) return errorMessage("ID card type is required")
         if (!forms.id_number) return errorMessage("ID card number is required")
+        if (!forms.maiden) return errorMessage("Mother's maiden name is required")
+        if (!forms.state_of_birth) return errorMessage("State of birth is required")
+        if (!forms.city_of_birth) return errorMessage("City of birth is required")
         if (frontimg.image === null) return errorMessage('ID front image is required')
         if (backimg.image === null) return errorMessage('ID back image is required')
         const formdata = new FormData()
@@ -119,10 +125,14 @@ const UserKYC = ({ }) => {
         formdata.append('second_address', forms.second_address)
         formdata.append('id_number', forms.id_number)
         formdata.append('id_type', forms.id_type)
-
+        formdata.append('maiden', forms.maiden)
+        formdata.append('state_of_birth', forms.state_of_birth)
+        formdata.append('city_of_birth', forms.city_of_birth)
+    //   return console.log(forms)
         setLoading(true)
         try {
             const response = await PostApi(Apis.auth.submit_kyc, formdata)
+            console.log(response)
             if (response.status !== 200) return errorMessage(response.msg)
             successMessage(response.msg)
             navigate(`/user/settings`)
@@ -141,6 +151,9 @@ const UserKYC = ({ }) => {
         if (!forms.zip) return errorMessage("Zip code is required")
         if (!forms.id_type) return errorMessage("ID card type is required")
         if (!forms.id_number) return errorMessage("ID card number is required")
+        if (!forms.maiden) return errorMessage("Mother's maiden name is required")
+        if (!forms.state_of_birth) return errorMessage("State of birth is required")
+        if (!forms.city_of_birth) return errorMessage("City of birth is required")
         if (frontimg.image === null) return errorMessage('ID front image is required')
         if (backimg.image === null) return errorMessage('ID back image is required')
         if (!forms.ssn === null) return errorMessage('SSN is required for government compliance')
@@ -155,6 +168,9 @@ const UserKYC = ({ }) => {
         formdata.append('id_number', forms.id_number)
         formdata.append('id_type', forms.id_type)
         formdata.append('ssn', forms.ssn)
+        formdata.append('maiden', forms.maiden)
+        formdata.append('state_of_birth', forms.state_of_birth)
+        formdata.append('city_of_birth', forms.city_of_birth)
         setLoad(true)
         try {
             const response = await PostApi(Apis.auth.submit_kyc, formdata)
@@ -190,6 +206,9 @@ const UserKYC = ({ }) => {
         if (!forms.zip) return errorMessage("Zip code is required")
         if (!forms.id_type) return errorMessage("ID card type is required")
         if (!forms.id_number) return errorMessage("ID card number is required")
+        if (!forms.maiden) return errorMessage("Mother's maiden name is required")
+        if (!forms.state_of_birth) return errorMessage("State of birth is required")
+        if (!forms.city_of_birth) return errorMessage("City of birth is required")
         if (frontimg.image === null) return errorMessage('ID front image is required')
         if (backimg.image === null) return errorMessage('ID back image is required')
         setConfirm(true)
@@ -278,13 +297,13 @@ const UserKYC = ({ }) => {
 
 
             <div className="w-11/12 mx-auto ">
-                <Link to={'/user/settings'} className="w-fit  rounded-md px-5 py-1 bg-gradient-to-tr from-primary to-sec text-white mr-auto cursor-pointer ">
+                <Link to={'/user/settings'} className="w-fit  rounded-md px-5 py-1 bg-col text-white mr-auto cursor-pointer ">
                     back
                 </Link>
-                <h1 className='mb-2 mt-5 text-2xl font-bold'>{profile?.kyc === 'unverified' ? 'Complete Kyc Information below' : profile?.kyc === 'submitted' ? 'Track your kyc review progress' : 'Kyc Approved'}</h1>
+                <h1 className='mb-2 mt-5 text-xl font-semibold'>{profile?.kyc === 'unverified' ? 'Complete Kyc Information below to enjoy our platform benefits' : profile?.kyc === 'submitted' ? 'Track your kyc review progress' : 'Kyc Approved'}</h1>
                 <div className={`w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 
                 ${profile?.kyc !== 'verified' ? ' animate-pulse' : ''}`}>
-                    <div className={`${profile?.kyc === 'verified' ? 'bg-green-500' : "bg-gradient-to-tr from-primary to-sec"}  h-2.5 rounded-full`} style={{ width }}></div>
+                    <div className={`${profile?.kyc === 'verified' ? 'bg-green-500' : "bg-col"}  h-2.5 rounded-full`} style={{ width }}></div>
                 </div>
                 <div className="flex w-full items-center justify-between mt-2 text-sm">
                     <p className={`${profile?.kyc === 'unverified' && 'text-primary font-bold'}`}>
@@ -305,8 +324,8 @@ const UserKYC = ({ }) => {
                                 </div>
                             </div>
                         }
-                        <div className="md:flex md:items-baseline gap-5 w-full ">
-                            <div className="md:w-1/2">
+                        <div className="md:grid md:grid-cols-2 gap-10 w-full ">
+                            <div className="md:w-full">
 
                                 <div className="flex flex-col w-full mt-5 ">
                                     <h1 className='mb-2'>Marital Status:</h1>
@@ -344,7 +363,7 @@ const UserKYC = ({ }) => {
                                 </div>
 
                             </div>
-                            <div className="md:w-1/2  h-full">
+                            <div className="w-full  h-full">
                                 <div className="flex flex-col w-full  ">
                                     <h1 className="">Government Issued ID:</h1>
                                     <select name="id_type" onChange={handleChange} value={forms.id_type} className='border-b w-full outline-none mt-3'>
@@ -358,37 +377,51 @@ const UserKYC = ({ }) => {
                                     <h1>ID Number:</h1>
                                     <input name='id_number' value={forms.id_number} onChange={handleChange} type="text" className='w-full outline-none border-b h-8 overflow-x-auto' />
                                 </div>
-                                <div className="mt-5 ">
-                                    <h1 className='text-center text-lg font-bold'>Upload Front ID Image</h1>
-
-                                    <div className="md:h-60 h-48  w-11/12 mx-auto relative">
-                                        <label className={`${frontimg.img ? '' : 'border-2 border-black'} mt-5 w-full  h-full border-dashed flex cursor-pointer items-center justify-center `}>
-                                            {frontimg.img ? <div className="">
-                                                <div onChange={changeImagefront} className="absolute top-0 right-3 main font-bold ">
-                                                    <FaEdit className='text-2xl' />
-                                                </div>
-                                                <img src={frontimg.img} className='w-full h-48' />
-                                            </div> : <FaPlus className='text-2xl' />}
-                                            <input type="file" onChange={handleImageFront} hidden ref={frontRef} />
-                                        </label>
-                                    </div>
+                                <div className="flex flex-col w-full mt-3  ">
+                                    <h1>Mother's Maiden Name:</h1>
+                                    <input name='maiden' value={forms.maiden} onChange={handleChange} type="text" className='w-full outline-none border-b h-8 overflow-x-auto' />
                                 </div>
-                                <div className="mt-5 ">
-                                    <h1 className='text-center text-lg font-bold'>Upload Back ID Image</h1>
-
-                                    <div className="md:h-60 h-48 w-11/12 mx-auto relative ">
-                                        <label className={`${backimg.img ? '' : 'border-2 border-black border-dashed'} mt-5 w-full h-full  flex cursor-pointer items-center justify-center `}>
-                                            {backimg.img ? <div className="">
-                                                <div r onChange={changeImageback} className="absolute top-0 right-3 main font-bold ">
-                                                    <FaEdit className='text-2xl' />
-                                                </div>
-                                                <img src={backimg.img} className='w-full h-48' />
-                                            </div> : <FaPlus className='text-2xl' />}
-                                            <input type="file" onChange={handleImageBack} hidden ref={backRef} />
-                                        </label>
-                                    </div>
+                                <div className="flex flex-col w-full mt-3  ">
+                                    <h1>State of birth:</h1>
+                                    <input name='state_of_birth' value={forms.state_of_birth} onChange={handleChange} type="text" className='w-full outline-none border-b h-8 overflow-x-auto' />
+                                </div>
+                                <div className="flex flex-col w-full mt-3  ">
+                                    <h1>City of birth:</h1>
+                                    <input name='city_of_birth' value={forms.city_of_birth} onChange={handleChange} type="text" className='w-full outline-none border-b h-8 overflow-x-auto' />
                                 </div>
 
+
+                            </div>
+
+                            <div className="mt-5 ">
+                                <h1 className='text-center text-lg font-bold'>Upload Front ID Image</h1>
+
+                                <div className="md:h-60 h-48  w-11/12 mx-auto relative">
+                                    <label className={`${frontimg.img ? '' : 'border-2 border-black'} mt-5 w-full  h-full border-dashed flex cursor-pointer items-center justify-center `}>
+                                        {frontimg.img ? <div className="">
+                                            <div onChange={changeImagefront} className="absolute top-0 right-3 main font-bold ">
+                                                <FaEdit className='text-2xl' />
+                                            </div>
+                                            <img src={frontimg.img} className='w-full h-48' />
+                                        </div> : <FaPlus className='text-2xl' />}
+                                        <input type="file" onChange={handleImageFront} hidden ref={frontRef} />
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="mt-5 ">
+                                <h1 className='text-center text-lg font-bold'>Upload Back ID Image</h1>
+
+                                <div className="md:h-60 h-48 w-11/12 mx-auto relative ">
+                                    <label className={`${backimg.img ? '' : 'border-2 border-black border-dashed'} mt-5 w-full h-full  flex cursor-pointer items-center justify-center `}>
+                                        {backimg.img ? <div className="">
+                                            <div r onChange={changeImageback} className="absolute top-0 right-3 main font-bold ">
+                                                <FaEdit className='text-2xl' />
+                                            </div>
+                                            <img src={backimg.img} className='w-full h-48' />
+                                        </div> : <FaPlus className='text-2xl' />}
+                                        <input type="file" onChange={handleImageBack} hidden ref={backRef} />
+                                    </label>
+                                </div>
                             </div>
 
                         </div>

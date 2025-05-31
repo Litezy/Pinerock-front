@@ -6,7 +6,8 @@ import { dispatchNotifications } from '@/app/reducer';
 import { errorMessage, successMessage } from '@/utils/functions';
 import { Apis, GetApi, PostApi } from '@/services/Api';
 import Loader from '@/utils/Loader';
-import { Link } from 'react-router-dom';
+import image from "@/assets/download.png"
+
 
 const Notifications = () => {
 
@@ -94,7 +95,7 @@ const Notifications = () => {
       <div className="w-11/12 mx-auto lg:px-5 py-5 ">
         <div className="flex w-full items-center justify-between">
           <div className="lg:text-2xl text-lg font-bold">Notifications</div>
-          {records.length > 0 && <button onClick={MarkAll} className='w-fit px-2 py-2 rounded-md bg-gradient-to-tr from-primary to-sec  text-sm md:text-base text-white'>Mark all</button>}
+          {records.length > 0 && <button onClick={MarkAll} className='w-fit px-2 py-2 rounded-md bg-col  text-sm md:text-base text-white'>Mark all</button>}
         </div>
         <div className="mt-5 w-full relative">
 
@@ -122,10 +123,10 @@ const Notifications = () => {
               </div>
             </div>
           )) :
-            <>
-              <div className="text-center w-full">No Notifications data found</div>
-              <Link to={'/user'} className="text-center w-full flex items-center justify-center mt-5 underline text-primary text-base cursor-pointer">Go back to dashboard</Link>
-            </>
+            <div className="flex flex-col items-center justify-center py-10">
+              <img src={image} alt="trans image" className="mb-4" />
+              <div>No notifications yet!</div>
+            </div>
 
           }
         </div>

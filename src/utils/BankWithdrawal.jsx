@@ -31,9 +31,19 @@ const BankWithdrawal = () => {
         memo: ''
     })
 
-    const handleChange = (e) => {
-        setForms({ ...forms, [e.target.name]: e.target.value })
+   const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'amount') {
+        const numericValue = value.replace(/,/g, '').replace(/\D/g, '');
+        const formattedValue = numericValue ? Number(numericValue).toLocaleString() : '';
+        setForms({
+            ...forms,
+            amount: formattedValue
+        });
+    } else {
+        setForms({ ...forms, [name]: value });
     }
+}
 
 
     const fetchUserProfile = useCallback(async () => {
@@ -48,7 +58,7 @@ const BankWithdrawal = () => {
 
 
     const NextScreen = () => {
-        if(profile?.kyc !== 'verified') return errorMessage(`Please complete your kyc before proceeding with withdrawal.`)
+        if (profile?.kyc !== 'verified') return errorMessage(`Please complete your kyc before proceeding with withdrawal.`)
         if (!forms.acc_name) return errorMessage('Account name is required')
         if (!forms.acc_no) return errorMessage('Account number is required')
         if (!forms.bank_name) return errorMessage('Bank name is required')
@@ -121,7 +131,7 @@ const BankWithdrawal = () => {
         setScreen(1)
     }
 
-const newCurr = useSelector((state) => state.profile.newCurr)
+    const newCurr = useSelector((state) => state.profile.newCurr)
 
 
     return (
@@ -165,23 +175,25 @@ const newCurr = useSelector((state) => state.profile.newCurr)
                                     </div>
                                 </div>
 
-                                <div className="flex items-start flex-col lg:w-1/2 mx-auto w-full">
-                                    <div className="-500 text-base">Amount ({profile?.currency === '?' ? newCurr : currency})</div>
-                                    <FormComponent formtype='phone' placeholder={`enter aamount`} name={`amount`} value={forms.amount} onchange={handleChange} />
+                                <div className="flex w-full flex-col lg:flex-row items-center justify-between gap-5 lg:gap-10">
+                                    <div className="w-full">
+                                        <div className="-500 text-base">Amount ({profile?.currency === '?' ? newCurr : currency})</div>
+                                        <FormComponent formtype='text' placeholder={`enter amount`} name={`amount`} value={forms.amount} onchange={handleChange} />
+                                    </div>
+                                    <div className="flex items-start flex-col  w-full">
+                                        <div className=" text-base">Memo</div>
+                                        <textarea
+                                            name='memo'
+                                            value={forms.memo}
+                                            className='w-full  max-h-20 resize-none p-2 rounded-md border hover:border-black'
+                                            onChange={handleChange}
+                                            placeholder='memo'
+                                        >
+                                        </textarea>
+                                    </div>
                                 </div>
-                                <div className="flex items-start flex-col  w-full">
-                                    <div className=" text-base">Memo</div>
-                                    <textarea
-                                        name='memo'
-                                        value={forms.memo}
-                                        className='w-full  max-h-20 resize-none p-2 rounded-md border hover:border-black'
-                                        onChange={handleChange}
-                                        placeholder='memo'
-                                    >
-                                    </textarea>
-                                </div>
-
-                                <button onClick={NextScreen} className="md:w-fit w-full cursor-pointer text-center md:ml-auto md:px-10 py-2 bg-gradient-to-tr from-primary to-sec rounded-md text-white">Next</button>
+                              <hr className="w-full"/>
+                                <button onClick={NextScreen} className="md:w-fit w-full cursor-pointer text-center md:mr-auto md:px-10 py-2 bg-col rounded-md text-white">Next</button>
                             </div>
                         </div>}
 
@@ -195,7 +207,7 @@ const newCurr = useSelector((state) => state.profile.newCurr)
                                 </div>
                             }
 
-                            <button onClick={() => setScreen(1)} className='bg-gradient-to-tr from-primary to-sec text-white w-fit px-4 py-1 rounded-md'>
+                            <button onClick={() => setScreen(1)} className='bg-col text-white w-fit px-4 py-1 rounded-md'>
                                 edit
                             </button>
                             <div className="text-left w-full font-bold my-5 text-xl">Review your transfer details</div>
@@ -226,7 +238,7 @@ const newCurr = useSelector((state) => state.profile.newCurr)
 
 
                                     <div className="w-full my-5">
-                                        <ButtonComponent disabled={loading ? true : false} type='button' onclick={SubmitTransfer} title={'Send'} bg={`bg-gradient-to-tr from-primary to-sec text-white h-14`} />
+                                        <ButtonComponent disabled={loading ? true : false} type='button' onclick={SubmitTransfer} title={'Send'} bg={`bg-col text-white h-14`} />
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +249,7 @@ const newCurr = useSelector((state) => state.profile.newCurr)
 
                     {screen === 3 &&
                         <div className="my-10 lg:w-[60%] mx-auto w-full relative flex items-center shadow-lg flex-col py-5 px-3 lg:px-10 bg-white rounded-lg h-fit">
-                            <div className="my-3 text-center text-2xl font-light">Transfer Successful</div>
+                            <div className="my-3 text-center text-2xl font-light">Transaction Successful</div>
                             <Lottie
                                 animationData={animationLogo}
                                 className="w-auto h-72"
@@ -288,7 +300,7 @@ const newCurr = useSelector((state) => state.profile.newCurr)
                                     </div>
                                 </div>
                             </div>
-                            <button onClick={closeScreens} className='mt-6 text-center bg-gradient-to-tr from-primary to-sec text-white w-10/12 mx-auto px-3 py-2 rounded-md'>Close</button>
+                            <button onClick={closeScreens} className='mt-6 text-center bg-col text-white w-10/12 mx-auto px-3 py-2 rounded-md'>Close</button>
                         </div>
                     }
                 </div>

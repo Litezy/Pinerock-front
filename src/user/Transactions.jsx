@@ -9,6 +9,7 @@ import { FaCopy, FaFilter } from "react-icons/fa";
 import Loader from '@/utils/Loader'
 import { useNavigate } from 'react-router-dom'
 import { CiFilter } from "react-icons/ci";
+import TransHistoryComp from '@/components/user/TransHistoryComp'
 
 const Transactions = () => {
   const [transdata, setTransData] = useState([])
@@ -17,7 +18,7 @@ const Transactions = () => {
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const recordsPerPage = 10
-  const profile = useSelector((state)=> state.profile.profile)
+  const profile = useSelector((state) => state.profile.profile)
 
   const fetchTransHistory = useCallback(async () => {
     setLoading(true)
@@ -90,23 +91,23 @@ const Transactions = () => {
   const terminated = 'Goal Savings Terminated'
   return (
     <div className='w-full'>
-      <div className=" relative mx-auto mt-1 lg:mt-3 ">
-        <div className="lg:w-[78.8%] md:w-[98.25%]  mb-5 pt-5 w-[100%] bg-white  overflow-y-hidden overflow-x-hidden fixed  h-fit px-5 py-2">
-          <div className="border-b pb-2 text-xl lg:text-2xl font-semibold">Transaction History</div>
-          {records.length > 0 && <div className="flex items-center justify-center mt-2 flex-col w-11/12 mx-auto">
+      <div className=" relative  mx-auto mt-1 lg:mt-3 ">
+        <div className="lg:w-[78.8%] md:w-[98.25%]  mb-5 pt-5 w-[100%] bg-white  overflow-y-hidden overflow-x-hidden   h-fit px-5 py-2">
+          <div className="w-11/12 mx-auto  pb-2 text-xl lg:text-2xl font-semibold">Transaction History</div>
+          {/* {records.length > 0 && <div className="flex items-center justify-center mt-2 flex-col w-11/12 mx-auto">
             <input onKeyUp={(e) => filterData(e.target.value.toLowerCase())} type="text" className='w-10/12 lg:w-1/2 pl-2 bg-slate-100 h-12 border rounded-md outline-none'
               placeholder='Filter by transaction ID, Type , Status '
             />
-          </div>}
+          </div>} */}
         </div>
 
-        {loading && 
+        {loading &&
           <div className="absolute top-1/4 left-1/2 -translate-x-1/2">
             <Loader />
           </div>
         }
 
-        <div className=" w-11/12 pt-[9rem] mx-auto">
+        {/* <div className=" w-11/12 pt-[9rem] mx-auto">
           {records.length > 0 ? records.map((item, index) => (
             <div className="rounded-xl mb-3 bg-white shadow-md border" key={index}>
               <div className="flex flex-col">
@@ -152,8 +153,11 @@ const Transactions = () => {
               <div onClick={() => navigate('/user')} className="text-center w-full mt-5 underline text-primary text-base cursor-pointer">Go back to dashboard</div>
             </>
           }
+        </div> */}
+        <hr className='w-11/12 mx-auto my-5'/>
+        <div className="w-11/12 mx-auto ">
+          <TransHistoryComp filteredData={records} />
         </div>
-
         {records.length > 0 && (
           <div className="w-fit ml-auto mr-5 mt-10 mb-5">
             <div className="w-full flex flex-col items-center">
@@ -184,7 +188,7 @@ export default Transactions
 
 //  Toppings function
 // const [pizza,setPizza] = useState({ base:'', toppings:[]})
-// to update base = 
+// to update base =
 // const addBase = (base) =>{
 //   setPizza(prev => ({...prev, base}))
 // }

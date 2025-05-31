@@ -11,10 +11,10 @@ const TermsofUse = () => {
           {termsOfUse.map((item, i) => {
 
             return (
-              <div className="flex w-full items-start flex-col gap-3 mb-5">
+              <div key={i} className="flex w-full items-start flex-col gap-3 mb-5">
                 <div className="flex items-center gap-5">
                   <div className="text-xl font-bold">{item.number}.</div>
-                  <div className="text-xl lg:text-2xl font-bold text-sky-500">{item.title}</div>
+                  <div className="text-xl lg:text-2xl font-bold text-col">{item.title}</div>
                 </div>
                 {item.desc.map((des, j) => (
                   <ul className={` list-disc w-full  mb-5`} key={j}>
