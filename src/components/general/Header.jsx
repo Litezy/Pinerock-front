@@ -38,7 +38,7 @@ export default function Header() {
         initial="hidden"
         animate="visible"
         transition={{ delay: 0.5, duration: 1 }}
-        className="flex items-center bg-sec lg:bg-white  justify-between   px-10 lg:px-20 py-1 md:py-4  nunito">
+        className="flex items-center bg-sec lg:bg-white  justify-between   px-10 lg:px-20 py-3 md:py-4  nunito">
         <div className="">
           <Link to="/" className="text-xl md:text-3xl font-bold">
             <img src={logo} className="max-w-16  h-10 " alt="pinerock logo" />

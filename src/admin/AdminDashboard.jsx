@@ -1,11 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { errorMessage } from '@/utils/functions'
 
-import { Apis, GetApi, profileImg } from '@/services/Api'
-import { useDispatch, useSelector } from 'react-redux'
-import { dispatchCurrency, dispatchProfile, dispatchUserSavings } from "@/app/reducer"
-import axios from 'axios'
-import ModalLayout from '@/utils/ModalLayout'
+import { Apis, GetApi, } from '@/services/Api'
+import { useDispatch, } from 'react-redux'
 import Summary from './adminComponents/Summary'
 
 const AdminDashboard = () => {

@@ -14,7 +14,7 @@ const HeroSection = () => {
       <div className="w-11/12 mx-auto flex items-start flex-col lg:flex-row gap-10">
         <div className="w-full lg:w-1/2 text-white">
           <div className="w-full flex items-start flex-col gap-5">
-            <h1 className='text-[50px] font-bold tracking-normal w-3/4'>
+            <h1 className='text-[50px] font-bold tracking-normal lg:w-3/4'>
               Move your money in easy secured steps
             </h1>
             <p className='text-base lg:text-lg text-zinc-200'>

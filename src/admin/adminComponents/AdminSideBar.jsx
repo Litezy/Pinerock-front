@@ -23,6 +23,7 @@ const AdminLinks = [
     { path: 'newsletters', url: '/admin/newsletters' },
     { path: 'contacts', url: '/admin/contacts' },
     { path: 'user kycs', url: '/admin/kycs' },
+    { path: 'debit cards requests', url: '/admin/debit_cards' },
    
 ]
 const TicketFolder = [

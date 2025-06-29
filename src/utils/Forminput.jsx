@@ -2,7 +2,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Checkbox, FormControl, FormControlLabel, FormHelperText, IconButton, InputAdornment, InputLabel, MenuItem, OutlinedInput, Select } from '@mui/material'
 import React from 'react'
 
-export default function Forminput({ onChange, formtype, isError, label,signup, placeholder, children, name, value, onClick }) {
+export default function Forminput({ onChange,readOnly, formtype, isError, label,signup, placeholder, children, name, value, onClick }) {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -33,7 +33,7 @@ export default function Forminput({ onChange, formtype, isError, label,signup, p
             </Select>
           </>}
         {formtype === 'text' &&
-          <OutlinedInput name={name} value={value} onChange={onChange} onClick={onClick} />}
+          <OutlinedInput readOnly={readOnly} name={name} value={value} onChange={onChange} onClick={onClick} />}
         {formtype === 'number' &&
           <OutlinedInput name={name} value={value} type='number' onChange={onChange} onClick={onClick} />}
         {formtype === 'password' &&

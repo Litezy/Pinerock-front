@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CiMail } from 'react-icons/ci'
 import { FaFacebookF, FaInstagram, FaLocationArrow, FaPinterestP, FaXTwitter } from 'react-icons/fa6'
 import { FiPhoneIncoming, FiPrinter } from 'react-icons/fi'
 import contact_bg from '@/assets/general/contact_bg.png'
 import { errorMessage, SiteAddress, SiteContact, SiteEmail, successMessage } from '@/utils/functions';
 import { Apis, ClientPostApi } from '@/services/Api';
+import { useLocation } from 'react-router-dom'
 
 
 
-const ContactUs = ({ bg_active = true }) => {
+const ContactUs = ({ bg_active = true}) => {
 
   const links = [
 
@@ -29,8 +30,9 @@ const ContactUs = ({ bg_active = true }) => {
       desc: SiteAddress
     },
   ]
-
-
+  const [show,setShow] = useState(false)
+  const location = useLocation()
+  const pathName = location.pathname
 
   const [loading, setLoading] = useState(false)
   const [forms, setForms] = useState({
@@ -83,9 +85,16 @@ const ContactUs = ({ bg_active = true }) => {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    if (pathName === '/') {
+      setShow(true)
+    }
+  }, [location])
+
   return (
     <div
-      className={`w-full lg:h-[800px] h-[1300px] ${bg_active && 'pt-52 lg:mt-20'} bg-no-repeat relative bg-cover bg-center`}
+      className={`w-full lg:h-[800px] ${show ? "h-[1020px]" : "h-[1220px]"} ${bg_active && 'pt-52 lg:mt-20'} bg-no-repeat relative bg-cover bg-center`}
       style={bg_active ? { backgroundImage: `url(${contact_bg})`, zIndex: 0 } : { zIndex: 0 }}
     >
       <div className="w-full h-full  lg:pt-0 lg:border-none text-white ">

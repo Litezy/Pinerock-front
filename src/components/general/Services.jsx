@@ -28,12 +28,12 @@ const Services = () => {
                         At {SiteName}, we are dedicated to providing you with a banking experience that’s not just secure and reliable but also tailored to meet your financial goals. Our innovative services are designed to simplify your life, empower your savings, and enhance your financial freedom. Explore the array of services we offer to help you manage, grow, and protect your money with ease and confidence.
                     </div>
                 </div>
-                <div className="w-full">
-                    <img src={servicesImg} alt="image" />
+                <div className="w-full h-auto">
+                    <img src={servicesImg} alt="image" className='h-auto' />
                 </div>
                 <div
                     ref={ref}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 -mt-40 md:-mt-32 gap-10 lg:gap-10  relative lg:mt-16 w-11/12 mx-auto  mb-10 ">
+                    className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3  mt-20 md:-mt-32 gap-10 lg:gap-10  relative lg:mt-16 w-11/12 mx-auto  mb-10 ">
                     {services.map((item, index) => {
                         const isEven = index % 2 === 0
                         return (

@@ -5,6 +5,7 @@ import ModalLayout from '@/utils/ModalLayout';
 import EmailandPassModal from '@/utils/EmailandPassModal';
 import { FaIdCard } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { FaCreditCard } from "react-icons/fa";
 
 
 
@@ -34,6 +35,12 @@ const Settings = () => {
             <div  onClick={()=>navigate(`/user/kyc`)} className="w-11/12 mx-auto flex items-center justify-center gap-5  h-full">
               <FaIdCard  className='text-5xl text-col'/>
               <h1 className='text-sm md:text-lg'>Submit KYC</h1>
+            </div>
+          </div>
+          <div  className="bg-white h-fit py-5 mt-5 md:mt-0 w-full mx-auto rounded-md border shadow-lg cursor-pointer ">
+            <div  onClick={()=>navigate(`/user/settings/debit_cards`)} className="w-11/12 mx-auto flex items-center justify-center gap-5  h-full">
+              <FaCreditCard  className='text-5xl text-col'/>
+              <h1 className='text-sm md:text-lg'>Debit Cards</h1>
             </div>
           </div>
         </div>
